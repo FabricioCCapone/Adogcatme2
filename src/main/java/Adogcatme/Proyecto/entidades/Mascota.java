@@ -34,7 +34,7 @@ public class Mascota implements Serializable {
     public Mascota() {
     }
 
-    public Mascota(String id, Dueno dueno, String raza, String tipo, Integer edad, String sexo, String descripcion, Double peso, byte imagen, String tamano, boolean castrado, String estado) {
+    public Mascota(String id, Dueno dueno, String raza, String tipo, Integer edad, String sexo, String descripcion, Double peso, byte imagen, String tamano, boolean castrado, String estado, Adoptante adoptante) {
         this.id = id;
         this.dueno = dueno;
         this.raza = raza;
@@ -47,6 +47,7 @@ public class Mascota implements Serializable {
         this.tamano = tamano;
         this.castrado = castrado;
         this.estado = estado;
+        this.adoptante = adoptante;
     }
 
     public String getId() {
