@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -26,17 +27,21 @@ public class Mascota implements Serializable {
     private String sexo;
     private String descripcion;
     private Double peso;
-    private byte imagen;
+    
+    @OneToOne
+    private Imagen imagen;
+    
     private String tamano;
-    private boolean castrado;
+    private Boolean castrado;
     private String estado;
 
     public Mascota() {
     }
 
-    public Mascota(String id, Dueno dueno, String raza, String tipo, Integer edad, String sexo, String descripcion, Double peso, byte imagen, String tamano, boolean castrado, String estado, Adoptante adoptante) {
+    public Mascota(String id, Dueno dueno, Adoptante adoptante, String raza, String tipo, Integer edad, String sexo, String descripcion, Double peso, Imagen imagen, String tamano, Boolean castrado, String estado) {
         this.id = id;
         this.dueno = dueno;
+        this.adoptante = adoptante;
         this.raza = raza;
         this.tipo = tipo;
         this.edad = edad;
@@ -47,8 +52,9 @@ public class Mascota implements Serializable {
         this.tamano = tamano;
         this.castrado = castrado;
         this.estado = estado;
-        this.adoptante = adoptante;
     }
+
+    
 
     public String getId() {
         return id;
@@ -114,14 +120,6 @@ public class Mascota implements Serializable {
         this.peso = peso;
     }
 
-    public byte getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(byte imagen) {
-        this.imagen = imagen;
-    }
-
     public String getTamano() {
         return tamano;
     }
@@ -130,20 +128,36 @@ public class Mascota implements Serializable {
         this.tamano = tamano;
     }
 
-    public boolean isCastrado() {
-        return castrado;
-    }
-
-    public void setCastrado(boolean castrado) {
-        this.castrado = castrado;
-    }
-
     public String getEstado() {
         return estado;
     }
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public Adoptante getAdoptante() {
+        return adoptante;
+    }
+
+    public void setAdoptante(Adoptante adoptante) {
+        this.adoptante = adoptante;
+    }
+
+    public Imagen getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Imagen imagen) {
+        this.imagen = imagen;
+    }
+
+    public Boolean getCastrado() {
+        return castrado;
+    }
+
+    public void setCastrado(Boolean castrado) {
+        this.castrado = castrado;
     }
     
     
