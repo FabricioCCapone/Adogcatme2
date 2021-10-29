@@ -19,7 +19,7 @@ public class Adoptante implements Serializable {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
-    private String nombre;
+    private String nombre;//Nombre del dueno
     private String email;
     private String contrasena;
     private String telefono;
