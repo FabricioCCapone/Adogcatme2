@@ -8,7 +8,7 @@ import Adogcatme.Proyecto.entidades.Mascota;
  */
 public class MascotaServicio {
     
-    public void registrarMascota(Mascota m){
+    public void registrarMascota(Mascota m) throws Exception{
         verificarRegistro(m);
     }
     public void editarMascota(){
