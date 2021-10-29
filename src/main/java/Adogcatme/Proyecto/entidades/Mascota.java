@@ -20,7 +20,10 @@ public class Mascota implements Serializable {
     @ManyToOne
     private Dueno dueno;
     
+    @ManyToOne
     private Adoptante adoptante;
+    
+    private String nombre;
     private String raza;
     private String tipo;
     private Integer edad;
@@ -38,10 +41,11 @@ public class Mascota implements Serializable {
     public Mascota() {
     }
 
-    public Mascota(String id, Dueno dueno, Adoptante adoptante, String raza, String tipo, Integer edad, String sexo, String descripcion, Double peso, Imagen imagen, String tamano, Boolean castrado, String estado) {
+    public Mascota(String id, Dueno dueno, Adoptante adoptante, String nombre, String raza, String tipo, Integer edad, String sexo, String descripcion, Double peso, Imagen imagen, String tamano, Boolean castrado, String estado) {
         this.id = id;
         this.dueno = dueno;
         this.adoptante = adoptante;
+        this.nombre = nombre;
         this.raza = raza;
         this.tipo = tipo;
         this.edad = edad;
@@ -52,9 +56,7 @@ public class Mascota implements Serializable {
         this.tamano = tamano;
         this.castrado = castrado;
         this.estado = estado;
-    }
-
-    
+    }    
 
     public String getId() {
         return id;
@@ -70,6 +72,22 @@ public class Mascota implements Serializable {
 
     public void setDueno(Dueno dueno) {
         this.dueno = dueno;
+    }
+
+    public Adoptante getAdoptante() {
+        return adoptante;
+    }
+
+    public void setAdoptante(Adoptante adoptante) {
+        this.adoptante = adoptante;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getRaza() {
@@ -120,36 +138,20 @@ public class Mascota implements Serializable {
         this.peso = peso;
     }
 
-    public String getTamano() {
-        return tamano;
-    }
-
-    public void setTamano(String tamano) {
-        this.tamano = tamano;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public Adoptante getAdoptante() {
-        return adoptante;
-    }
-
-    public void setAdoptante(Adoptante adoptante) {
-        this.adoptante = adoptante;
-    }
-
     public Imagen getImagen() {
         return imagen;
     }
 
     public void setImagen(Imagen imagen) {
         this.imagen = imagen;
+    }
+
+    public String getTamano() {
+        return tamano;
+    }
+
+    public void setTamano(String tamano) {
+        this.tamano = tamano;
     }
 
     public Boolean getCastrado() {
@@ -159,7 +161,14 @@ public class Mascota implements Serializable {
     public void setCastrado(Boolean castrado) {
         this.castrado = castrado;
     }
-    
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
     
     
 }

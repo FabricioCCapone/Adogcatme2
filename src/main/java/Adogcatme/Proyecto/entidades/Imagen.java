@@ -1,5 +1,6 @@
 package Adogcatme.Proyecto.entidades;
 
+import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,7 +12,7 @@ import javax.persistence.Lob;
  * @author Capoun
  */
 @Entity
-public class Imagen {
+public class Imagen implements Serializable {
     
     @Id
     private String id;
