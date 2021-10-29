@@ -34,9 +34,6 @@ public class MascotaServicio {
         if(m.getTipo().isEmpty() || m.getTipo() == null){
             throw new Exception("El nombre de la mascota no puede estar vacio.");
         }
-        if(m.getNombre().isEmpty() || m.getNombre() == null){
-            throw new Exception("El nombre de la mascota no puede estar vacio.");
-        }
     }
 }
 
