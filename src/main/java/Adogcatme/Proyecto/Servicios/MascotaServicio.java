@@ -1,15 +1,23 @@
 package Adogcatme.Proyecto.Servicios;
 
+import Adogcatme.Proyecto.Repositorios.MascotaRepositorio;
 import Adogcatme.Proyecto.entidades.Mascota;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Capoun
  */
+@Service
 public class MascotaServicio {
+    
+    @Autowired
+    MascotaRepositorio mr;
     
     public void registrarMascota(Mascota m) throws Exception{
         verificarRegistro(m);
+        mr.save(m);
     }
     
     public void editarMascota(){
@@ -46,8 +54,7 @@ public class MascotaServicio {
         }
         if(m.getCastrado()== null){
             throw new Exception("Debe indicar si la mascota esta castrada o no.");
-        }
-        
+        } 
     }
 }
 
