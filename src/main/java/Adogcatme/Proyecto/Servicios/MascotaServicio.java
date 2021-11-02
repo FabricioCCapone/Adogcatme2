@@ -18,33 +18,37 @@ public class MascotaServicio {
     @Autowired
     MascotaRepositorio mr;
 
-    public Mascota findById(String id){
+    public Mascota findById(String id) {
         return mr.getById(id);
     }
-    
-    public List<Mascota> findByUbicacion(Adoptante a){
+
+    public List<Mascota> findByUbicacion(Adoptante a) {
         return mr.findByUbicacion(a.getUbicacion().getCiudad());
     }
-    
-    public List<Mascota> findByTipo(String tipo){
+
+    public List<Mascota> findByTipo(String tipo) {
         return mr.findByTipo(tipo);
     }
-    
-    public List<Mascota> findByCastrado(String castrado){
-        if(castrado.equals("SI")){
+
+    public List<Mascota> findByDuenoId(String dueno_id) {
+        return mr.findByDuenoId(dueno_id);
+    }
+
+    public List<Mascota> findByCastrado(String castrado) {
+        if (castrado.equals("SI")) {
             return mr.findByCastrado(0);
         }
         return mr.findByCastrado(1);
     }
-    
-    public List<Mascota> findBySexo(String sexo){
-        if(sexo.equals("MACHO")){
+
+    public List<Mascota> findBySexo(String sexo) {
+        if (sexo.equals("MACHO")) {
             return mr.findBySexo("MACHO");
-        }else{
+        } else {
             return mr.findBySexo("HEMBRA");
         }
-    } 
-    
+    }
+
     @Transactional
     public void registrarMascota(Mascota m) throws Exception {
         verificarRegistro(m);
@@ -52,25 +56,19 @@ public class MascotaServicio {
     }
 
     @Transactional
-    public void editarMascota(Mascota m) {
-        try {
-            if (mr.existsById(m.getId())) {
-                mr.save(m);
-            }
-        } catch (Exception e) {
+    public void editarMascota(Mascota m) throws Exception {
+        if (mr.existsById(m.getId())) {
+            mr.save(m);
         }
     }
 
     @Transactional
-    public void eliminarMascota(Mascota m){    
-        try {
-            if (mr.existsById(m.getId())) {
-                mr.deleteById(m.getId());
-            }
-        } catch (Exception e) {
+    public void eliminarMascota(Mascota m) throws Exception {
+        if (mr.existsById(m.getId())) {
+            mr.deleteById(m.getId());
         }
     }
-    
+
     public void verificarRegistro(Mascota m) throws Exception {
         if (m.getNombre().isEmpty() || m.getNombre() == null) {
             throw new Exception("El nombre de la mascota no puede estar vacio.");
