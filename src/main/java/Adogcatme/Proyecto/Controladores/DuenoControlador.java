@@ -1,7 +1,7 @@
 
 package Adogcatme.Proyecto.Controladores;
 
-<<<<<<< HEAD
+
 import Adogcatme.Proyecto.Servicios.DuenoServicio;
 import Adogcatme.Proyecto.entidades.Dueno;
 import java.util.Optional;
@@ -13,14 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.stereotype.Controller;
 
 @Service
 @RequestMapping("/dueno")
-=======
-import org.springframework.stereotype.Controller;
-
 @Controller
->>>>>>> d3e6d0594ed1267026f56fa3cda2e8e44cb84bb4
 public class DuenoControlador {
 
     @Autowired
