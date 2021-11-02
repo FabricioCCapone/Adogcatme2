@@ -18,6 +18,8 @@ public class MascotaServicio {
     @Autowired
     MascotaRepositorio mr;
 
+
+
     public Mascota findById(String id) {
         return mr.getById(id);
     }
@@ -41,6 +43,8 @@ public class MascotaServicio {
         }
         return mr.findByCastrado(1);
     }
+    
+
 
     public List<Mascota> findBySexo(String sexo) {
         if (sexo.equals("MACHO")) {
