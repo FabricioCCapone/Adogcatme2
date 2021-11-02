@@ -10,6 +10,7 @@ Adogcatme\Proyecto\Controladores\DuenoControlador.class
 Adogcatme\Proyecto\Repositorios\AdoptanteRepositorio.class
 Adogcatme\Proyecto\Servicios\MascotaServicio.class
 Adogcatme\Proyecto\entidades\Mascota.class
+Adogcatme\Proyecto\Repositorios\FiltroMascota.class
 Adogcatme\Proyecto\Repositorios\MascotaRepositorio.class
 Adogcatme\Proyecto\Servicios\AdoptanteServicio.class
 Adogcatme\Proyecto\Servicios\SolicitudServicio.class
