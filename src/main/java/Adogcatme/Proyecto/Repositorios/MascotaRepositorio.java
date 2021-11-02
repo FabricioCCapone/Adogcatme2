@@ -17,8 +17,11 @@ import org.springframework.data.repository.query.Param;
  */
 public interface MascotaRepositorio extends JpaRepository<Mascota, String>{
     
-    @Query("SELECT m FROM Mascota m JOIN Dueno d WHERE d.id = m.dueno_id AND (SELECT * FROM Dueno dd, Adoptante a WHERE a.ciudad AND dd.ciudad = :ciudad)")
-    public List<Mascota> findByUbicacion(@Param("ciudad") String ciudad); 
+ 
+
+    @Query("SELECT m FROM Mascota m  WHERE m.dueno.ubicacion LIKE :barrio")
+    public List<Mascota> findByBarrio(@Param("barrio") String barrio); 
+
 
     @Query("SELECT m FROM Mascota m WHERE tipo = :tipo)")
     public List<Mascota> findByTipo(@Param("tipo") String tipo); 
@@ -28,4 +31,8 @@ public interface MascotaRepositorio extends JpaRepository<Mascota, String>{
 
     @Query("SELECT m FROM Mascota m WHERE castrado = :castrado)")
     public List<Mascota> findByCastrado(@Param("castrado") Integer castrado); 
+
+    @Query("SELECT m FROM Mascota m WHERE m.dueno_id = :dueno_id)")
+    public List<Mascota> findByDuenoId(@Param("dueno_id") String dueno_id); 
+    
 }
