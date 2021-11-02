@@ -14,6 +14,7 @@ Adogcatme\Proyecto\Repositorios\MascotaRepositorio.class
 Adogcatme\Proyecto\Servicios\AdoptanteServicio.class
 Adogcatme\Proyecto\Servicios\SolicitudServicio.class
 Adogcatme\Proyecto\Servicios\UbicacionServicio.class
+errores\ErrorServicio.class
 Adogcatme\Proyecto\Repositorios\UbicacionRepositorio.class
 Adogcatme\Proyecto\Controladores\SolicitudControlador.class
 Adogcatme\Proyecto\entidades\Imagen.class
