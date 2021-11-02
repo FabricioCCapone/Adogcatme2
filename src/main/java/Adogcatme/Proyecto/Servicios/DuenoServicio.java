@@ -13,18 +13,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 @Service
 public class DuenoServicio {
     
     @Autowired
-    private DuenoRepositorio duenoRepositorio;
-    
-    @Autowired
-    private 
-    
+    private DuenoRepositorio duenoRepositorio;  
 
     //Listar dueños
-    public List<Dueno> listAll(){
+    public List <Dueno> listAll(){
         return duenoRepositorio.findAll();
     }
     
@@ -47,24 +44,24 @@ public class DuenoServicio {
     
     //Crear dueño
     @Transactional
-    public Dueno save(@ModelAttribute Dueno dueno) throws we {
+    public Dueno save(@ModelAttribute Dueno dueno) throws Exception {
        if (dueno.getNombre().isEmpty() || dueno.getNombre()==null){
-           throw new we (" La persona debe tener un nombre");
+           throw  new Exception (" La persona debe tener un nombre");
        }
        if (dueno.getEmail().isEmpty() || dueno.getEmail()==null){
-           throw new we (" La persona debe tener un mail de contacto");
+           throw new Exception (" La persona debe tener un mail de contacto");
        }
        if (dueno.getContrasena().isEmpty() || dueno.getContrasena()==null){
-           throw new we (" La contraseña es obligatoria");
+           throw new Exception (" La contraseña es obligatoria");
        }
        if (dueno.getTelefono().isEmpty() || dueno.getTelefono()==null){
-           throw new we (" La persona debe tener un teléfono de contacto");
+           throw new Exception (" La persona debe tener un teléfono de contacto");
        }
        if (dueno.getUbicacion()==null){
-           throw new we (" Ubicación obligatoria");
+           throw new Exception (" Ubicación obligatoria");
        }       
        return duenoRepositorio.save(dueno);
-    }    
+    }
     
     //Eliminar dueño (Creada en el caso de que haya un usuario de administrador)
     @Transactional
