@@ -6,38 +6,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-/**
- *
- * @author Capoun
- */
 @Controller
-@RequestMapping("/Mascota")
+@RequestMapping("/mascota")
 public class MascotaControlador {
         
     @Autowired
     MascotaServicio ms;
     
-    @GetMapping("/PerfilMascota")
-    public String perfilMascota(Model model, @RequestParam Mascota m){
+    @GetMapping("/perfilMascota")
+    public String perfilMascota(Model model, Mascota m){
         model.addAttribute("mascota", ms.findById(m.getId()));
         return "perfil-mascot";
     }
     
-    @GetMapping("/Registro")
+    @GetMapping("/registro")
     public String registrarMascota(Model model){
-        Mascota m = new Mascota();
-        model.addAttribute("mascota", m);
+        model.addAttribute("mascota", new Mascota());
         return "regist-masc";
     }
     
-    @PostMapping("/RegistroForm")
-    public String registrarMascota(@RequestParam Mascota m){
+    @PostMapping("/registroForm")
+    public String registrarMascota(@ModelAttribute Mascota mascota){
         try {
-            ms.registrarMascota(m);
+            ms.registrarMascota(mascota);
         } catch (Exception e) {
             
         }finally{
@@ -45,8 +40,8 @@ public class MascotaControlador {
         }
     }
     
-    @PostMapping("/EditarMascota")
-    public String editarMascota(@RequestParam Mascota m){
+    @PostMapping("/editarMascota")
+    public String editarMascota(@ModelAttribute Mascota m){
         try {
             ms.editarMascota(m);
         } catch (Exception e) {
@@ -56,8 +51,8 @@ public class MascotaControlador {
         }
     }
     
-    @GetMapping("/EliminarMascota")
-    public String eliminarMascota(@RequestParam Mascota m){
+    @GetMapping("/eliminarMascota")
+    public String eliminarMascota(@ModelAttribute Mascota m){
         try {
             ms.eliminarMascota(m);
         } catch (Exception e) {

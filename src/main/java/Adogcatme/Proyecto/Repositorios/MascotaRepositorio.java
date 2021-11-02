@@ -17,7 +17,7 @@ import org.springframework.data.repository.query.Param;
  */
 public interface MascotaRepositorio extends JpaRepository<Mascota, String>{
     
-    @Query("SELECT m FROM Mascota m JOIN Dueno d WHERE d.id = m.dueno_id AND (SELECT * FROM Dueno dd, Adoptante a WHERE a.ciudad AND dd.ciudad = :ciudad)")
+    @Query("SELECT m FROM Mascota m  WHERE m.dueno.ubicacion LIKE :ciudad")
     public List<Mascota> findByUbicacion(@Param("ciudad") String ciudad); 
 
     @Query("SELECT m FROM Mascota m WHERE tipo = :tipo)")
