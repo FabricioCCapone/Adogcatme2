@@ -35,17 +35,17 @@ public class Adoptante implements Serializable {
 
     public Adoptante() {
         this.solicitudes = new ArrayList<>();
-        this.mascotas = new ArrayList<>();
+        
     }
 
-    public Adoptante(String id, String nombre, String email, String contrasena, String telefono, ArrayList<Solicitud> solicitudes, ArrayList<Mascota> mascotas, Ubicacion ubicacion) {
+    public Adoptante(String id, String nombre, String email, String contrasena, String telefono, ArrayList<Solicitud> solicitudes, Ubicacion ubicacion) {
         this.id = id;
         this.nombre = nombre;
         this.email = email;
         this.contrasena = contrasena;
         this.telefono = telefono;
         this.solicitudes = new ArrayList<>();
-        this.mascotas = new ArrayList<>();
+        
         this.ubicacion = ubicacion;
     }
 
@@ -97,13 +97,6 @@ public class Adoptante implements Serializable {
         this.solicitudes = solicitudes;
     }
 
-    public List<Mascota> getMascotas() {
-        return mascotas;
-    }
-
-    public void setMascotas(ArrayList<Mascota> mascotas) {
-        this.mascotas = mascotas;
-    }
 
     public Ubicacion getUbicacion() {
         return ubicacion;
