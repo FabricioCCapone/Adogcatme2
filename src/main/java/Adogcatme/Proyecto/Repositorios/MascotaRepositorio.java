@@ -19,6 +19,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MascotaRepositorio extends JpaRepository<Mascota, String>{
     
+ 
+
     @Query("SELECT m FROM Mascota m  WHERE m.dueno.ubicacion LIKE :barrio")
     public List<Mascota> findByBarrio(@Param("barrio") String barrio); 
 
