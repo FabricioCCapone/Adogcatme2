@@ -23,8 +23,8 @@ public class MascotaServicio {
     }
 
     public List<Mascota> findByUbicacion(Adoptante a) {
-        String ciudad = "%" + a.getUbicacion().getCiudad() + "%";
-        return mr.findByUbicacion(ciudad);
+        String barrio = "%" + a.getUbicacion().getBarrio() + "%";
+        return mr.findByBarrio(barrio);
     }
 
     public List<Mascota> findByTipo(String tipo) {

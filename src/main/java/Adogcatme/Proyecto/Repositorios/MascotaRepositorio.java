@@ -17,8 +17,8 @@ import org.springframework.data.repository.query.Param;
  */
 public interface MascotaRepositorio extends JpaRepository<Mascota, String>{
     
-    @Query("SELECT m FROM Mascota m  WHERE m.dueno.ubicacion LIKE :ciudad")
-    public List<Mascota> findByUbicacion(@Param("ciudad") String ciudad); 
+    @Query("SELECT m FROM Mascota m  WHERE m.dueno.ubicacion LIKE :barrio")
+    public List<Mascota> findByBarrio(@Param("barrio") String barrio); 
 
     @Query("SELECT m FROM Mascota m WHERE tipo = :tipo)")
     public List<Mascota> findByTipo(@Param("tipo") String tipo); 
