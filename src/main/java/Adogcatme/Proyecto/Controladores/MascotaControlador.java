@@ -21,6 +21,12 @@ public class MascotaControlador {
     @Autowired
     MascotaServicio ms;
     
+    @GetMapping("/PerfilMascota")
+    public String perfilMascota(Model model, @RequestParam Mascota m){
+        model.addAttribute("mascota", ms.findById(m.getId()));
+        return "perfil-mascot";
+    }
+    
     @GetMapping("/Registro")
     public String registrarMascota(Model model){
         Mascota m = new Mascota();
