@@ -21,34 +21,34 @@ public class MascotaServicio {
     public Mascota findById(String id) {
         return mr.getById(id);
     }
-//
-//    public List<Mascota> findByUbicacion(Adoptante a) {
-//        String barrio = "%" + a.getUbicacion().getBarrio() + "%";
-//        return mr.findByBarrio(barrio);
-//    }
-//
-//    public List<Mascota> findByTipo(String tipo) {
-//        return mr.findByTipo(tipo);
-//    }
-//
-//   // public List<Mascota> findByDuenoId(String dueno_id) {
-//     //   return mr.findByDuenoId(dueno_id);
-//    //}
-//
-//    public List<Mascota> findByCastrado(String castrado) {
-//        if (castrado.equals("SI")) {
-//            return mr.findByCastrado(0);
-//        }
-//        return mr.findByCastrado(1);
-//    }
-//
-//    public List<Mascota> findBySexo(String sexo) {
-//        if (sexo.equals("MACHO")) {
-//            return mr.findBySexo("MACHO");
-//        } else {
-//            return mr.findBySexo("HEMBRA");
-//        }
-//    }
+
+    public List<Mascota> findByUbicacion(Adoptante a) {
+        String barrio = "%" + a.getUbicacion().getBarrio() + "%";
+        return mr.findByBarrio(barrio);
+    }
+
+    public List<Mascota> findByTipo(String tipo) {
+        return mr.findByTipo(tipo);
+    }
+
+   // public List<Mascota> findByDuenoId(String dueno_id) {
+     //   return mr.findByDuenoId(dueno_id);
+    //}
+
+    public List<Mascota> findByCastrado(String castrado) {
+        if (castrado.equals("SI")) {
+            return mr.findByCastrado(0);
+        }
+        return mr.findByCastrado(1);
+    }
+
+    public List<Mascota> findBySexo(String sexo) {
+        if (sexo.equals("MACHO")) {
+            return mr.findBySexo("MACHO");
+        } else {
+            return mr.findBySexo("HEMBRA");
+        }
+    }
 
     @Transactional
     public void registrarMascota(Mascota m) throws Exception {

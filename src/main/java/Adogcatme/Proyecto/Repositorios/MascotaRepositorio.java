@@ -19,19 +19,19 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MascotaRepositorio extends JpaRepository<Mascota, String>{
     
-//    @Query("SELECT m FROM Mascota m  WHERE m.dueno.ubicacion LIKE :barrio")
-//    public List<Mascota> findByBarrio(@Param("barrio") String barrio); 
-//
-//    @Query("SELECT m FROM Mascota m WHERE tipo = :tipo)")
-//    public List<Mascota> findByTipo(@Param("tipo") String tipo); 
-// 
-//    @Query("SELECT m FROM Mascota m WHERE sexo = :sexo)")
-//    public List<Mascota> findBySexo(@Param("sexo") String sexo); 
-//
-//    @Query("SELECT m FROM Mascota m WHERE castrado = :castrado)")
-//    public List<Mascota> findByCastrado(@Param("castrado") Integer castrado); 
-//   
-    //@Query("SELECT m FROM Mascota m WHERE m.dueno_id = :dueno_id)")
-    //public List<Mascota> findByDuenoId(@Param("dueno_id") String dueno_id); 
+    @Query("SELECT m FROM Mascota m  WHERE m.dueno.ubicacion LIKE :barrio")
+    public List<Mascota> findByBarrio(@Param("barrio") String barrio); 
+
+    @Query("SELECT m FROM Mascota m WHERE tipo = :tipo")
+    public List<Mascota> findByTipo(@Param("tipo") String tipo); 
+ 
+    @Query("SELECT m FROM Mascota m WHERE sexo = :sexo")
+    public List<Mascota> findBySexo(@Param("sexo") String sexo); 
+
+    @Query("SELECT m FROM Mascota m WHERE castrado = :castrado")
+    public List<Mascota> findByCastrado(@Param("castrado") Integer castrado); 
+   
+    @Query("SELECT m FROM Mascota m WHERE dueno_id = :dueno_id")
+    public List<Mascota> findByDuenoId(@Param("dueno_id") String dueno_id); 
     
 }
