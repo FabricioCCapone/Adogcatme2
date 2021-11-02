@@ -26,8 +26,6 @@ public class UbicacionServicio {
     public Ubicacion cargarubicacion(String provincia, String ciudad, String barrio, String direccion){
         Ubicacion ubicacion = new Ubicacion();
         
-        ubicacion.setProvincia(provincia);
-        ubicacion.setCiudad(ciudad);
         ubicacion.setDireccion(direccion);
         ubicacion.setBarrio(barrio);
         
