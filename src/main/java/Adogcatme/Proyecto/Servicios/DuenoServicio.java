@@ -13,13 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @Service
 public class DuenoServicio {
     
     @Autowired
-    private DuenoRepositorio duenoRepositorio;  
-
+    private DuenoRepositorio duenoRepositorio;
+    
     //Listar dueños
     public List <Dueno> listAll(){
         return duenoRepositorio.findAll();
@@ -42,7 +41,7 @@ public class DuenoServicio {
     //Modificar dueño
     
     
-    //Crear dueño
+    //Crear dueño 
     @Transactional
     public Dueno save(@ModelAttribute Dueno dueno) throws Exception {
        if (dueno.getNombre().isEmpty() || dueno.getNombre()==null){
