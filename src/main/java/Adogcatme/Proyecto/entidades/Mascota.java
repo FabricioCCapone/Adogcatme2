@@ -1,11 +1,12 @@
 
 package Adogcatme.Proyecto.entidades;
-
+    
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -19,24 +20,32 @@ public class Mascota implements Serializable {
     @ManyToOne
     private Dueno dueno;
     
+    @ManyToOne
     private Adoptante adoptante;
+    
+    private String nombre;
     private String raza;
     private String tipo;
     private Integer edad;
     private String sexo;
     private String descripcion;
     private Double peso;
-    private byte imagen;
+    
+    @OneToOne
+    private Imagen imagen;
+    
     private String tamano;
-    private boolean castrado;
+    private Boolean castrado;
     private String estado;
 
     public Mascota() {
     }
 
-    public Mascota(String id, Dueno dueno, String raza, String tipo, Integer edad, String sexo, String descripcion, Double peso, byte imagen, String tamano, boolean castrado, String estado) {
+    public Mascota(String id, Dueno dueno, Adoptante adoptante, String nombre, String raza, String tipo, Integer edad, String sexo, String descripcion, Double peso, Imagen imagen, String tamano, Boolean castrado, String estado) {
         this.id = id;
         this.dueno = dueno;
+        this.adoptante = adoptante;
+        this.nombre = nombre;
         this.raza = raza;
         this.tipo = tipo;
         this.edad = edad;
@@ -47,7 +56,7 @@ public class Mascota implements Serializable {
         this.tamano = tamano;
         this.castrado = castrado;
         this.estado = estado;
-    }
+    }    
 
     public String getId() {
         return id;
@@ -63,6 +72,22 @@ public class Mascota implements Serializable {
 
     public void setDueno(Dueno dueno) {
         this.dueno = dueno;
+    }
+
+    public Adoptante getAdoptante() {
+        return adoptante;
+    }
+
+    public void setAdoptante(Adoptante adoptante) {
+        this.adoptante = adoptante;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getRaza() {
@@ -113,11 +138,11 @@ public class Mascota implements Serializable {
         this.peso = peso;
     }
 
-    public byte getImagen() {
+    public Imagen getImagen() {
         return imagen;
     }
 
-    public void setImagen(byte imagen) {
+    public void setImagen(Imagen imagen) {
         this.imagen = imagen;
     }
 
@@ -129,11 +154,11 @@ public class Mascota implements Serializable {
         this.tamano = tamano;
     }
 
-    public boolean isCastrado() {
+    public Boolean getCastrado() {
         return castrado;
     }
 
-    public void setCastrado(boolean castrado) {
+    public void setCastrado(Boolean castrado) {
         this.castrado = castrado;
     }
 
@@ -144,7 +169,6 @@ public class Mascota implements Serializable {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
     
     
 }
