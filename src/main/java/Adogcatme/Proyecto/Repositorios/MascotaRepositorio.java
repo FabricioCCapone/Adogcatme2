@@ -30,7 +30,7 @@ public interface MascotaRepositorio extends JpaRepository<Mascota, String>{
 
     @Query("SELECT m FROM Mascota m WHERE castrado = :castrado")
     public List<Mascota> findByCastrado(@Param("castrado") Integer castrado); 
-  
+
     @Query("SELECT m FROM Mascota m WHERE dueno_id = :dueno_id")
     public List<Mascota> findByDuenoId(@Param("dueno_id") String dueno_id); 
     
