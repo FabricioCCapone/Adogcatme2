@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Ubicacion.java
 D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\SolicitudControlador.java
 D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Imagen.java
@@ -19,3 +20,31 @@ D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2
 D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\AdoptanteRepositorio.java
 D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\SolicitudRepositorio.java
 D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Mascota.java
+=======
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Ubicacion.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Imagen.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Adoptante.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Mascota.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\DuenoServicio.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\MascotaRepositorio.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\DuenoRepositorio.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\DuenoUsuario.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\AdoptanteRepositorio.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\DuenoUsuarioServicio.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\DuenoControlador.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\UbicacionServicio.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\MascotaServicio.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\DuenoUsuarioControlador.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\AdoptanteServicio.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\UbicacionControlador.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\SolicitudServicio.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\ProyectoApplication.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\MascotaControlador.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\SolicitudControlador.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Dueno.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\SolicitudRepositorio.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\DuenoUsuarioRepositorio.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\errores\ErrorServicio.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Solicitud.java
+C:\Users\JUAN\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\UbicacionRepositorio.java
+>>>>>>> b3cb83548403c29279e43749d733632f791be758
