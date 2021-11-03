@@ -3,7 +3,6 @@ package Adogcatme.Proyecto.Servicios;
 import Adogcatme.Proyecto.Repositorios.FiltroRepositorio;
 import Adogcatme.Proyecto.Repositorios.MascotaRepositorio;
 import Adogcatme.Proyecto.entidades.Mascota;
-import errores.ErrorServicio;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -19,6 +18,7 @@ public class MascotaServicio {
     @Autowired
     FiltroRepositorio fr;
 
+
     public List<Mascota> findByFiltro(String raza, String tipo, Integer edad, String sexo, String tamano, Integer castrado) {
         Integer cast_valor;
         if (castrado.equals("SI")) {
@@ -29,9 +29,9 @@ public class MascotaServicio {
         return fr.filtro(raza, tipo, edad, sexo, tamano, cast_valor);
     }
 
-    public List<Mascota> findByDuenoId(String dueno_id) {
-        return mr.findByDuenoId(dueno_id);
-    }
+   // public List<Mascota> findByDuenoId(String dueno_id) {
+     //   return mr.findByDuenoId(dueno_id);
+    //}
 
     public Optional<Mascota> findById(String id) {
         return mr.findById(id);
