@@ -1,9 +1,11 @@
 package Adogcatme.Proyecto.Servicios;
 
+import Adogcatme.Proyecto.Repositorios.FiltroRepositorio;
 import Adogcatme.Proyecto.Repositorios.MascotaRepositorio;
 import Adogcatme.Proyecto.entidades.Adoptante;
 import Adogcatme.Proyecto.entidades.Mascota;
 import java.util.List;
+import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,40 +20,25 @@ public class MascotaServicio {
     @Autowired
     MascotaRepositorio mr;
 
+    @Autowired
+    FiltroRepositorio fr;
 
-
-    public Mascota findById(String id) {
-        return mr.getById(id);
-    }
-
-    public List<Mascota> findByUbicacion(Adoptante a) {
-        String barrio = "%" + a.getUbicacion().getBarrio() + "%";
-        return mr.findByBarrio(barrio);
-    }
-
-    public List<Mascota> findByTipo(String tipo) {
-        return mr.findByTipo(tipo);
+    public List<Mascota> findByFiltro(String raza, String tipo, Integer edad, String sexo, String tamano, Integer castrado) {
+        Integer cast_valor;
+        if (castrado.equals("SI")) {
+            cast_valor = 0;
+        } else {
+            cast_valor = 1;
+        }
+        return fr.filtro(raza, tipo, edad, sexo, tamano, cast_valor);
     }
 
     public List<Mascota> findByDuenoId(String dueno_id) {
         return mr.findByDuenoId(dueno_id);
     }
 
-    public List<Mascota> findByCastrado(String castrado) {
-        if (castrado.equals("SI")) {
-            return mr.findByCastrado(0);
-        }
-        return mr.findByCastrado(1);
-    }
-    
-
-
-    public List<Mascota> findBySexo(String sexo) {
-        if (sexo.equals("MACHO")) {
-            return mr.findBySexo("MACHO");
-        } else {
-            return mr.findBySexo("HEMBRA");
-        }
+    public Optional<Mascota> findById(String id) {
+        return mr.findById(id);
     }
 
     @Transactional
