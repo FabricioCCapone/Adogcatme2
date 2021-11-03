@@ -1,6 +1,7 @@
 package Adogcatme.Proyecto.Controladores;
 
 import Adogcatme.Proyecto.Servicios.MascotaServicio;
+import Adogcatme.Proyecto.Servicios.SolicitudServicio;
 import Adogcatme.Proyecto.entidades.Mascota;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,9 +18,13 @@ public class MascotaControlador {
     @Autowired
     MascotaServicio ms;
     
+    @Autowired
+    SolicitudServicio ss;
+    
     @GetMapping("/perfilMascota")
     public String perfilMascota(Model model, Mascota m){
         model.addAttribute("mascota", ms.findById(m.getId()));
+        model.addAttribute("solicitudes", ss.listAll());
         return "perfil-mascot";
     }
     
