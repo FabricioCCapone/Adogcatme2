@@ -31,7 +31,7 @@ public class Solicitud implements Serializable {
         this.mascota = mascota;
         this.adoptante = adoptante;
         this.fecha = fecha;
-        this.estado = this.estado;
+        this.estado = estado;
     }
 
     public String getId() {

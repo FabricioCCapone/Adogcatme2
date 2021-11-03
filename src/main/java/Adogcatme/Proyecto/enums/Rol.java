@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package errores;
+package Adogcatme.Proyecto.enums;
 
 /**
  *
- * @author Mateo
+ * @author Extre
  */
-public class ErrorServicio extends Exception{
-    public ErrorServicio(String msn){
-        super(msn);
+public enum Rol {
     
-    }
 }

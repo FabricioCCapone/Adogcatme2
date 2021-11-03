@@ -28,6 +28,9 @@ public class DuenoServicio {
     public Optional<Dueno> findById(String id){
         return duenoRepositorio.findById(id);
     }
+       public Dueno findByEmail(String email) {
+        return duenoRepositorio.findByEmail(email);
+    }
     
     //Eliminar mascota
     
