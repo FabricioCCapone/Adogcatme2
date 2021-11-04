@@ -9,6 +9,7 @@ import Adogcatme.Proyecto.Repositorios.AdoptanteRepositorio;
 import Adogcatme.Proyecto.entidades.Adoptante;
 import exepciones.WebExeption;
 import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ public class AdoptanteServicio {
     @Autowired
     private AdoptanteRepositorio adoptanteRepositorio;
 
+   /* @Transactional
     public void registrar(String nombre, String email, String contrasena, String telefono) throws WebExeption {
 
         validar(nombre, email, contrasena, telefono);
@@ -30,7 +32,7 @@ public class AdoptanteServicio {
         adoptanteRepositorio.save(adoptante);
 
     }
-
+    @Transactional
     public void modificar(String id, String nombre, String email, String contrasena, String telefono) throws WebExeption {
 
         validar(nombre, email, contrasena, telefono);
@@ -49,11 +51,41 @@ public class AdoptanteServicio {
         }
 
     }
-
-    public Adoptante findByEmail(String email) {
-        return adoptanteRepositorio.findByEmail(email);
+    */
+    
+    @Transactional
+    public void registrarAdoptante(Adoptante a) throws WebExeption {
+        verificarRegistro(a);
+        adoptanteRepositorio.save(a);
     }
 
+    @Transactional
+    public void editarAdoptante(Adoptante a) throws WebExeption {
+        if (adoptanteRepositorio.existsById(a.getId())) {
+            adoptanteRepositorio.save(a);
+        }
+    }
+     
+    public void verificarRegistro(Adoptante a) throws WebExeption {
+        if (a.getNombre().isEmpty() || a.getNombre() == null) {
+            throw new WebExeption("El nombre no puede estar vacio.");
+        }
+        if (a.getEmail().isEmpty() || a.getEmail() == null) {
+            throw new WebExeption("El Email no puede estar vacio.");
+        }
+        if (a.getContrasena().isEmpty() || a.getContrasena() == null) {
+            throw new WebExeption("Debe ingresar contrasena.");
+        }
+        if (a.getTelefono().isEmpty() || a.getTelefono() == null) {
+            throw new WebExeption("El telefono no puede estar vacio.");
+        }
+        
+
+    }
+    
+    
+    
+    
     public void validar(String nombre, String email, String contrasena, String telefono) throws WebExeption {
         if (nombre == null || nombre.isEmpty()) {
             throw new WebExeption("Nombre no puede ser nulo");
