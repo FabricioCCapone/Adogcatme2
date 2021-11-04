@@ -1,6 +1,7 @@
 package Adogcatme.Proyecto.Controladores;
 
 import Adogcatme.Proyecto.Servicios.UsuarioServicio;
+import exepciones.WebExeption;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/Registro")
+@RequestMapping("/registro")
 public class RegistroControlador {
 
     @Autowired
@@ -34,10 +35,9 @@ public class RegistroControlador {
                 usuarioServicio.saveAdoptante(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
             }
             return "redirect:/"; //Falta incluir la página de inicio del dueño
-        } catch (Exception e) {
-            
-        }finally{
-            return "redirect:/";
+        } catch (WebExeption ex) {
+            model.addAttribute("error",ex.getMessage());
         }
+        return "registro";
     }
 }
