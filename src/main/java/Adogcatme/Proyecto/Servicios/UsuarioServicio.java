@@ -1,59 +1,65 @@
 package Adogcatme.Proyecto.Servicios;
 
+import Adogcatme.Proyecto.Repositorios.AdoptanteRepositorio;
 import Adogcatme.Proyecto.Repositorios.DuenoRepositorio;
 import Adogcatme.Proyecto.entidades.Usuario;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import Adogcatme.Proyecto.Repositorios.UsuarioRepositorio;
+import Adogcatme.Proyecto.entidades.Adoptante;
 import Adogcatme.Proyecto.entidades.Dueno;
-import Adogcatme.Proyecto.entidades.Ubicacion;
+import Adogcatme.Proyecto.enums.Rol;
 import exepciones.WebExeption;
 
 @Service
 public class UsuarioServicio {
 
     @Autowired
-    private UsuarioRepositorio usuarioRepositorio;
-    @Autowired
-    private DuenoServicio duenoServicio;
-    @Autowired
-    private AdoptanteServicio adoptanteServicio;
-    @Autowired
     private DuenoRepositorio duenoRepositorio;
+    @Autowired
+    private AdoptanteRepositorio adoptanteRepositorio;
 
     @Transactional
-    public Usuario saveAdoptante(String username, String contrasena1, String contrasena2) {
+    public Usuario saveAdoptante(String usuario, String contrasena1, String contrasena2, String nombre, String telefono, String email, String barrio, String direccion) throws WebExeption {
+       
+        validar(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
+        Adoptante adoptante = adoptanteRepositorio.findByEmail(email);
 
-        Usuario usuario = new Usuario();
-
-        if (username == null || username.isEmpty()) {
-            System.out.println("El usuario no puede ser nulo");
+        if (adoptante == null) {
+            adoptante.setUsuario(usuario);
+            adoptante.setContrasena(contrasena2);
+            adoptante.setEmail(email);
+            adoptante.setNombre(nombre);
+            adoptante.setTelefono(telefono);
+            adoptante.setBarrio(barrio);
+            adoptante.setDireccion(direccion);
+            adoptante.setRol(Rol.USER);
+            return adoptante;
         }
-
-        if (!contrasena1.equals(contrasena2)) {
-            System.out.println("Las contraseñas no son iguales");
-        }
-
-        usuario.setUsuario(username);
-        usuario.setContrasena(contrasena1);
-
-        return usuarioRepositorio.save(usuario);
+        return adoptante;
     }
 
     @Transactional
-    public Usuario saveDueño(String usuario, String contrasena1, String contrasena2, String nombre, String telefono, String email,String barrio,String direccion) throws WebExeption {
-        
-            
-        validar(usuario, contrasena1, contrasena2,nombre,telefono,email,barrio,direccion);
+    public Usuario saveDueno(String usuario, String contrasena1, String contrasena2, String nombre, String telefono, String email, String barrio, String direccion) throws WebExeption {
+
+        validar(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
         Dueno dueno = duenoRepositorio.findByEmail(email);
-        if (dueno  == null) {
-            
+
+        if (dueno == null) {
+            dueno.setUsuario(usuario);
+            dueno.setContrasena(contrasena2);
+            dueno.setEmail(email);
+            dueno.setNombre(nombre);
+            dueno.setTelefono(telefono);
+            dueno.setBarrio(barrio);
+            dueno.setDireccion(direccion);
+            dueno.setRol(Rol.USER);
+            return dueno;
         }
-        return .save(usuario);
+        return dueno;
     }
 
-    public void validar(String usuario, String contrasena1, String contrasena2,String nombre, String telefono, String email,String barrio,String direccion) throws WebExeption {
+    public void validar(String usuario, String contrasena1, String contrasena2, String nombre, String telefono, String email, String barrio, String direccion) throws WebExeption {
         if (usuario == null || usuario.isEmpty()) {
             throw new WebExeption("El usuario no puede ser nulo");
         }

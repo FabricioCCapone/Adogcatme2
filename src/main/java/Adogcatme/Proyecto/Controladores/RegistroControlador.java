@@ -12,26 +12,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/Registro")
 public class RegistroControlador {
-    
+
     @Autowired
     private UsuarioServicio usuarioServicio;
-    
+
     @GetMapping("")
-    public String registro(){
+    public String registro() {
         return "registro"; //Falta incluir la página
     }
-    
+
     @PostMapping("")
     public String registroSave(Model model, @RequestParam String usuario, @RequestParam String contrasena1, @RequestParam String contrasena2,
-    @RequestParam Integer selector,@RequestParam String nombre, @RequestParam String email, @RequestParam String telefono,
-    @RequestParam String barrio, @RequestParam String direccion ){
-        if (selector == 0) {
+            @RequestParam Integer selector, @RequestParam String nombre, @RequestParam String email, @RequestParam String telefono,
+            @RequestParam String barrio, @RequestParam String direccion) {
+        try {
+            if (selector == 0) {
+
+                usuarioServicio.saveDueno(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
+            }
+            if (selector == 1) {
+                usuarioServicio.saveAdoptante(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
+            }
+            return "redirect:/"; //Falta incluir la página de inicio del dueño
+        } catch (Exception e) {
             
-            usuarioServicio.saveAdoptante(email, contrasena1, contrasena2);
+        }finally{
+            return "redirect:/";
         }
-        if (selector == 1) {
-            usuarioServicio.saveAdoptante(usuario, contrasena1, contrasena2);
-        }
-        return "redirect:/"; //Falta incluir la página de inicio del dueño
     }
 }

@@ -10,5 +10,6 @@ package Adogcatme.Proyecto.enums;
  * @author Extre
  */
 public enum Rol {
-    
+    USER,
+    ADMIN
 }
