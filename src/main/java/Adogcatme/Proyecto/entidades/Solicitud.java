@@ -20,12 +20,12 @@ public class Solicitud implements Serializable {
     private Adoptante adoptante;
     
     private Date fecha;
-    private Integer estado; //0 = pendiente, 1 = aceptada, 2 = rechazada
+    private Boolean estado; //0 = aceptada 1 = rechazada
 
     public Solicitud() {
     }
 
-    public Solicitud(String id, Dueno dueno, Mascota mascota, Adoptante adoptante, Date fecha, Integer estado) {
+    public Solicitud(String id, Dueno dueno, Mascota mascota, Adoptante adoptante, Date fecha, Boolean estado) {
         this.id = id;
         this.dueno = dueno;
         this.mascota = mascota;
@@ -74,13 +74,15 @@ public class Solicitud implements Serializable {
         this.fecha = fecha;
     }
 
-    public Integer getEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(Integer estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
+
+
     
     
 }
