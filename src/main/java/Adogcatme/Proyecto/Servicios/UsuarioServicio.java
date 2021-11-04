@@ -10,6 +10,7 @@ import Adogcatme.Proyecto.entidades.Adoptante;
 import Adogcatme.Proyecto.entidades.Dueno;
 import Adogcatme.Proyecto.enums.Rol;
 import exepciones.WebExeption;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
 public class UsuarioServicio {
@@ -22,12 +23,13 @@ public class UsuarioServicio {
     @Transactional
     public Usuario saveAdoptante(String usuario, String contrasena1, String contrasena2, String nombre, String telefono, String email, String barrio, String direccion) throws WebExeption {
        
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         validar(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
         Adoptante adoptante = adoptanteRepositorio.findByEmail(email);
 
         if (adoptante == null) {
             adoptante.setUsuario(usuario);
-            adoptante.setContrasena(contrasena2);
+            adoptante.setContrasena(encoder.encode(contrasena2));
             adoptante.setEmail(email);
             adoptante.setNombre(nombre);
             adoptante.setTelefono(telefono);
@@ -41,13 +43,14 @@ public class UsuarioServicio {
 
     @Transactional
     public Usuario saveDueno(String usuario, String contrasena1, String contrasena2, String nombre, String telefono, String email, String barrio, String direccion) throws WebExeption {
-
+        
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         validar(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
         Dueno dueno = duenoRepositorio.findByEmail(email);
 
         if (dueno == null) {
             dueno.setUsuario(usuario);
-            dueno.setContrasena(contrasena2);
+            dueno.setContrasena(encoder.encode(contrasena2));
             dueno.setEmail(email);
             dueno.setNombre(nombre);
             dueno.setTelefono(telefono);
