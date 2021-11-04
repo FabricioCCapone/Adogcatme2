@@ -1,5 +1,6 @@
 Adogcatme\Proyecto\Controladores\UbicacionControlador.class
 Adogcatme\Proyecto\Repositorios\DuenoUsuarioRepositorio.class
+Adogcatme\Proyecto\Repositorios\FiltroRepositorio.class
 Adogcatme\Proyecto\ProyectoApplication.class
 Adogcatme\Proyecto\Repositorios\DuenoRepositorio.class
 Adogcatme\Proyecto\Repositorios\AdoptanteRepositorio.class
