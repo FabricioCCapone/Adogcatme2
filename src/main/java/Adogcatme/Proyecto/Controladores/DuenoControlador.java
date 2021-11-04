@@ -1,9 +1,8 @@
-
 package Adogcatme.Proyecto.Controladores;
-
 
 import Adogcatme.Proyecto.Servicios.DuenoServicio;
 import Adogcatme.Proyecto.entidades.Dueno;
+import Adogcatme.Proyecto.entidades.Mascota;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,46 +21,49 @@ public class DuenoControlador {
 
     @Autowired
     private DuenoServicio duenoServicio;
-    
+
     //Listar dueños
-    @GetMapping("/list")
-    public String listDueno(Model model){
+    /*@GetMapping("/list")
+    public String listDueno(Model model) {
         model.addAttribute("Dueno", duenoServicio.listAll());
         return "duenoList";
-    }
-    
-    //Guardar dueño
-    /*@PostMapping("/save")
-    public String saveDueno (Dueno dueno){
-        duenoServicio.save(dueno);
-        return "redirect:/dueno/list";
     }*/
-    
+
     //Crear dueño
     @PostMapping("/LOGIN-DUENO.HTML")
-    public String crearDueno (Dueno dueno){
-        
-        return "redirect:/HOME-DUENO-ADMIN.HTML";
+    public String saveDueno(Dueno dueno) {
+        try {
+            duenoServicio.save(dueno);
+            return "redirect:/HOME-DUENO-ADMIN.HTML";
+        } catch (Exception ErrorServicio) {
+            return "redirect:/INICIO.HTML";
+        }
+
     }
-    
-    
-    
+
     //Modificar un dueño
-    @PutMapping("/form")
-    public String crearLibro(Model model, @RequestParam(required = false) String id) {
+    @GetMapping("/HOME-DUENO-ADMIN.HTML")
+    public String crearDueno(Model model, @RequestParam(required = false) String id) {
         if (id != null) {
             Optional<Dueno> optional = duenoServicio.findById(id);
             if (optional.isPresent()) {
+                
                 model.addAttribute("dueno", optional.get());
             } else {
-                return "redirect:/dueno/list";
+                return "/HOME-DUENO-ADMIN.HTML";
             }
         } else {
             model.addAttribute("dueno", new Dueno());
         }
-        return "dueno-form";
+        return "/HOME-DUENO-ADMIN.HTML";
     }
     
+    //Crear Mascota
+    @GetMapping("/REGIST-MASC.HTML")
+    public String crearMascota(Mascota mascota){
+        
+        return "/HOME-DUENO-ADMIN.HTML";
+    }
     
-    
+
 }
