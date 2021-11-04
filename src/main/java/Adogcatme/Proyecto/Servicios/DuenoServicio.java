@@ -8,10 +8,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class DuenoServicio {
@@ -27,6 +24,9 @@ public class DuenoServicio {
     //busqueda por ID
     public Optional<Dueno> findById(String id){
         return duenoRepositorio.findById(id);
+    }
+       public Dueno findByEmail(String email) {
+        return duenoRepositorio.findByEmail(email);
     }
     
     //Eliminar mascota
@@ -55,10 +55,7 @@ public class DuenoServicio {
        }
        if (dueno.getTelefono().isEmpty() || dueno.getTelefono()==null){
            throw new Exception (" La persona debe tener un teléfono de contacto");
-       }
-       if (dueno.getUbicacion()==null){
-           throw new Exception (" Ubicación obligatoria");
-       }       
+       }  
        return duenoRepositorio.save(dueno);
     }
     
