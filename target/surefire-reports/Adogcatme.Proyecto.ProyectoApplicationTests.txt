@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: Adogcatme.Proyecto.ProyectoApplicationTests
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.999 s - in Adogcatme.Proyecto.ProyectoApplicationTests
-=======
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.711 s - in Adogcatme.Proyecto.ProyectoApplicationTests
->>>>>>> b3cb83548403c29279e43749d733632f791be758
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.384 s - in Adogcatme.Proyecto.ProyectoApplicationTests
