@@ -21,7 +21,7 @@ public class SolicitudServicio {
 
     @Autowired
     private SolicitudRepositorio solicitudRepositorio;
-
+        
     public List<Solicitud> listAll() {
         return solicitudRepositorio.findAll();
     }
