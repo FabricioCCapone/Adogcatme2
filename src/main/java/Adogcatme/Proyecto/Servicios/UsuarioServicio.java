@@ -10,10 +10,13 @@ import Adogcatme.Proyecto.entidades.Adoptante;
 import Adogcatme.Proyecto.entidades.Dueno;
 import Adogcatme.Proyecto.enums.Rol;
 import exepciones.WebExeption;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
-public class UsuarioServicio {
+public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
     private DuenoRepositorio duenoRepositorio;
@@ -87,5 +90,10 @@ public class UsuarioServicio {
         if (direccion.isEmpty() || direccion == null) {
             throw new WebExeption("El direccion no puede estar vacio");
         }
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String string) throws UsernameNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
