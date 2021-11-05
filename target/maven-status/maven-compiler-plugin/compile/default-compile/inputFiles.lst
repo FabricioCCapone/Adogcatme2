@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\SolicitudControlador.java
 E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\MascotaControlador.java
 E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\MascotaRepositorio.java
@@ -22,3 +23,29 @@ E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\A
 E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Usuario.java
 E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\UsuarioRepositorio.java
 E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\DuenoControlador.java
+=======
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\SolicitudControlador.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\UsuarioRepositorio.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Imagen.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\SolicitudServicio.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Dueno.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\ProyectoApplication.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\AdoptanteServicio.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\FiltroRepositorio.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\MascotaRepositorio.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\UsuarioServicio.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\RegistroControlador.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Usuario.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Solicitud.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\DuenoRepositorio.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\DuenoControlador.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\enums\Rol.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\MascotaServicio.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\DuenoServicio.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Adoptante.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\exepciones\WebExeption.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\MascotaControlador.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\AdoptanteRepositorio.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\SolicitudRepositorio.java
+D:\DiscoRigido\Documentos\Documentos de Programacion\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Mascota.java
+>>>>>>> abefab33d09c46a1e6eaaf3d13cc9f708c8829fa
