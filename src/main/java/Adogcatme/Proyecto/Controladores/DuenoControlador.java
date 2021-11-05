@@ -26,13 +26,13 @@ public class DuenoControlador {
     //Listar dueños
     @GetMapping("/list")
     public String listDueno(Model model){
-        model.addAttribute("Dueno", duenoServicio.listAll());
+        model.addAttribute("dueno", duenoServicio.listAll());
         return "duenoList";
     }
     
     //Guardar dueño
     /*@PostMapping("/save")
-    public String saveDueno (Dueno dueno){
+    public String saveDueno (ueno dueno){
         duenoServicio.save(dueno);
         return "redirect:/dueno/list";
     }*/
