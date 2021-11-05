@@ -35,7 +35,7 @@ public class RegistroControlador {
                 usuarioServicio.saveDueno(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
             }
             if (selector == 1) {
-                usuarioServicio.saveAdoptante(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
+                usuarioServicio.saveAdotante(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
             }
             return "redirect:/"; //Falta incluir la página de inicio del dueño
         } catch (WebExeption ex) {
