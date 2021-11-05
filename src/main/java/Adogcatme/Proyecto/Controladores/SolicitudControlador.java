@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Extre
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping("/solicitud")
 public class SolicitudControlador {
     
     @Autowired
