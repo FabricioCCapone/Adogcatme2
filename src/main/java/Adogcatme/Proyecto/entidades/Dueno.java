@@ -16,10 +16,6 @@ public class Dueno extends Usuario implements Serializable {
     private List<Mascota> mascotas;
 
     public Dueno() {
-        this.mascotas= new ArrayList<>();
-    }
-
-    
     public List<Mascota> getMascotas() {
         return mascotas;
     }
@@ -27,4 +23,6 @@ public class Dueno extends Usuario implements Serializable {
     public void setMascotas(Mascota mascota) {
         mascotas.add(mascota);
     }
+
+  
 }

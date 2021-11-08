@@ -1,6 +1,9 @@
 package Adogcatme.Proyecto.Servicios;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ea24af66a764e98d21dd68fb49c55a9cdcb9b210
 import Adogcatme.Proyecto.Repositorios.UsuarioRepositorio;
 import Adogcatme.Proyecto.entidades.Usuario;
 import javax.transaction.Transactional;
@@ -38,8 +41,9 @@ public class UsuarioServicio implements UserDetailsService {
         Adoptante adoptante = adoptanteServicio.findByEmail(email);
 
         if (adoptante == null) {
+            adoptante = new Adoptante();
             adoptante.setUsuario(usuario);
-            adoptante.setContrasena(encoder.encode(contrasena2));
+            adoptante.setContrasena(encoder.encode(contrasena1));
             adoptante.setEmail(email);
             adoptante.setNombre(nombre);
             adoptante.setTelefono(telefono);
@@ -59,6 +63,7 @@ public class UsuarioServicio implements UserDetailsService {
         Dueno dueno = duenoServicio.findByEmail(email);
 
         if (dueno == null) {
+            dueno = new Dueno();
             dueno.setUsuario(usuario);
             dueno.setContrasena(encoder.encode(contrasena2));
             dueno.setEmail(email);
@@ -67,9 +72,8 @@ public class UsuarioServicio implements UserDetailsService {
             dueno.setBarrio(barrio);
             dueno.setDireccion(direccion);
             dueno.setRol(Rol.USER);
-            return dueno;
         }
-        return dueno;
+        return usuarioRepositorio.save(dueno);
     }
 
     public void validar(String usuario, String contrasena1, String contrasena2, String nombre, String telefono, String email, String barrio, String direccion) throws WebExeption {

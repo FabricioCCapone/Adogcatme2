@@ -35,16 +35,16 @@ public class Security extends WebSecurityConfigurerAdapter {
       @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/css/*","/img/*","/js/*").permitAll()
-              .and().formLogin().loginPage("/login")
-                .usernameParameter("username")
-                .passwordParameter("password")
+              .and().formLogin().loginPage("/login-dueno")
+                .usernameParameter("usuario")
+                .passwordParameter("contrasena")
                 .defaultSuccessUrl("/")
                 .loginProcessingUrl("/logincheck")
-                .failureUrl("/login?error=error")
+                .failureUrl("/login-dueno?error=error")
                 .permitAll()
               .and().logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout")
+                .logoutSuccessUrl("/login-dueno?logout")
               .and().csrf().disable();
     }
 }

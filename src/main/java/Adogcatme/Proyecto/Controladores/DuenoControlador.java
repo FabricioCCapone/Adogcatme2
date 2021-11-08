@@ -29,9 +29,21 @@ public class DuenoControlador {
     /*@GetMapping("/list")
     public String listDueno(Model model) {
         model.addAttribute("dueno", duenoServicio.listAll());
+<<<<<<< HEAD
         return "duenoList";
+=======
+        return "perfil-dueno";
+    }
+    
+    //Guardar dueño
+    /*@PostMapping("/save")
+    public String saveDueno (ueno dueno){
+        duenoServicio.save(dueno);
+        return "redirect:/dueno/list";
+>>>>>>> ea24af66a764e98d21dd68fb49c55a9cdcb9b210
     }*/
     //Crear dueño
+<<<<<<< HEAD
     /*@PostMapping("/LOGIN-DUENO")
     public String saveDueno(Dueno dueno) {
         try {
@@ -42,6 +54,16 @@ public class DuenoControlador {
         }
 
     }*/
+=======
+    @PostMapping("/login")
+    public String crearDueno (Dueno dueno){
+        
+        return "redirect:/HOME-DUENO-ADMIN.HTML";
+    }
+    
+    
+    
+>>>>>>> ea24af66a764e98d21dd68fb49c55a9cdcb9b210
     //Modificar un dueño
     @GetMapping("/HOME-DUENO-ADMIN")
     public String crearDueno(Model model, @RequestParam(required = false) String id) {
