@@ -16,9 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 public class MainControlador {
-
-    @GetMapping("/")
-    public String index() {
+        @GetMapping("")
+    public String home() {
         return "home";
     }
 }

@@ -2,7 +2,6 @@ package Adogcatme.Proyecto.Servicios;
 
 import Adogcatme.Proyecto.Repositorios.FiltroRepositorio;
 import Adogcatme.Proyecto.Repositorios.MascotaRepositorio;
-import Adogcatme.Proyecto.entidades.Adoptante;
 import Adogcatme.Proyecto.entidades.Mascota;
 import exepciones.WebExeption;
 import java.util.List;
@@ -20,6 +19,7 @@ public class MascotaServicio {
     @Autowired
     FiltroRepositorio fr;
 
+
     public List<Mascota> findByFiltro(String raza, String tipo, Integer edad, String sexo, String tamano, Integer castrado) {
         Integer cast_valor;
         if (castrado.equals("SI")) {
@@ -30,9 +30,10 @@ public class MascotaServicio {
         return fr.filtro(raza, tipo, edad, sexo, tamano, cast_valor);
     }
 
-    // public List<Mascota> findByDuenoId(String dueno_id) {
-    //   return mr.findByDuenoId(dueno_id);
+   // public List<Mascota> findByDuenoId(String dueno_id) {
+     //   return mr.findByDuenoId(dueno_id);
     //}
+
     public Optional<Mascota> findById(String id) {
         return mr.findById(id);
     }
@@ -40,11 +41,7 @@ public class MascotaServicio {
     @Transactional
     public void registrarMascota(Mascota m) throws WebExeption {
         verificarRegistro(m);
-        Optional<Mascota> mascota;
-        mascota = mr.findById(m.getId());
-        if (!mascota.isPresent()) {
-            mr.save(m);
-        }
+        mr.save(m);
     }
 
     @Transactional

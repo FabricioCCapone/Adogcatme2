@@ -27,7 +27,7 @@ public class DuenoControlador {
     @GetMapping("/list")
     public String listDueno(Model model){
         model.addAttribute("dueno", duenoServicio.listAll());
-        return "duenoList";
+        return "perfil-dueno";
     }
     
     //Guardar dueño
@@ -38,7 +38,7 @@ public class DuenoControlador {
     }*/
     
     //Crear dueño
-    @PostMapping("/LOGIN-DUENO.HTML")
+    @PostMapping("/login")
     public String crearDueno (Dueno dueno){
         
         return "redirect:/HOME-DUENO-ADMIN.HTML";

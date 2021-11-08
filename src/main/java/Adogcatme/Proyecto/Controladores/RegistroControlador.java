@@ -26,10 +26,7 @@ public class RegistroControlador {
     public String registroSave(Model model, @RequestParam String usuario, @RequestParam String contrasena1, @RequestParam String contrasena2,
             @RequestParam Integer selector, @RequestParam String nombre, @RequestParam String email, @RequestParam String telefono,
             @RequestParam String barrio, @RequestParam String direccion) {
-        //falta agregar una opcion para saber si va 
         try {
-            System.out.println(selector);
-                    
             if (selector == 0) {
 
                 usuarioServicio.saveDueno(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
@@ -37,10 +34,10 @@ public class RegistroControlador {
             if (selector == 1) {
                 usuarioServicio.saveAdotante(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
             }
-            return "redirect:/"; //Falta incluir la página de inicio del dueño
+            return "redirect:/dueno/list"; 
         } catch (WebExeption ex) {
             model.addAttribute("error",ex.getMessage());
         }
-        return "login-dueno";
+        return "registro";
     }
 }
