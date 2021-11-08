@@ -31,10 +31,10 @@ public class SolicitudControlador {
         model.addAttribute("solicitudes", solicitudServicio.listAll());
     return "redirect:/";}
     
-    @PostMapping("/save")
-    public String save(@ModelAttribute Solicitud solicitud){
-        solicitudServicio.save(solicitud);
-    return "redirect:/";}
+//    @PostMapping("/save")
+//    public String save(@ModelAttribute Solicitud solicitud){
+//        solicitudServicio.save(solicitud);
+//    return "redirect:/";}
     
     @GetMapping("/delete")
     public String delete(@ModelAttribute Solicitud solicitud){

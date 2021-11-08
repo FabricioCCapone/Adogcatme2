@@ -19,7 +19,11 @@ public class AdoptanteServicio {
     @Autowired
     private AdoptanteRepositorio adoptanteRepositorio;
 
-   /* @Transactional
+    public Adoptante findByEmail(String email){
+        return adoptanteRepositorio.findByEmail(email);
+    }
+    
+    @Transactional
     public void registrar(String nombre, String email, String contrasena, String telefono) throws WebExeption {
 
         validar(nombre, email, contrasena, telefono);
@@ -51,7 +55,8 @@ public class AdoptanteServicio {
         }
 
     }
-    */
+    
+    
     
     @Transactional
     public void registrarAdoptante(Adoptante a) throws WebExeption {

@@ -39,7 +39,7 @@ public class SolicitudServicio {
     @Transactional
     public Solicitud save(String emailAdop ,String emailDueno) throws WebExeption {
         Solicitud solicitud = new Solicitud();
-        solicitud.setAdoptante(adoptanteServicio.findByEmail(emailAdop));
+//        solicitud.setAdoptante(adoptanteServicio.findByEmail(emailAdop));
         solicitud.setDueno(duenoServicio.findByEmail(emailDueno));
         return solicitudRepositorio.save(solicitud);
     }
