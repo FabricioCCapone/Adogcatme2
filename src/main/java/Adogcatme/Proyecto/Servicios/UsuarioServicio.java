@@ -46,9 +46,8 @@ public class UsuarioServicio implements UserDetailsService {
             adoptante.setBarrio(barrio);
             adoptante.setDireccion(direccion);
             adoptante.setRol(Rol.USER);
-            return adoptante;
         }
-        return adoptante;
+        return usuarioRepositorio.save(adoptante);
     }
 
     @Transactional

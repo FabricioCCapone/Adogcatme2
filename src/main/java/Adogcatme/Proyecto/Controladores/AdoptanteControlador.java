@@ -31,6 +31,11 @@ public class AdoptanteControlador {
         model.addAttribute("solicitudes", a.getSolicitud().listIterator());
         return "perfil-adopt";
     }
+    @GetMapping("/home")
+    public String homeAdoptante(){
+        
+    return "home-adop";
+    }
 
     /*@GetMapping("/registro")
     public String registrarAdoptante(Model model){
