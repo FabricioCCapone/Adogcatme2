@@ -100,5 +100,4 @@ public class AdoptanteServicio {
             throw new WebExeption("telefono no puede ser nulo");
         }
     }
-
 }

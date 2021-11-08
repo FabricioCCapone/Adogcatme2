@@ -15,7 +15,11 @@ public interface AdoptanteRepositorio extends JpaRepository<Adoptante, String>{
     public List<Adoptante> findByNombre(@Param("nombre") String nombre); 
  
 
-    @Query("SELECT a FROM Adoptante a WHERE adoptante_id = :adoptante_id")
-    public List<Adoptante> findByUsuarioId(@Param("usuario_id") String usuario_id); 
+    @Query("SELECT a FROM Adoptante a WHERE id = :id")
+    public List<Adoptante> findByUsuarioId(@Param("id") String id);
+    
+    
+    @Query("SELECT a FROM Adoptante a where email = :email ")
+    Adoptante findByEmail(@Param("email") String email);
     
 }
