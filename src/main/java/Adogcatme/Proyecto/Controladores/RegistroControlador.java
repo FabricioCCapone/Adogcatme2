@@ -17,12 +17,17 @@ public class RegistroControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
-    @GetMapping("")
-    public String registro() {
+    @GetMapping("/dueno")
+    public String registroDueno() {
         return "login-dueno"; //Falta incluir la página
     }
 
-    @PostMapping("")
+    @GetMapping("/adoptante")
+    public String registroAdoptante() {
+        return "login-adop"; //Falta incluir la página
+    }
+
+    @PostMapping("/save")
     public String registroSave(Model model, @RequestParam String usuario, @RequestParam String contrasena1, @RequestParam String contrasena2,
             @RequestParam Integer selector, @RequestParam String nombre, @RequestParam String email, @RequestParam String telefono,
             @RequestParam String barrio, @RequestParam String direccion) {
@@ -30,14 +35,27 @@ public class RegistroControlador {
             if (selector == 0) {
 
                 usuarioServicio.saveDueno(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
+                return "redirect:/registro/dueno";
             }
             if (selector == 1) {
-                usuarioServicio.saveAdotante(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
+                usuarioServicio.saveAdotante(usuario,contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
+                return "redirect:/registro/adoptante";
             }
-            return "redirect:/dueno/list"; 
+            
         } catch (WebExeption ex) {
-            model.addAttribute("error",ex.getMessage());
+            model.addAttribute("error", ex.getMessage());
         }
-        return "registro";
+        return "redirect:/";
+    }
+
+    @GetMapping("/login")
+    public String login(Model model, @RequestParam(required = false) String error, @RequestParam(required = false) String username, @RequestParam(required = false) String logout) {
+        if (error != null) {
+            model.addAttribute("error", "El usuario o la contraseña son incorrectos");
+        }
+        if (username != null) {
+            model.addAttribute("username", username);
+        }
+        return "login-dueno";
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<head lang="es" xmlns:th="http://www.thymeleaf.org">
+<head lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec"http://www.thymeleaf.org/extras/spring-security">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,7 @@
         <div class="container-botom">
             <button type="button" class=" boton-adop">
                 <nav>
-                    <a th:href="@{adoptante}" class="adop">Adoptar</a> 
+                    <a th:href="@{/adoptante/home}" class="adop">Adoptar</a> 
                 </nav>
             </button>
         </div>
@@ -40,7 +40,14 @@
         <div class="container-botom">
             <button type="button" class=" boton-dueno">
                 <nav>
-                    <a th:href="@{registro}"> Dar en Adopción</a>
+                    <a th:href="@{/registro/dueno}"> Dar en Adopción</a>
+                </nav>
+            </button>
+        </div>
+        <div class="container-botom">
+            <button type="button" class=" boton-dueno">
+                <nav>
+                    <a  sec:authorize="isAuthenticated()" th:href="@{/logout}"> Log Out</a>
                 </nav>
             </button>
         </div>
