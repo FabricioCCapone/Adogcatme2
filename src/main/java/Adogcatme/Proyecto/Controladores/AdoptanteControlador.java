@@ -16,24 +16,23 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 @Controller
 @RequestMapping("/adoptante")
 public class AdoptanteControlador {
-        
+
     @Autowired
     AdoptanteServicio as;
-    
+
     @Autowired
     SolicitudServicio ss;
-    
+
     @GetMapping("/perfilAdoptante")
-    public String perfilAdoptante(Model model, Adoptante a){
+    public String perfilAdoptante(Model model, Adoptante a) {
         model.addAttribute("solicitudes", a.getSolicitud().listIterator());
         return "perfil-adopt";
     }
-    
-   /*@GetMapping("/registro")
+
+    /*@GetMapping("/registro")
     public String registrarAdoptante(Model model){
         model.addAttribute("adoptante", new Adoptante());
         return "regist-adopt";
@@ -50,26 +49,21 @@ public class AdoptanteControlador {
         }
     }
     
-    */
-    
-     @GetMapping("/editarAdopt")
-    public String editarAdoptante(Model model, Adoptante a){
+     */
+    @GetMapping("/editarAdopt")
+    public String editarAdoptante(Model model, Adoptante a) {
         model.addAttribute("adoptante", a);
         return "perfil-adopt";
-    }  
-    
-    
+    }
+
     @PostMapping("/editarAdoptante")
-    public String modificar(@ModelAttribute Adoptante a){
+    public String modificar(@ModelAttribute Adoptante a) {
         try {
             as.editarAdoptante(a);
         } catch (Exception e) {
-            
-        }finally{
-            return "redirect:/";
+
         }
+        return "redirect:/";
     }
-   
-    
     
 }
