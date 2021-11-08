@@ -11,7 +11,7 @@
     <groupId>Adogcatme</groupId>
     <artifactId>Proyecto</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ProyectofinalCopia</name>
+    <name>Proyecto</name>
     <description>Proyecto EGG Adogcatme</description>
     <properties>
         <java.version>1.8</java.version>

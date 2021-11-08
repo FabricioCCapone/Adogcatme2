@@ -25,9 +25,9 @@
             <div class="subt-dueno">
                 <h2>Inicia Sesion</h2>
             </div>
-            <form action="" class="A">
+            <form th:action="@{/logincheck}" method="POST" class="A">
                 <div>
-                    <input type="text" name="name" id="nombre" placeholder="Ingresa tu usuario" />
+                    <input type="text" name="usuario" id="nombre" placeholder="Ingresa tu usuario" />
                 </div>
                 <div>
                     <input type="password" name="contrasena" placeholder="Ingresa tu contraseña" />
@@ -42,14 +42,26 @@
                 <h2>¿No estas registrado?</h2>
                 <h3>Llena tus datos</h3>
             </div>
-            <form action="" class="B" enctype="multipart/form-data">
+            <form th:action="@{/registro/save}" method="POST" class="B" enctype="multipart/form-data">
                 <div>
-                    <input type="text" name="nombre" id="name" placeholder="Nombre completo" />
+                    <input hidden type="number" name="selector" value="1">
                 </div>
                 <div>
-                    <input type="number" name="telefono" placeholder="Ingresa tu telefono" />
+                    <input type="text" name="usuario" placeholder="Usuario" />
                 </div>
                 <div>
+                    <input type="text" name="nombre"  placeholder="Nombre completo" />
+                </div>
+                <div>
+                    <input type="text" name="telefono" placeholder="Ingresa tu telefono" />
+                </div>
+                <div>
+                    <input type="text" name="direccion" placeholder="Ingrese su direccion" />
+                </div>
+                <div>
+                    <input type="text" name="barrio" placeholder="Barrio">
+                </div>
+<!--                <div>
                     <label for="barrio">Elija su distrito</label>
                     <select name="barrio" id="barrio">
                         <option value="barrio">DISTRITO NORTE</option>
@@ -58,15 +70,15 @@
                         <option value="">Distrito Este</option>
                         <option value="">Distrito Oeste</option>
                     </select>
-                </div>
+                </div>-->
                 <div>
                     <input type="text" name="email" placeholder="Ingresa tu correo electronico" />
                 </div>
                 <div>
-                    <input type="password" name="contrasena" placeholder="Ingresa tu contraseña" />
+                    <input type="password" name="contrasena1" placeholder="Ingresa tu contraseña" />
                 </div>
                 <div>
-                    <input type="password" name="contrasena" placeholder="Confirmar contraseña" />
+                    <input type="password" name="contrasena2" placeholder="Confirmar contraseña" />
                 </div>
                 <div>
                     <input type="submit" value="Enviar" class="btn boton2" />
