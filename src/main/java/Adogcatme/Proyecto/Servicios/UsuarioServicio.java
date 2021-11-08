@@ -1,9 +1,5 @@
 package Adogcatme.Proyecto.Servicios;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ea24af66a764e98d21dd68fb49c55a9cdcb9b210
 import Adogcatme.Proyecto.Repositorios.UsuarioRepositorio;
 import Adogcatme.Proyecto.entidades.Usuario;
 import javax.transaction.Transactional;

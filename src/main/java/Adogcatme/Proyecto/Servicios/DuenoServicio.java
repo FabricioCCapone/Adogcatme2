@@ -40,7 +40,7 @@ public class DuenoServicio {
     //Eliminar mascota
     @Transactional
     public void eliminarMascota (Dueno dueno, Mascota mascota){
-        if(dueno.getId().equals(mascota.getDueno().getId)){
+        if(dueno.getId().equals(mascota.getDueno().getId())){
             mascotaServicio.eliminarMascota(mascota);
         }else{
             try {
@@ -53,7 +53,7 @@ public class DuenoServicio {
     //Editar mascota
     @Transactional
     public void editarMascota (Dueno dueno, Mascota mascota){
-        if(dueno.getId().equals(mascota.getDueno().getId)){
+        if(dueno.getId().equals(mascota.getDueno().getId())){
             mascotaServicio.editarMascota(mascota);
         }else{
             try {

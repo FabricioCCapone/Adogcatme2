@@ -16,6 +16,8 @@ public class Dueno extends Usuario implements Serializable {
     private List<Mascota> mascotas;
 
     public Dueno() {
+    }
+    
     public List<Mascota> getMascotas() {
         return mascotas;
     }
