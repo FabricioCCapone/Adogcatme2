@@ -18,10 +18,6 @@ public class AdoptanteServicio {
 
     @Autowired
     private AdoptanteRepositorio adoptanteRepositorio;
-
-    public Adoptante findByEmail(String email){
-        return adoptanteRepositorio.findByEmail(email);
-    }
     
     @Transactional
     public void registrar(String nombre, String email, String contrasena, String telefono) throws WebExeption {
@@ -55,9 +51,11 @@ public class AdoptanteServicio {
         }
 
     }
-    
-    
-    
+     
+    public Adoptante findByEmail(String email) {
+        return adoptanteRepositorio.findByEmail(email);
+    }
+
     @Transactional
     public void registrarAdoptante(Adoptante a) throws WebExeption {
         verificarRegistro(a);
@@ -70,7 +68,7 @@ public class AdoptanteServicio {
             adoptanteRepositorio.save(a);
         }
     }
-     
+
     public void verificarRegistro(Adoptante a) throws WebExeption {
         if (a.getNombre().isEmpty() || a.getNombre() == null) {
             throw new WebExeption("El nombre no puede estar vacio.");
@@ -84,13 +82,9 @@ public class AdoptanteServicio {
         if (a.getTelefono().isEmpty() || a.getTelefono() == null) {
             throw new WebExeption("El telefono no puede estar vacio.");
         }
-        
 
     }
-    
-    
-    
-    
+
     public void validar(String nombre, String email, String contrasena, String telefono) throws WebExeption {
         if (nombre == null || nombre.isEmpty()) {
             throw new WebExeption("Nombre no puede ser nulo");
@@ -105,4 +99,5 @@ public class AdoptanteServicio {
             throw new WebExeption("telefono no puede ser nulo");
         }
     }
+
 }
