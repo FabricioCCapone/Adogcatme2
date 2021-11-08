@@ -8,6 +8,7 @@ package Adogcatme.Proyecto.Servicios;
 import Adogcatme.Proyecto.Repositorios.AdoptanteRepositorio;
 import Adogcatme.Proyecto.entidades.Adoptante;
 import exepciones.WebExeption;
+import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ public class AdoptanteServicio {
 
     @Autowired
     private AdoptanteRepositorio adoptanteRepositorio;
+//    public List<Mascota> listarMascotas(){
+//    return adoptanteRepositorio.}
 
     /* @Transactional
     public void registrar(String nombre, String email, String contrasena, String telefono) throws WebExeption {
