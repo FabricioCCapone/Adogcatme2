@@ -2,7 +2,9 @@
 package Adogcatme.Proyecto.Servicios;
 
 import Adogcatme.Proyecto.Repositorios.DuenoRepositorio;
+import Adogcatme.Proyecto.Repositorios.MascotaRepositorio;
 import Adogcatme.Proyecto.entidades.Dueno;
+import Adogcatme.Proyecto.entidades.Mascota;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
