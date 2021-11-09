@@ -11,6 +11,7 @@ import Adogcatme.Proyecto.enums.Rol;
 import exepciones.WebExeption;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -18,6 +19,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
 public class UsuarioServicio implements UserDetailsService {
@@ -45,7 +48,7 @@ public class UsuarioServicio implements UserDetailsService {
             adoptante.setTelefono(telefono);
             adoptante.setBarrio(barrio);
             adoptante.setDireccion(direccion);
-            adoptante.setRol(Rol.USER);
+            adoptante.setRol(Rol.ADOPTANTE);
         }
         return usuarioRepositorio.save(adoptante);
     }
@@ -66,7 +69,7 @@ public class UsuarioServicio implements UserDetailsService {
             dueno.setTelefono(telefono);
             dueno.setBarrio(barrio);
             dueno.setDireccion(direccion);
-            dueno.setRol(Rol.USER);
+            dueno.setRol(Rol.DUENO);
         }
         return usuarioRepositorio.save(dueno);
     }
@@ -106,7 +109,14 @@ public class UsuarioServicio implements UserDetailsService {
 
             List<GrantedAuthority> authorities = new ArrayList<>();
 
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            HttpSession session = attr.getRequest().getSession(true);
+            session.setAttribute("usuario", usuario);
+
             authorities.add(new SimpleGrantedAuthority("ROLE_" + usuario.getRol()));
+            if (usuario.getRol().equals(Rol.ADOPTANTE) || usuario.getRol().equals(Rol.DUENO)) {
+                authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+            }
             return new User(username, usuario.getContrasena(), authorities);
         } catch (Exception e) {
             throw new UsernameNotFoundException("El usuario solicitado no existe");
