@@ -1,6 +1,5 @@
 package Adogcatme.Proyecto.Repositorios;
 
-import Adogcatme.Proyecto.entidades.Adoptante;
 import Adogcatme.Proyecto.entidades.Dueno;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

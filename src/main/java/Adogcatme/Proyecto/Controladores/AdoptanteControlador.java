@@ -37,7 +37,7 @@ public class AdoptanteControlador {
     return "home-adop";
     }
 
-    /*@GetMapping("/registro")
+    @GetMapping("/registro")
     public String registrarAdoptante(Model model){
         model.addAttribute("adoptante", new Adoptante());
         return "regist-adopt";
@@ -54,7 +54,6 @@ public class AdoptanteControlador {
         }
     }
     
-     */
     @GetMapping("/editarAdopt")
     public String editarAdoptante(Model model, Adoptante a) {
         model.addAttribute("adoptante", a);
