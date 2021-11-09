@@ -1,20 +1,18 @@
-
 package Adogcatme.Proyecto.Controladores;
-
 
 import Adogcatme.Proyecto.Servicios.DuenoServicio;
 import Adogcatme.Proyecto.entidades.Dueno;
-import java.util.Optional;
+import exepciones.WebExeption;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 @RequestMapping("/dueno")
@@ -23,39 +21,29 @@ public class DuenoControlador {
 
     @Autowired
     private DuenoServicio duenoServicio;
-    
-    //Listar dueños
-    @GetMapping("/list")
-    public String listDueno(Model model){
-        model.addAttribute("dueno", duenoServicio.listAll());
-        return "perfil-dueno";
-    }
-    
-    //Crear dueño
-    @PostMapping("/login")
-    public String crearDueno (Dueno dueno){        
-        return "redirect:/HOME-DUENO-ADMIN.HTML";
-    } 
-    
+
     //Modificar un dueño
-    @PutMapping("/form")
-    public String crearLibro(Model model, @RequestParam(required = false) String id) {
-        if (id != null) {
-            Optional<Dueno> optional = duenoServicio.findById(id);
-            if (optional.isPresent()) {
-                model.addAttribute("dueno", optional.get());
-            } else {
-                return "redirect:/dueno/list";
-            }
-        } else {
-            model.addAttribute("dueno", new Dueno());
-        }
-        return "dueno-form";
+    @GetMapping("/editar")
+    public String editarPerfilDueno(Model model, HttpSession session) {
+        Dueno dueno = (Dueno) session.getAttribute("usuario");
+        model.addAttribute("usuario", dueno);
+        return "editar-dueno";
     }
-    
+
+    @PostMapping("/save")
+    public String editarDueno(@ModelAttribute Dueno usuario, Model model) {
+        try {
+            duenoServicio.modificar(usuario);
+            return "redirect:/dueno/home";
+        } catch (WebExeption e) {
+            model.addAttribute("error", e.getMessage());
+        }
+        return "redirect:/dueno/editar";
+    }
+
     @GetMapping("/home")
-    public String homeDueno(Model model,@ModelAttribute Dueno dueno, @RequestParam(required = false) String id){
-        dueno = (Dueno) duenoServicio.findById("7f5ce348-38e7-4016-a621-885ad8e82130");
+    public String homeDueno(Model model, HttpSession session) {
+        Dueno dueno = (Dueno) session.getAttribute("usuario");
         model.addAttribute("usuario", dueno);
         model.addAttribute("mascota", dueno.getMascotas());
         return "perfil-dueno";
