@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Service
 @RequestMapping("/dueno")
@@ -30,21 +31,11 @@ public class DuenoControlador {
         return "perfil-dueno";
     }
     
-    //Guardar dueño
-    /*@PostMapping("/save")
-    public String saveDueno (ueno dueno){
-        duenoServicio.save(dueno);
-        return "redirect:/dueno/list";
-    }*/
-    
     //Crear dueño
     @PostMapping("/login")
-    public String crearDueno (Dueno dueno){
-        
+    public String crearDueno (Dueno dueno){        
         return "redirect:/HOME-DUENO-ADMIN.HTML";
-    }
-    
-    
+    } 
     
     //Modificar un dueño
     @PutMapping("/form")
@@ -62,6 +53,13 @@ public class DuenoControlador {
         return "dueno-form";
     }
     
-    
-    
+    @GetMapping("/home")
+    public String homeDueno(Model model,@ModelAttribute Dueno dueno, @RequestParam(required = false) String id){
+        dueno = (Dueno) duenoServicio.findById("7f5ce348-38e7-4016-a621-885ad8e82130");
+        model.addAttribute("usuario", dueno);
+        model.addAttribute("mascota", dueno.getMascotas());
+        return "perfil-dueno";
+    }
+    //QUEDAMOS ACA
+    //Como distinguir al loggear y como pasar los datos del objeto al loggear
 }

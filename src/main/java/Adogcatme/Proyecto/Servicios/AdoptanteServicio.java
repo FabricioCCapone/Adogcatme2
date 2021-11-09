@@ -19,15 +19,8 @@ public class AdoptanteServicio {
 
     @Autowired
     private AdoptanteRepositorio adoptanteRepositorio;
-<<<<<<< HEAD
     
     @Transactional
-=======
-//    public List<Mascota> listarMascotas(){
-//    return adoptanteRepositorio.}
-
-    /* @Transactional
->>>>>>> 4b3ac17cadca7b176a89b71473fd7d125de677a8
     public void registrar(String nombre, String email, String contrasena, String telefono) throws WebExeption {
 
         validar(nombre, email, contrasena, telefono);
