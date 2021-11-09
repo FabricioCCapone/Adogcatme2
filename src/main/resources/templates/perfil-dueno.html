@@ -27,12 +27,10 @@
                 <img class="logo-perfil" src="/assets/foto-perfil.png"/>
                 <h1 class="nombre-perfil"> UserName </h1>
             </div>
-            <div class="perfil">
-                
+            <div class="perfil">               
                 <div class="column">
                     <div class="titulos">
                         <img class="profile-pic" src="/asset/deter.png" alt="No Profile Pic"/>
-
                         <h3> Nombre: </h3>
                         <h3>Ubicacion:</h3>
                         <h3>Telefono:</h3>
@@ -45,8 +43,9 @@
                     </div>
                     
                     <div class="info">
-                        <h2>No Name</h2>
-                        <h2>No Location</h2>
+                        <h2 th:text="${dueno.nombre}"></h2>
+                        <h2 th:text="${dueno.barrio}"></h2>
+                        <h2 th:text="${dueno.direccion}"></h2>
                         <h2>No Number</h2>
                         <h2>No Mail</h2>
                     </div>
