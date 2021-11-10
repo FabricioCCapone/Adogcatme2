@@ -3,6 +3,7 @@ package Adogcatme.Proyecto.Controladores;
 import Adogcatme.Proyecto.Servicios.MascotaServicio;
 import Adogcatme.Proyecto.Servicios.SolicitudServicio;
 import Adogcatme.Proyecto.entidades.Mascota;
+import exepciones.WebExeption;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,19 +31,20 @@ public class MascotaControlador {
     
     @GetMapping("/registro")
     public String registrarMascota(Model model){
-        model.addAttribute("mascota", new Mascota());
-        return "regist-masc";
+        Mascota mascota = new Mascota();
+        model.addAttribute("mascota", mascota);
+        return "registro-mascota";
     }
     
-    @PostMapping("/registroForm")
+    @PostMapping("/registroform")
     public String registrarMascota(@ModelAttribute Mascota mascota){
         try {
             ms.registrarMascota(mascota);
-        } catch (Exception e) {
+            return "redirect:/dueno/home";
+        } catch (WebExeption e) {         
             
-        }finally{
-            return "redirect:/";
-        }
+    }
+    return "redirect:/fsa";
     }
     
     @PostMapping("/editarMascota")
