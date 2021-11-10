@@ -1,7 +1,6 @@
 package Adogcatme.Proyecto.Servicios;
 
-import Adogcatme.Proyecto.Repositorios.AdoptanteRepositorio;
-import Adogcatme.Proyecto.Repositorios.DuenoRepositorio;
+import Adogcatme.Proyecto.Repositorios.UsuarioRepositorio;
 import Adogcatme.Proyecto.entidades.Usuario;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,48 +9,59 @@ import Adogcatme.Proyecto.entidades.Adoptante;
 import Adogcatme.Proyecto.entidades.Dueno;
 import Adogcatme.Proyecto.enums.Rol;
 import exepciones.WebExeption;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.http.HttpSession;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
 public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
-    private DuenoRepositorio duenoRepositorio;
+    private AdoptanteServicio adoptanteServicio;
     @Autowired
-    private AdoptanteRepositorio adoptanteRepositorio;
+    private DuenoServicio duenoServicio;
+    @Autowired
+    private UsuarioRepositorio usuarioRepositorio;
 
     @Transactional
-    public Usuario saveAdoptante(String usuario, String contrasena1, String contrasena2, String nombre, String telefono, String email, String barrio, String direccion) throws WebExeption {
-       
+    public Usuario saveAdotante(String usuario, String contrasena1, String contrasena2, String nombre, String telefono, String email, String barrio, String direccion) throws WebExeption {
+
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         validar(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
-        Adoptante adoptante = adoptanteRepositorio.findByEmail(email);
+        Adoptante adoptante = adoptanteServicio.findByEmail(email);
 
         if (adoptante == null) {
+            adoptante = new Adoptante();
             adoptante.setUsuario(usuario);
-            adoptante.setContrasena(encoder.encode(contrasena2));
+            adoptante.setContrasena(encoder.encode(contrasena1));
             adoptante.setEmail(email);
             adoptante.setNombre(nombre);
             adoptante.setTelefono(telefono);
             adoptante.setBarrio(barrio);
             adoptante.setDireccion(direccion);
-            adoptante.setRol(Rol.USER);
-            return adoptante;
+            adoptante.setRol(Rol.ADOPTANTE);
         }
-        return adoptante;
+        return usuarioRepositorio.save(adoptante);
     }
 
     @Transactional
     public Usuario saveDueno(String usuario, String contrasena1, String contrasena2, String nombre, String telefono, String email, String barrio, String direccion) throws WebExeption {
-        
+
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         validar(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
-        Dueno dueno = duenoRepositorio.findByEmail(email);
+        Dueno dueno = duenoServicio.findByEmail(email);
 
         if (dueno == null) {
+            dueno = new Dueno();
             dueno.setUsuario(usuario);
             dueno.setContrasena(encoder.encode(contrasena2));
             dueno.setEmail(email);
@@ -59,10 +69,9 @@ public class UsuarioServicio implements UserDetailsService {
             dueno.setTelefono(telefono);
             dueno.setBarrio(barrio);
             dueno.setDireccion(direccion);
-            dueno.setRol(Rol.USER);
-            return dueno;
+            dueno.setRol(Rol.DUENO);
         }
-        return dueno;
+        return usuarioRepositorio.save(dueno);
     }
 
     public void validar(String usuario, String contrasena1, String contrasena2, String nombre, String telefono, String email, String barrio, String direccion) throws WebExeption {
@@ -93,7 +102,24 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String string) throws UsernameNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        try {
+            Usuario usuario = usuarioRepositorio.findByUsername(username);
+            User user;
+
+            List<GrantedAuthority> authorities = new ArrayList<>();
+
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            HttpSession session = attr.getRequest().getSession(true);
+            session.setAttribute("usuario", usuario);
+
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + usuario.getRol()));
+            if (usuario.getRol().equals(Rol.ADOPTANTE) || usuario.getRol().equals(Rol.DUENO)) {
+                authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+            }
+            return new User(username, usuario.getContrasena(), authorities);
+        } catch (Exception e) {
+            throw new UsernameNotFoundException("El usuario solicitado no existe");
+        }
     }
 }

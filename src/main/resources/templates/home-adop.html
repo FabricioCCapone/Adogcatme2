@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/home-adop.css">
+    <title>Home Adoptante</title>
+</head>
+
+<body>
+    <header>
+        <h1>ADOGCATME</h1>
+        <div class="img-adop"><img src="../asset/logo.png" alt=""></div>
+    </header>
+    <main>
+        <div class="navegador">
+            <nav>
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/registro/adoptante}">Iniciar Sesion</a>
+                <a th:href="@{/registro/adoptante}">Registrarse</a>
+            </nav>
+        </div>
+        <div class="form">
+            <form action="">
+                <div>
+                    <label for="tipoMascota">¿Que tipo de mascotas queres adoptar?</label>
+                </div>
+                <div class="selectores">
+                    <select name="tipoMascota" id="tipoMascota">
+                        <option value="perro">Perro/a</option>
+                        <option value="gato">Gato/a</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div>
+            <ul type="none">
+                <li>
+                    <img src="" alt="">
+                    <p>Tipo de mascota:</p>
+                    <p>Raza:</p>
+                    <p>Edad</p>
+                    <p>Sexo:</p>
+                    <p>Peso:</p>
+                    <p>Tamaño:</p>
+                    <p>¿Esta castrado?</p>
+                    <p> Dueño:</p>
+                </li>
+            </ul>
+        </div>
+    </main>
+</body>
+
+</html>

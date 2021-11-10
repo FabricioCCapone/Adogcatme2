@@ -5,6 +5,8 @@
  */
 package Adogcatme.Proyecto.Controladores;
 
+import Adogcatme.Proyecto.entidades.Usuario;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +18,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 public class MainControlador {
-        @GetMapping("")
-    public String index() {
-        return "index";
+
+    @GetMapping("")
+    public String home(HttpSession session) {
+        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        try {
+            if (usuario != null) {
+                switch (usuario.getRol()) {
+                    case DUENO:
+                        return "redirect:/dueno/home";
+                    case ADOPTANTE:
+                        return "redirect:/adoptante/home";
+                }
+            }
+        } catch (Exception e) {
+        }
+
+        return "home";
     }
 }

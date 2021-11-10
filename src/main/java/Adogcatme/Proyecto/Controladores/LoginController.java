@@ -20,13 +20,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 
     @GetMapping("")
-    public String login(Model model, @RequestParam(required = false) String error, @RequestParam(required = false) String username, @RequestParam(required = false) String logout) {
+    public String login(Model model, @RequestParam(required = false) String error, @RequestParam(required = false) String usuario, @RequestParam(required = false) String logout) {
         if (error != null) {
             model.addAttribute("error", "El usuario o la contraseña son incorrectos");
         }
-        if (username != null) {
-            model.addAttribute("username", username);
+        if (usuario != null) {
+            model.addAttribute("usuario", usuario);
         }
-        return "login";
+        return "redirect:/";
     }
 }

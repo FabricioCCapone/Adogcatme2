@@ -36,15 +36,15 @@ public class Security extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/css/*","/img/*","/js/*").permitAll()
               .and().formLogin().loginPage("/login")
-                .usernameParameter("username")
-                .passwordParameter("password")
+                .usernameParameter("usuario")
+                .passwordParameter("contrasena")
                 .defaultSuccessUrl("/")
                 .loginProcessingUrl("/logincheck")
                 .failureUrl("/login?error=error")
                 .permitAll()
               .and().logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout")
+                .logoutSuccessUrl("/?logout")
               .and().csrf().disable();
     }
 }

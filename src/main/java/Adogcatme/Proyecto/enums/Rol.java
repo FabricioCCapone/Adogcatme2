@@ -11,5 +11,7 @@ package Adogcatme.Proyecto.enums;
  */
 public enum Rol {
     USER,
-    ADMIN
+    ADMIN,
+    ADOPTANTE,
+    DUENO
 }
