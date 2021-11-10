@@ -54,8 +54,8 @@
 <!--                    <table class="table table-primary table-striped">
                         <thead>
                             <tr>
-                                <th>Nombre</th>-->
-<!--                                <th>Raza</th>
+                                <th>Nombre</th>
+                                <th>Raza</th>
                                 <th>Tipo</th>
                                 <th>Edad</th>
                                 <th>Sexo</th>
@@ -64,23 +64,23 @@
                                 <th>Imagen</th>
                                 <th>Tamaño</th>
                                 <th>Castrado</th>
-                                <th>Estado</th>-->
-<!--                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="usuario : ${usuario}">
-                                <td th:text="${usuario.Mascota.nombre}"></td>-->
-<!--                                <td th:text="${mascota.raza}"></td>
-                                <td th:text="${mascota.tipo}"></td>
-                                <td th:number="${mascota.edad}"></td>
-                                <td th:text="${mascota.sexo}"></td>
-                                <td th:text="${mascota.descripcion}"></td>
-                                <td th:number="${mascota.peso}"></td>
-                                <td th:text="${mascota.imagen}"></td>
-                                <td th:text="${mascota.tamano}"></td>
-                                <td th:if="${mascota.castrado}">Si</td>
-                                <td th:unless="${mascota.castrado}">No</td>
-                                <td th:text="${mascota.estado}"></td>-->
+                                <th>Estado</th>
+                            </tr>
+                        </thead>-->
+<!--                        <tbody>
+                            <tr th:each="us : ${usuario}">
+                                <td th:text="${us.mascota.nombre}"></td>
+                                <td th:text="${us.mascota.raza}"></td>
+                                <td th:text="${us.mascota.tipo}"></td>
+                                <td th:number="${us.mascota.edad}"></td>
+                                <td th:text="${us.mascota.sexo}"></td>
+                                <td th:text="${us.mascota.descripcion}"></td>
+                                <td th:number="${us.mascota.peso}"></td>
+                                <td th:text="${us.mascota.imagen}"></td>
+                                <td th:text="${us.mascota.tamano}"></td>
+                                <td th:if="${us.mascota.castrado}">Si</td>
+                                <td th:unless="${us.mascota.castrado}">No</td>
+                                <td th:text="${us.mascota.estado}"></td>-->
 <!--                                    <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                             Opciones de Libro
@@ -91,11 +91,11 @@
                                             <li><a class="dropdown-item" th:href="@{/libro/eliminar/__${libro.id}__}">Eliminar</a></li>
                                         </ul>
                                     </div>-->
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+<!--                                </td>-->
+<!--                            </tr>
+                        </tbody>-->
+<!--                    </table>-->
+<!--                </div>-->
 
                 <div class="buton">
                     <button id="volver" type="button" th:href="@{/logout}"> Logout </button>

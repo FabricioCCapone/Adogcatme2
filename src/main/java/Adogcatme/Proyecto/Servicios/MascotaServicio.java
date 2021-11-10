@@ -2,10 +2,12 @@ package Adogcatme.Proyecto.Servicios;
 
 import Adogcatme.Proyecto.Repositorios.FiltroRepositorio;
 import Adogcatme.Proyecto.Repositorios.MascotaRepositorio;
+import Adogcatme.Proyecto.entidades.Dueno;
 import Adogcatme.Proyecto.entidades.Mascota;
 import exepciones.WebExeption;
 import java.util.List;
 import java.util.Optional;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +43,8 @@ public class MascotaServicio {
     @Transactional
     public void registrarMascota(Mascota m) throws WebExeption {
         verificarRegistro(m);
+        //dueno.getMascotas().add(m);
+        //m.setDueno(dueno);
         mr.save(m);
     }
 
@@ -77,7 +81,7 @@ public class MascotaServicio {
         if (m.getTipo().isEmpty() || m.getTipo() == null) {
             throw new WebExeption("Debes indicar el tipo de mascota.");
         }
-        if (m.getEdad() == 0 || m.getTipo() == null) {
+        if (m.getEdad() == 0 || m.getEdad() == null) {
             throw new WebExeption("La edad de la mascota no puede estar vacia.");
         }
         if (m.getPeso() == 0 || m.getPeso() == null) {
