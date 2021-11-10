@@ -1,4 +1,3 @@
-
 package Adogcatme.Proyecto.Servicios;
 
 import Adogcatme.Proyecto.Repositorios.DuenoRepositorio;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Service
 public class DuenoServicio {
-    
+
     @Autowired
     private DuenoRepositorio duenoRepositorio;
     
@@ -25,18 +24,19 @@ public class DuenoServicio {
     private MascotaServicio mascotaServicio;
     
     //Listar dueños
-    public List <Dueno> listAll(){
+    public List<Dueno> listAll() {
         return duenoRepositorio.findAll();
     }
-    
+
     //busqueda por ID
-    public Optional<Dueno> findById(String id){
-        return duenoRepositorio.findById(id);
+    public Dueno findByIde(String id) {
+        return duenoRepositorio.findByIde(id);
     }
-       public Dueno findByEmail(String email) {
+
+    public Dueno findByEmail(String email) {
         return duenoRepositorio.findByEmail(email);
     }
-    
+
     //Eliminar mascota
     @Transactional
     public void eliminarMascota (Dueno dueno, Mascota mascota){
@@ -82,40 +82,45 @@ public class DuenoServicio {
        return duenoRepositorio.save(dueno);
     }
     
+    @Transactional
+    public Dueno modificar(@ModelAttribute Dueno dueno) throws WebExeption {
+        if (duenoRepositorio.existsById(dueno.getId())) {
+            return duenoRepositorio.save(dueno);
+        }
+        return null;
+    }
+    
     //Crear dueño 
     @Transactional
     public Dueno save(@ModelAttribute Dueno dueno) throws Exception {
-       if (dueno.getNombre().isEmpty() || dueno.getNombre()==null){
-           throw  new Exception (" La persona debe tener un nombre");
-       }
-       if (dueno.getEmail().isEmpty() || dueno.getEmail()==null){
-           throw new Exception (" La persona debe tener un mail de contacto");
-       }
-       if (dueno.getContrasena().isEmpty() || dueno.getContrasena()==null){
-           throw new Exception (" La contraseña es obligatoria");
-       }
-       if (dueno.getTelefono().isEmpty() || dueno.getTelefono()==null){
-           throw new Exception (" La persona debe tener un teléfono de contacto");
-       }  
-       return duenoRepositorio.save(dueno);
+        if (dueno.getNombre().isEmpty() || dueno.getNombre() == null) {
+            throw new Exception(" La persona debe tener un nombre");
+        }
+        if (dueno.getEmail().isEmpty() || dueno.getEmail() == null) {
+            throw new Exception(" La persona debe tener un mail de contacto");
+        }
+        if (dueno.getContrasena().isEmpty() || dueno.getContrasena() == null) {
+            throw new Exception(" La contraseña es obligatoria");
+        }
+        if (dueno.getTelefono().isEmpty() || dueno.getTelefono() == null) {
+            throw new Exception(" La persona debe tener un teléfono de contacto");
+        }
+        return duenoRepositorio.save(dueno);
     }
-    
+
     //Eliminar dueño (Creada en el caso de que haya un usuario de administrador)
     @Transactional
-    public void delete (Dueno dueno){
+    public void delete(Dueno dueno) {
         duenoRepositorio.delete(dueno);
     }
-    
+
     //Eliminar dueño por ID
     @Transactional
-    public void deleteById(String id){
+    public void deleteById(String id) {
         Optional<Dueno> optional = duenoRepositorio.findById(id);
         if (optional.isPresent()) {
             duenoRepositorio.delete(optional.get());
         }
     }
-    
-    
-    
-    
+
 }

@@ -19,12 +19,12 @@ public class RegistroControlador {
 
     @GetMapping("/dueno")
     public String registroDueno() {
-        return "login-dueno"; //Falta incluir la página
+        return "login-dueno"; 
     }
 
     @GetMapping("/adoptante")
     public String registroAdoptante() {
-        return "login-adop"; //Falta incluir la página
+        return "login-adop"; 
     }
 
     @PostMapping("/save")

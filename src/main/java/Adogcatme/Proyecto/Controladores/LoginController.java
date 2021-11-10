@@ -27,6 +27,6 @@ public class LoginController {
         if (usuario != null) {
             model.addAttribute("usuario", usuario);
         }
-        return "login";
+        return "redirect:/";
     }
 }
