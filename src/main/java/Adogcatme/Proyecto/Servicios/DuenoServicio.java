@@ -75,20 +75,20 @@ public class DuenoServicio {
     
     //Modificar dueño
     @Transactional
-    public Dueno modificar(@ModelAttribute Dueno dueno) throws Exception {
+    public Dueno modificar(@ModelAttribute Dueno dueno) {
         if (duenoRepositorio.existsById(dueno.getId())) {
             duenoRepositorio.save(dueno);
         }
        return duenoRepositorio.save(dueno);
     }
     
-    @Transactional
-    public Dueno modificar(@ModelAttribute Dueno dueno) throws WebExeption {
-        if (duenoRepositorio.existsById(dueno.getId())) {
-            return duenoRepositorio.save(dueno);
-        }
-        return null;
-    }
+//    @Transactional
+//    public Dueno modificar(@ModelAttribute Dueno dueno) throws WebExeption {
+//        if (duenoRepositorio.existsById(dueno.getId())) {
+//            return duenoRepositorio.save(dueno);
+//        }
+//        return null;
+//    }
     
     //Crear dueño 
     @Transactional

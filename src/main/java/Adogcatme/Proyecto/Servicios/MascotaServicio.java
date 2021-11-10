@@ -45,14 +45,14 @@ public class MascotaServicio {
     }
 
     @Transactional
-    public void editarMascota(Mascota m) throws WebExeption {
+    public void editarMascota(Mascota m) {
         if (mr.existsById(m.getId())) {
             mr.save(m);
         }
     }
 
     @Transactional
-    public void eliminarMascota(Mascota m) throws WebExeption {
+    public void eliminarMascota(Mascota m) {
         if (mr.existsById(m.getId())) {
             mr.deleteById(m.getId());
         }
