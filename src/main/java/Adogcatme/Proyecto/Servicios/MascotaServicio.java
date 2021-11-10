@@ -83,9 +83,9 @@ public class MascotaServicio {
         if (m.getPeso() == 0 || m.getPeso() == null) {
             throw new WebExeption("El peso de la mascota no puede estar vacio.");
         }
-        if (m.getImagen() == null) {
-            throw new WebExeption("Debe subir una imagen de la mascota.");
-        }
+//        if (m.getImagen() == null) {
+//            throw new WebExeption("Debe subir una imagen de la mascota.");
+//        }
         if (m.getCastrado() == null) {
             throw new WebExeption("Debe indicar si la mascota esta castrada o no.");
         }

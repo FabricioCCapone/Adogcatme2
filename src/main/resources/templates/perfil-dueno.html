@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<head lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head >
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,38 +50,37 @@
                     <h2 th:text="${usuario.telefono}"></h2>
                     <h2 th:text="${usuario.email}"></h2>
                 </div>
-                <div>
-                    <table class="table table-primary table-striped">
+<!--                <div>-->
+<!--                    <table class="table table-primary table-striped">
                         <thead>
                             <tr>
-                                <th>Nombre</th>
-                                <th>Raza</th>
+                                <th>Nombre</th>-->
+<!--                                <th>Raza</th>
                                 <th>Tipo</th>
                                 <th>Edad</th>
                                 <th>Sexo</th>
                                 <th>Descripcion</th>
                                 <th>Peso</th>
-<!--                                <th>Imagen</th>-->
+                                <th>Imagen</th>
                                 <th>Tamaño</th>
                                 <th>Castrado</th>
-                                <th>Estado</th>
-                            </tr>
+                                <th>Estado</th>-->
+<!--                            </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="mascota : ${mascota}">
-                                <td th:text="${mascota.nombre}"></td>
-                                <td th:text="${mascota.raza}"></td>
+                            <tr th:each="usuario : ${usuario}">
+                                <td th:text="${usuario.Mascota.nombre}"></td>-->
+<!--                                <td th:text="${mascota.raza}"></td>
                                 <td th:text="${mascota.tipo}"></td>
                                 <td th:number="${mascota.edad}"></td>
                                 <td th:text="${mascota.sexo}"></td>
                                 <td th:text="${mascota.descripcion}"></td>
                                 <td th:number="${mascota.peso}"></td>
-<!--                                <td th:text="${mascota.imagen}"></td>-->
+                                <td th:text="${mascota.imagen}"></td>
                                 <td th:text="${mascota.tamano}"></td>
                                 <td th:if="${mascota.castrado}">Si</td>
                                 <td th:unless="${mascota.castrado}">No</td>
-                                <td th:text="${mascota.estado}"></td>
-                                <td>
+                                <td th:text="${mascota.estado}"></td>-->
 <!--                                    <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                             Opciones de Libro
@@ -103,6 +103,9 @@
             </div>
             <div class="buton">
                 <button type="button"><a th:href="@{/dueno/editar}"> Editar </a> </button>
+            </div>
+            <div class="buton">
+                <button type="button"><a th:href="@{/mascota/registro}"> Registrar Mascota </a> </button>
             </div>
         </div>
 
