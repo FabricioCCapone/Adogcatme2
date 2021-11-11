@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es-AR" xmlns:th="http://www.thymeleaf.org" xmlns:sec"http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap"
+            rel="stylesheet"
+            />
+
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+            />
+        <title>Home Adoptante</title>
+    </head>
+
+    <body>
+        <header>
+            <h1>ADOGCATME</h1>
+            <div class="img-adop"><img src="../asset/logo.png" alt="" /></div>
+        </header>
+        <main>
+            <div class="navegador">
+                <nav>
+                    <a th:href="@{/}">Home</a>
+                    <a th:href="@{/registro/adoptante}">Iniciar Sesion</a>
+                    <a th:href="@{/registro/adoptante}">Registrarse</a>
+                </nav>
+            </div>
+            <div class="container">
+                <div class="mascotas">
+                    <div class="A">
+                        <img src="../asset/gatito.png" alt="" />
+                    </div>
+                    <div class="B" th:each="mascota : ${mascotas}">
+                        <p>Tipo de mascota: <span th:text="${mascota.tipo}"></span></p>
+                        <p>Raza: <span th:text="${mascota.raza}"></span></p>
+                        <p>Edad: <span th:text="${mascota.edad}"></span></p>
+                        <p>Sexo: <span th:text="${mascota.sexo}"></span></p>
+                        <p>Peso: <span th:text="${mascota.peso}">Kg</span></p>
+                        <p>Tamaño: <span th:text="${mascota.tamano}"></span></p>
+                        <p>¿Esta castrado? <span th:text="${mascota.castrado} ? 'Si' : 'No'"></span></p>
+                        <p>Dueño: <span th:text="${mascota.dueno}!=null? ${mascota.dueno.nombre}:''"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="form">
+                <form th:action="@{}">
+                    <div class="selectores">
+                        <label for="tipo">¿Que tipo de mascotas queres adoptar?</label>
+                        <select name="tipo" id="tipo">
+                            <option value="perro">Perro/a</option>
+                            <option value="gato">Gato/a</option>
+                            <option value="otro">Otro/a</option>
+                        </select>
+                    </div>
+                    <div class="selectores">
+                        <label for="raza">Indique la raza:</label>
+                        <input type="text" name="raza" id="raza" placeholder="Raza">
+                    </div>
+                    <div class="selectores">
+                        <label for="edad">Edad:</label>
+                        <input type="number" name="edad" id="edad" placeholder="Edad">
+                    </div>
+                    <div class="selectores">
+                        <label for="sexo">Sexo:</label>
+                        <select name="sexo" id="sexo">
+                            <option value="macho">Macho</option>
+                            <option value="hembra">Hembra</option>
+                            <option value="null">Indiferente</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="number" name="peso" id="peso" placeholder="Peso">
+                    </div>
+                    <select name="tamano" id="tamano">
+                        <option value="pequeno">Pequeño</option>
+                        <option value="mediano">Mediano</option>
+                        <option value="grande">Grande</option>
+                    </select>
+                    <select name="castrado" id="castrado">
+                        <option value="true">Si</option>
+                        <option value="false">No</option>
+                    </select>
+                    <div>
+                        <input type="submit" value="Enviar">
+                    </div>                        
+                </form>
+            </div>
+        </main>
+    </body>
+</html>
