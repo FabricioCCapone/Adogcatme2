@@ -56,6 +56,6 @@ public class RegistroControlador {
         if (username != null) {
             model.addAttribute("username", username);
         }
-        return "login-dueno";
+        return "redirect:/";
     }
 }
