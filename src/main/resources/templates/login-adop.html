@@ -18,14 +18,14 @@
 <body>
     <header>
         <h1 class="titulo-dueno">ADOGCATME</h1>
-        <div class="logo-dueno"><img src="../asset/logo.png" alt="" /></div>
+        <div class="logo-dueno"><img src="/assets/logo.png" alt="" /></div>
     </header>
     <main class="main-dueno">
         <div class="inicio-sesion">
             <div class="subt-dueno">
                 <h2>Inicia Sesion</h2>
             </div>
-            <form action="" class="A">
+            <form th:action="@{/logincheck}" method="POST" class="A">
                 <div>
                     <input type="text" name="name" id="nombre" placeholder="Ingresa tu usuario" />
                 </div>
@@ -42,14 +42,25 @@
                 <h2>¿No estas registrado?</h2>
                 <h3>Llena tus datos</h3>
             </div>
-            <form action="" class="B" enctype="multipart/form-data">
+            <form th:action="@{/registro/save}" method="POST" class="B" enctype="multipart/form-data">
                 <div>
-                    <input type="text" name="nombre" id="name" placeholder="Nombre completo" />
+                    <input hidden type="number" name="selector" value="1">
                 </div>
                 <div>
-                    <input type="number" name="telefono" placeholder="Ingresa tu telefono" />
+                    <input type="text" name="usuario" placeholder="Usuario" />
                 </div>
                 <div>
+                    <input type="text" name="nombre"  placeholder="Nombre completo" />
+                </div>
+                <div>
+                    <input type="text" name="telefono" placeholder="Ingresa tu telefono" />
+                </div>
+                <div>
+                    <input type="text" name="direccion" placeholder="Ingrese su direccion" />
+                </div>
+                <div>
+                    <input type="text" name="barrio" placeholder="Barrio">
+                </div>
                     <label for="barrio">Elija su distrito</label>
                     <select name="barrio" id="barrio">
                         <option value="barrio">DISTRITO NORTE</option>
