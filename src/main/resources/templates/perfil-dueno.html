@@ -97,8 +97,12 @@
 <!--                    </table>-->
 <!--                </div>-->
 
-                <div class="buton">
-                    <button id="volver" type="button" th:href="@{/logout}"> Logout </button>
+                <div class="container-botom">
+                    <button type="button" class=" boton-dueno">
+                        <nav>
+                            <a  sec:authorize="isAuthenticated()" th:href="@{/logout}"> Log Out</a>
+                        </nav>
+                    </button>
                 </div>
             </div>
             <div class="buton">

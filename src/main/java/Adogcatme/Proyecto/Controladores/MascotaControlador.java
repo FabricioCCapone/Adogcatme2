@@ -30,12 +30,13 @@ public class MascotaControlador {
         model.addAttribute("solicitudes", ss.listAll());
         return "perfil-mascot";
     }
-    
+        
     @GetMapping("/registro")
-    public String registrarMascota(Model model){
+    public String registrarMascota(Model model, HttpSession session){
         
         Mascota mascota = new Mascota();
-        
+        Dueno dueno = (Dueno) session.getAttribute("usuario");
+        model.addAttribute("dueno", dueno);
         model.addAttribute("mascota", mascota);
         return "registro-mascota";
     }
@@ -43,7 +44,6 @@ public class MascotaControlador {
     @PostMapping("/registroform")
     public String registrarMascota(@ModelAttribute Mascota m){
         try {
-            //System.out.println("LLEGO HASTA ACA!!!!" + dueno.getNombre());
             ms.registrarMascota(m);
             return "redirect:/dueno/home";
         } catch (WebExeption e) {         

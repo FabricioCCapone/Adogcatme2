@@ -19,10 +19,7 @@ public class Mascota implements Serializable {
     
     @ManyToOne
     private Dueno dueno;
-    
-    @ManyToOne
-    private Adoptante adoptante;
-    
+        
     private String nombre;
     private String raza;
     private String tipo;
@@ -41,10 +38,9 @@ public class Mascota implements Serializable {
     public Mascota() {
     }
 
-    public Mascota(String id, Dueno dueno, Adoptante adoptante, String nombre, String raza, String tipo, Integer edad, String sexo, String descripcion, Double peso, Imagen imagen, String tamano, Boolean castrado, String estado) {
+    public Mascota(String id, Dueno dueno, String nombre, String raza, String tipo, Integer edad, String sexo, String descripcion, Double peso, Imagen imagen, String tamano, Boolean castrado, String estado) {
         this.id = id;
         this.dueno = dueno;
-        this.adoptante = adoptante;
         this.nombre = nombre;
         this.raza = raza;
         this.tipo = tipo;
@@ -72,14 +68,6 @@ public class Mascota implements Serializable {
 
     public void setDueno(Dueno dueno) {
         this.dueno = dueno;
-    }
-
-    public Adoptante getAdoptante() {
-        return adoptante;
-    }
-
-    public void setAdoptante(Adoptante adoptante) {
-        this.adoptante = adoptante;
     }
 
     public String getNombre() {

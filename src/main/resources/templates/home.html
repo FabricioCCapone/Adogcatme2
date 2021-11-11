@@ -46,7 +46,7 @@
                 </nav>
             </button>
         </div>
-        <div class="container-botom">
+        <div sec:authorize="isAuthenticated()" class="container-botom">
             <button type="button" class=" boton-dueno">
                 <nav>
                     <a  sec:authorize="isAuthenticated()" th:href="@{/logout}"> Log Out</a>
