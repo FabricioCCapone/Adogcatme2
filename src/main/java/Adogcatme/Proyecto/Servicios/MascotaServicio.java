@@ -7,7 +7,6 @@ import Adogcatme.Proyecto.entidades.Mascota;
 import exepciones.WebExeption;
 import java.util.List;
 import java.util.Optional;
-import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,6 +43,8 @@ public class MascotaServicio {
     @Transactional
     public void registrarMascota(Mascota m, Dueno d) throws WebExeption, Exception {
         verificarRegistro(m);
+        //dueno.getMascotas().add(m);
+        //m.setDueno(dueno);
         mr.save(m);
         d.getMascotas().add(m);
         ds.save(d);

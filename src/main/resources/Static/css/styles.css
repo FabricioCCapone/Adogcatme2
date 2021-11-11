@@ -9,7 +9,7 @@ body{
     background-color: #8e9aaf;
     width: 100vw;
     height: 100vh;
-    cursor: url("/assets/pata.png");
+    cursor: url("../asset/pata.png");
 }
 
 header{
@@ -81,14 +81,14 @@ h1{
     height: 100px;
     background-color: #E76F51;
 }
+
+.boton-dueno:hover{
+    background-color: #ed9078;
+}
 nav a{
     text-decoration: none!important;
     font-family:'Poppins', sans-serif!important;
     color: black!important;
-}
-
-.boton-dueno:hover{
-    background-color: #ed9078;
 }
 
 .titulo-dueno {
@@ -181,4 +181,3 @@ input[type="file"]{
     height: 50%;
    
 }
-
