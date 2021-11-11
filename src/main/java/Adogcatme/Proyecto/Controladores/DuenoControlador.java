@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Service
@@ -39,6 +40,13 @@ public class DuenoControlador {
         Dueno dueno = (Dueno) session.getAttribute("usuario");
         model.addAttribute("usuario", dueno);
         return "perfil-dueno-edicion";
+    }
+    
+    
+    @PostMapping("/save")
+    public String guardarDueno(@ModelAttribute Dueno usuario) throws Exception{
+        duenoServicio.save(usuario);
+        return "perfil-dueno";
     }
 
     @GetMapping("/home")
