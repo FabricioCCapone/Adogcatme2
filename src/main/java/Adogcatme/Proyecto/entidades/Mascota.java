@@ -1,8 +1,8 @@
-
 package Adogcatme.Proyecto.entidades;
-    
+
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -11,18 +11,18 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Mascota implements Serializable {
-    
+
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-    
-    @ManyToOne
+
+    @ManyToOne (fetch = FetchType.EAGER)
     private Dueno dueno;
-    
-    @ManyToOne
+
+    @ManyToOne (fetch = FetchType.EAGER)
     private Adoptante adoptante;
-    
+
     private String nombre;
     private String raza;
     private String tipo;
@@ -30,10 +30,10 @@ public class Mascota implements Serializable {
     private String sexo;
     private String descripcion;
     private Double peso;
-    
+
     @OneToOne
     private Imagen imagen;
-    
+
     private String tamano;
     private Boolean castrado;
     private String estado;
@@ -56,7 +56,7 @@ public class Mascota implements Serializable {
         this.tamano = tamano;
         this.castrado = castrado;
         this.estado = estado;
-    }    
+    }
 
     public String getId() {
         return id;
@@ -169,6 +169,5 @@ public class Mascota implements Serializable {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    
+
 }
