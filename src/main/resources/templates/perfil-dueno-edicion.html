@@ -12,12 +12,12 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">    
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
 
-        <link rel="stylesheet" href="../css/perfil-dueno-edicion.css">
+        <link rel="stylesheet" href="/css/perfil-dueno-edicion.css">
     </head>
     <body>
         <header>  
             <h1>ADOGCATME</h1>
-            <div class="logo"><img src="assets/logo.png"></div>
+            <div class="logo"><img src="/assets/logo.png"></div>
         </header>
 
 
@@ -69,15 +69,18 @@
             </div>
 
             <div class="button-container">
+                
                 <!--Luego ver como seguiría el flujo de información. Todavía falta agregar funcionalidad Lo veo entre hoy y mañana-->
-                <button type="button" class="btn-actualizar">
+                
+                <!--<button type="button" class="btn-actualizar">
                     <nav>
-                        Actualizar Información Personal
+                        <a th:href="@{/dueno/home}"> Actualizar Información Personal </a>
                     </nav>
-                </button>
+                </button>-->
+
                 <button type="button" class="btn-cancelar">
                     <nav>
-                        Cancelar
+                        <a th:href="@{/dueno/home}"> Cancelar </a>
                     </nav>
                 </button>
             </div>

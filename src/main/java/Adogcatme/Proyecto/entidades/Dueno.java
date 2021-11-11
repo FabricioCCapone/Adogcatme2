@@ -14,16 +14,16 @@ public class Dueno extends Usuario implements Serializable {
     private List<Mascota> mascotas;
 
     public Dueno() {
+
         this.mascotas = new ArrayList<Mascota>();
     }
-
     
     public List<Mascota> getMascotas() {
         return mascotas;
     }
 
-    public void setMascotas(List<Mascota> mascotas) {
-        this.mascotas = mascotas;
+    public void setMascotas(Mascota mascota) {
+        mascotas.add(mascota);
     }
 
 }

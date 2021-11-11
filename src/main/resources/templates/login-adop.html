@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-AR" xmlns:th="http://www.thymeleaf.org" xmlns:sec"http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8" />
@@ -27,7 +27,7 @@
             </div>
             <form th:action="@{/logincheck}" method="POST" class="A">
                 <div>
-                    <input type="text" name="name" id="nombre" placeholder="Ingresa tu usuario" />
+                    <input type="text" name="usuario" id="nombre" placeholder="Ingresa tu usuario" />
                 </div>
                 <div>
                     <input type="password" name="contrasena" placeholder="Ingresa tu contraseña" />
@@ -50,7 +50,7 @@
                     <input type="text" name="usuario" placeholder="Usuario" />
                 </div>
                 <div>
-                    <input type="text" name="nombre"  placeholder="Nombre completo" />
+                    <input type="text" name="nombre" placeholder="Nombre completo" />
                 </div>
                 <div>
                     <input type="text" name="telefono" placeholder="Ingresa tu telefono" />
@@ -58,31 +58,28 @@
                 <div>
                     <input type="text" name="direccion" placeholder="Ingrese su direccion" />
                 </div>
-                <div>
-                    <input type="text" name="barrio" placeholder="Barrio">
-                </div>
-                    <label for="barrio">Elija su distrito</label>
-                    <select name="barrio" id="barrio">
-                        <option value="barrio">DISTRITO NORTE</option>
-                        <option value="">Distrito Sur</option>
-                        <option value="">Distrito Centro</option>
-                        <option value="">Distrito Este</option>
-                        <option value="">Distrito Oeste</option>
-                    </select>
-                </div>
-                <div>
-                    <input type="text" name="email" placeholder="Ingresa tu correo electronico" />
-                </div>
-                <div>
-                    <input type="password" name="contrasena" placeholder="Ingresa tu contraseña" />
-                </div>
-                <div>
-                    <input type="password" name="contrasena" placeholder="Confirmar contraseña" />
-                </div>
-                <div>
-                    <input type="submit" value="Enviar" class="btn boton2" />
-                </div>
-            </form>
+                <label for="barrio">Elija su distrito</label>
+                <select name="barrio" id="barrio">
+                    <option value="barrio">DISTRITO NORTE</option>
+                    <option value="barrio">Distrito Sur</option>
+                    <option value="barrio">Distrito Centro</option>
+                    <option value="barrio">Distrito Este</option>
+                    <option value="barrio">Distrito Oeste</option>
+                </select>
+        </div>
+        <div>
+            <input type="text" name="email" placeholder="Ingresa tu correo electronico" />
+        </div>
+        <div>
+            <input type="password" name="contrasena1" placeholder="Ingresa tu contraseña" />
+        </div>
+        <div>
+            <input type="password" name="contrasena2" placeholder="Confirmar contraseña" />
+        </div>
+        <div>
+            <input type="submit" value="Enviar" class="btn boton2" />
+        </div>
+        </form>
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

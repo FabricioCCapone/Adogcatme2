@@ -1,8 +1,9 @@
 package Adogcatme.Proyecto.Servicios;
 
 import Adogcatme.Proyecto.Repositorios.DuenoRepositorio;
+import Adogcatme.Proyecto.Repositorios.MascotaRepositorio;
 import Adogcatme.Proyecto.entidades.Dueno;
-import exepciones.WebExeption;
+import Adogcatme.Proyecto.entidades.Mascota;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -14,7 +15,13 @@ public class DuenoServicio {
 
     @Autowired
     private DuenoRepositorio duenoRepositorio;
-
+    
+    @Autowired
+    private MascotaRepositorio mascotaRepositorio;
+    
+    @Autowired
+    private MascotaServicio mascotaServicio;
+    
     //Listar dueños
     public List<Dueno> listAll() {
         return duenoRepositorio.findAll();
@@ -28,21 +35,64 @@ public class DuenoServicio {
     public Dueno findByEmail(String email) {
         return duenoRepositorio.findByEmail(email);
     }
-
-    //Eliminar mascota
-    //Editar mascota
-    //Agregar mascota
-    //Modificar dueño
-    //Modificar dueño
-   
-    @Transactional
-    public Dueno modificar(Dueno dueno) throws WebExeption {
-        if (duenoRepositorio.existsById(dueno.getId())) {
-            return duenoRepositorio.save(dueno);
-        }
-        return null;
+    
+    public Dueno findByUsuario(String usuario) {
+        return duenoRepositorio.findByUsuario(usuario);
     }
-
+    
+    //Eliminar mascota
+    @Transactional
+    public void eliminarMascota (Dueno dueno, Mascota mascota){
+        if(dueno.getId().equals(mascota.getDueno().getId())){
+            mascotaServicio.eliminarMascota(mascota);
+        }else{
+            try {
+                System.out.println("El usuario no es dueño de la mascota");
+            } catch (Exception e) {
+            }
+        }
+    }
+    
+    //Editar mascota
+    @Transactional
+    public void editarMascota (Dueno dueno, Mascota mascota){
+        if(dueno.getId().equals(mascota.getDueno().getId())){
+            mascotaServicio.editarMascota(mascota);
+        }else{
+            try {
+                System.out.println("El usuario no es dueño de la mascota");
+            } catch (Exception e) {
+            }
+        }
+    }
+    
+    //Agregar mascota
+    @Transactional
+    public void agregarMascota (Dueno dueno, Mascota mascota){
+        try {
+            mascota.setDueno(dueno);
+            mascotaServicio.registrarMascota(mascota, dueno);
+        } catch (Exception e) {
+        }
+    }
+    
+    //Modificar dueño
+    @Transactional
+    public Dueno modificar(Dueno dueno) throws Exception {
+        if (duenoRepositorio.existsById(dueno.getId())) {
+            duenoRepositorio.save(dueno);
+        }
+       return duenoRepositorio.save(dueno);
+    }
+    
+//    @Transactional
+//    public Dueno modificar(@ModelAttribute Dueno dueno) throws WebExeption {
+//        if (duenoRepositorio.existsById(dueno.getId())) {
+//            return duenoRepositorio.save(dueno);
+//        }
+//        return null;
+//    }
+    
     //Crear dueño 
     @Transactional
     public Dueno save(Dueno dueno) throws Exception {

@@ -21,7 +21,10 @@
         <main>
             <h3>Registre su Mascota</h3>
             <div class="formulario">
-                <form th:action="@{/mascota/registroform}" method="POST" th:object="${mascota}"enctype="multipart/form-data">
+                <form th:action="@{/mascota/registroform}" method="POST" th:object="${mascota}" enctype="multipart/form-data"> 
+                    <div>
+                        <input type="hidden" name="dueno" th:field="*{dueno}">
+                    </div>
                     <div>
                         <label for="tipo">Seleccione tipo de mascota:</label>
                         <select name="tipo" id="tipo"th:field="*{tipo}">
@@ -65,7 +68,7 @@
                         <label for="castrado">¿Esta castrado/a?:</label>
                         Si<input type="radio" value="true" name="castrado" id="castrado" th:field="*{castrado}">
                         No<input type="radio" value="false" name="castrado" id="castrado"th:field="*{castrado}">
-                    </div>
+                    </div>                    
                     <!--            <div>
                                     <label for="imagen">Cargue imagen de su mascota</label>
                                     <input type="file" name="imagen" id="imagen">

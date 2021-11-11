@@ -2,7 +2,6 @@ package Adogcatme.Proyecto.Controladores;
 
 import Adogcatme.Proyecto.Servicios.DuenoServicio;
 import Adogcatme.Proyecto.entidades.Dueno;
-import exepciones.WebExeption;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,9 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 @RequestMapping("/dueno")
@@ -21,24 +18,27 @@ public class DuenoControlador {
 
     @Autowired
     private DuenoServicio duenoServicio;
+    
+    //Listar dueños
+    @GetMapping("/list")
+    public String listDueno(Model model){
+        model.addAttribute("dueno", duenoServicio.listAll());
+        return "perfil-dueno";
+    }
+    
+    //Crear dueño
+    @PostMapping("/login")
+    public String crearDueno (Dueno dueno){        
+        return "redirect:/HOME-DUENO-ADMIN.HTML";
 
+    } 
+    
     //Modificar un dueño
     @GetMapping("/editar")
     public String editarPerfilDueno(Model model, HttpSession session) {
         Dueno dueno = (Dueno) session.getAttribute("usuario");
         model.addAttribute("usuario", dueno);
-        return "editar-dueno";
-    }
-
-    @PostMapping("/save")
-    public String editarDueno(@ModelAttribute Dueno usuario, Model model) {
-        try {
-            duenoServicio.modificar(usuario);
-            return "redirect:/dueno/home";
-        } catch (WebExeption e) {
-            model.addAttribute("error", e.getMessage());
-        }
-        return "redirect:/dueno/editar";
+        return "perfil-dueno-edicion";
     }
 
     @GetMapping("/home")
