@@ -42,7 +42,6 @@ public class DuenoControlador {
         return "perfil-dueno-edicion";
     }
     
-    
     @PostMapping("/save")
     public String guardarDueno(@ModelAttribute Dueno usuario) throws Exception{
         duenoServicio.save(usuario);
