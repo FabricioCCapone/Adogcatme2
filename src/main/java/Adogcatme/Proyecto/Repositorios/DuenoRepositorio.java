@@ -14,4 +14,7 @@ public interface DuenoRepositorio extends JpaRepository<Dueno, String> {
    
     @Query("select d from Dueno d  where d.id = :id ")
     Dueno findByIde(@Param("id") String id);
+    
+    @Query("select d from Dueno d  where d.usuario = :usuario ")
+    Dueno findByUsuario(@Param("usuario") String usuario);
 }

@@ -56,6 +56,10 @@ public class AdoptanteServicio {
     public Adoptante findByEmail(String email) {
         return adoptanteRepositorio.findByEmail(email);
     }
+    
+    public Adoptante findByUsuario(String usuario) {
+        return adoptanteRepositorio.findByUsuario(usuario);
+    }
 
     @Transactional
     public void registrarAdoptante(Adoptante a) throws WebExeption {

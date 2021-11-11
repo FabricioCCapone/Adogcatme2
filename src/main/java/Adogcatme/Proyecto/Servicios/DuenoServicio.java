@@ -35,7 +35,11 @@ public class DuenoServicio {
     public Dueno findByEmail(String email) {
         return duenoRepositorio.findByEmail(email);
     }
-
+    
+    public Dueno findByUsuario(String usuario) {
+        return duenoRepositorio.findByUsuario(usuario);
+    }
+    
     //Eliminar mascota
     @Transactional
     public void eliminarMascota (Dueno dueno, Mascota mascota){
@@ -67,14 +71,14 @@ public class DuenoServicio {
     public void agregarMascota (Dueno dueno, Mascota mascota){
         try {
             mascota.setDueno(dueno);
-            mascotaServicio.registrarMascota(mascota);
+            mascotaServicio.registrarMascota(mascota, dueno);
         } catch (Exception e) {
         }
     }
     
     //Modificar dueño
     @Transactional
-    public Dueno modificar(Dueno dueno) throws WebExeption {
+    public Dueno modificar(Dueno dueno) throws Exception {
         if (duenoRepositorio.existsById(dueno.getId())) {
             duenoRepositorio.save(dueno);
         }
