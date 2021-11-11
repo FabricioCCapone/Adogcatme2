@@ -18,8 +18,8 @@ public class Dueno extends Usuario implements Serializable {
     public Dueno() {
         new ArrayList<Mascota>();
     }
-    
 
+    
     public List<Mascota> getMascotas() {
         return mascotas;
     }

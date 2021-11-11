@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,13 +11,13 @@
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
     
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
    
 </head>
 <body>
     <header>
         <h1 class="titulo-dueno">ADOGCATME</h1> 
-        <div class="logo-dueno"><img src="/asset/logo.png" alt=""></div>
+        <div class="logo-dueno"><img src="assets/logo.png" ></div>
     </header>
     <main class="main-dueno">
         <div class="inicio-sesion">
@@ -26,7 +26,7 @@
             </div>
             <form th:action="@{/logincheck}" method="POST" class="A" >
                 <div>   
-                <input type="text" name="usuario" id="nombre" placeholder="Ingresa tu usuario">
+                <input type="text" name="name" id="nombre" placeholder="Ingresa tu usuario">
                 </div>
                 <div>
                     <input type="password" name="contrasena"  placeholder="Ingresa tu contraseña">
@@ -41,13 +41,7 @@
                 <h2>¿No estas registrado?</h2>
                 <h3>Llena tus datos</h3>
             </div>
-            <form th:action="@{/registro/save}" method="POST" class="B" enctype="multipart/form-data">
-                <div>
-                    <input hidden type="number" name="selector" value="0">
-                </div>
-                <div>
-                    <input type="text" name="usuario"  placeholder="usuario">
-                </div>
+            <form th:action="@{/registro/save}" merhod="POST" class="B" enctype="multipart/form-data">
                 <div>
                     <input type="text" name="nombre" id="name" placeholder="Nombre completo">
                 </div>
@@ -55,23 +49,23 @@
                     <input type="number" name="telefono" placeholder="Ingresa tu telefono">
                 </div>
                 <div>
+                    <label for="barrio">Elija su distrito</label>
+                    <select name="barrio" id="barrio">
+                        <option value="barrio"> DISTRITO NORTE</option>
+                        <option value="">Distrito Sur</option>
+                        <option value="">Distrito Centro</option>
+                        <option value="">Distrito Este</option>
+                        <option value="">Distrito Oeste</option>
+                    </select>
+                </div>
+                <div>
                     <input type="text" name="email" placeholder="Ingresa tu correo electronico">
                 </div>
                 <div>
-                    <input type="password" name="contrasena1" placeholder="Ingresa tu contraseña">
+                    <input type="password" name="contrasena" placeholder="Ingresa tu contraseña">
                 </div>
                 <div>
-                    <input type="password" name="contrasena2" placeholder="Confirmar Contraseña">
-                </div>
-                <div>
-                    <input type="text" name="barrio" placeholder="Barrio">
-                </div>
-                <div>
-                    <input type="text" name="direccion" placeholder="Direccion Completa">
-                </div>
-                <div>
-                    <label for="imagen">Cargue imagen de perfil</label>
-                    <input type="file" name="imagen" id="imagen">
+                    <input type="password" name="contrasena" placeholder="Confirmar contraseña">
                 </div>
                 <div>
                     <input type="submit" value="Enviar" class="btn boton2">

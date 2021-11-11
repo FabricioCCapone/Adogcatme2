@@ -43,6 +43,25 @@ main{
     height: 100px;
 }
 
+.header-perfil > button{
+    display: flex;
+    justify-content: center;
+
+    position: absolute;
+    left: 90%;
+    top: 10%;
+    margin: 10px;
+    border-radius: 50%;
+
+    width: 45px;
+    height: 45px;
+}
+.header-perfil > button > img{
+    
+    width: 30px;
+    height: 30px;
+}
+
 .logo-perfil{
     position: absolute;
     top: 50%;
@@ -69,8 +88,8 @@ main{
     grid-template-columns: 25% 37.5% 37.5% ;
     grid-template-areas:
     "column descr descr"
-    "column datos datos"
-    "column datos datos";
+    "column datos btn"
+    "column datos btn";
 
 }
 
@@ -116,7 +135,7 @@ h3{
 
 .info{   
     grid-area: datos;
-    text-align: left;
+    text-align: center;
 }
 
 h2{
@@ -127,9 +146,13 @@ h2{
 }
 
 .buton{
+
     position: relative;
-    grid-area: datos;
+    bottom: -30%;
+    left: 20%;
+    grid-area: btn;
 }
+
 
 #volver{
     position: absolute;
