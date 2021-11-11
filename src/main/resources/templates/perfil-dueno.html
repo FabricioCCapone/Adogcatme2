@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -6,32 +7,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
-    
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <link rel="stylesheet" href="../css/perfil-dueno-styles.css">
     <title>Perfil</title>
 </head>
+
 <body>
     <header>
         <div>
             <img class="logo" src="/assets/logo.png" alt="">
         </div>
-        <h1 class="titulo">ADOGCATME</h1>     
+        <h1 class="titulo">ADOGCATME</h1>
     </header>
 
     <main>
-        
-        <div >
+
+        <div>
             <div class="header-perfil">
-                <img class="logo-perfil" src="../asset/foto-perfil.png"/>
+                <img class="logo-perfil" src="/assets/foto-perfil.png" />
                 <h1 class="nombre-perfil"> UserName </h1>
             </div>
             <div class="perfil">
-                
+
                 <div class="column">
                     <div class="titulos">
-                        <img class="profile-pic" src="../asset/deter.png" alt="No Profile Pic"/>
+                        <img class="profile-pic" src="/assets/deter.png" alt="No Profile Pic" />
 
                         <h3> Nombre: </h3>
                         <h3>Ubicacion:</h3>
@@ -39,25 +42,13 @@
                         <h3>Mail:</h3>
                     </div>
                 </div>
-                    
-                    <div class="descr-coint">
-                        <div class="x"> 
-                            <img src="/assets/owner.png"/>
-                            <img src="/assets/owner2.png"/>
-                            <img src="/assets/owner3.png"/>
-                        </div>   
-                    </div>
-                    
-                    <div class="info">
-                        <h2 th:text="${usuario.nombre}"></h2>
-                    <h2 th:text="${usuario.barrio}"></h2>
-                    <h2 th:text="${usuario.direccion}"></h2>
-                    <h2 th:text="${usuario.telefono}"></h2>
-                    <h2 th:text="${usuario.email}"></h2>
-                    </div>
 
                 <div class="descr-coint">
-                    <p class="descr"></p>   
+                    <div class="x">
+                        <img src="/assets/owner.png" />
+                        <img src="/assets/owner2.png" />
+                        <img src="/assets/owner3.png" />
+                    </div>
                 </div>
 
                 <div class="info">
@@ -67,8 +58,22 @@
                     <h2 th:text="${usuario.telefono}"></h2>
                     <h2 th:text="${usuario.email}"></h2>
                 </div>
-<!--                <div>-->
-<!--                    <table class="table table-primary table-striped">
+
+                <div class="descr-coint">
+                    <p class="descr"></p>
+                </div>
+
+                <div class="info">
+                    <h2 th:text="${usuario.nombre}"></h2>
+                    <h2 th:text="${usuario.barrio}"></h2>
+                    <h2 th:text="${usuario.direccion}"></h2>
+                    <h2 th:text="${usuario.telefono}"></h2>
+                    <h2 th:text="${usuario.email}"></h2>
+                </div>
+                
+
+                <div th:if ="${mascota.isEmpty}">-->
+                    <table class="table table-primary table-striped">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
@@ -84,21 +89,21 @@
                                 <th>Estado</th>
                             </tr>
                         </thead>-->
-<!--                        <tbody>
-                            <tr th:each="us : ${usuario}">
-                                <td th:text="${us.mascota.nombre}"></td>
-                                <td th:text="${us.mascota.raza}"></td>
-                                <td th:text="${us.mascota.tipo}"></td>
-                                <td th:number="${us.mascota.edad}"></td>
-                                <td th:text="${us.mascota.sexo}"></td>
-                                <td th:text="${us.mascota.descripcion}"></td>
-                                <td th:number="${us.mascota.peso}"></td>
-                                <td th:text="${us.mascota.imagen}"></td>
-                                <td th:text="${us.mascota.tamano}"></td>
-                                <td th:if="${us.mascota.castrado}">Si</td>
-                                <td th:unless="${us.mascota.castrado}">No</td>
-                                <td th:text="${us.mascota.estado}"></td>-->
-<!--                                    <div class="dropdown">
+                        <tbody>
+                            <tr th:each="us : ${mascota}">
+                                <td th:text="${mascota.nombre}"></td>
+                                <td th:text="${mascota.raza}"></td>
+                                <td th:text="${mascota.tipo}"></td>
+                                <td th:number="${mascota.edad}"></td>
+                                <td th:text="${mascota.sexo}"></td>
+                                <td th:text="${mascota.descripcion}"></td>
+                                <td th:number="${mascota.peso}"></td>
+                                <td th:text="${mascota.imagen}"></td>
+                                <td th:text="${mascota.tamano}"></td>
+                                <td th:if="${mascota.castrado}">Si</td>
+                                <td th:unless="${mascota.castrado}">No</td>
+                                <td th:text="${mascota.estado}"></td>-->
+                                <!--                                    <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                             Opciones de Libro
                                         </button>
@@ -108,30 +113,38 @@
                                             <li><a class="dropdown-item" th:href="@{/libro/eliminar/__${libro.id}__}">Eliminar</a></li>
                                         </ul>
                                     </div>-->
-<!--                                </td>-->
-<!--                            </tr>
+                                <!--                                </td>-->
+                                <!--                            </tr>
                         </tbody>-->
-<!--                    </table>-->
-<!--                </div>-->
+                                <!--                    </table>-->
+                                <!--                </div>-->
+     
+                </div>
+                
+                <div class="buton">
+                    <button type="button"><a th:href="@{/dueno/editar}"> Editar </a> </button>
+                </div>
 
                 <div class="container-botom">
                     <button type="button" class=" boton-dueno">
                         <nav>
-                            <a  sec:authorize="isAuthenticated()" th:href="@{/logout}"> Log Out</a>
+                            <a sec:authorize="isAuthenticated()" th:href="@{/logout}"> Log Out</a>
                         </nav>
                     </button>
                 </div>
+
+                
+                <!--<div class="buton">
+                    <button type="button"><a th:href="@{/mascota/registro}"> Registrar Mascota </a> </button>
+                </div>-->
+
             </div>
-            <div class="buton">
-                <button type="button"><a th:href="@{/dueno/editar}"> Editar </a> </button>
-            </div>
-            <div class="buton">
-                <button type="button"><a th:href="@{/mascota/registro}"> Registrar Mascota </a> </button>
-            </div>
-        </div>
 
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
