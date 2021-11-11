@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Perfil Dueño</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+
+    <link rel="stylesheet" href="../css/perfil-dueno-edicion.css">
+</head>
+<body>
+    <header>  
+        <h1>ADOGCATME</h1>
+        <div class="logo"><img src="../asset/logo.png"></div>
+    </header>
+
+    
+    <main>
+        <div class="contenedor">
+            <div class="contenido">        
+                <div class="titulo">
+                <h3>Mis datos</h3>
+                </div>
+                
+                <div class="datos-a-editar">
+                    <div class="nombre">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name">
+                    </div>
+                    
+                    <div class="mail">
+                        <label for="email">Dirección de correo electrónico:</label>
+                        <input type="text" id="email">
+                    </div>
+
+                    <div class="ubicacion">
+                        <label for="location">Ubicación/Distrito:</label>
+                        <select id="location">
+                            <option value>Distrito Norte</option>
+                            <option value>Distrito Sur</option>
+                            <option value>Distrito Centro</option>
+                            <option value>Distrito Este</option>
+                            <option value>Distrito Oeste</option>
+                        </select>
+                    </div>
+                    
+                    <div class="telefono">
+                        <label for="telephone">Teléfono:</label>
+                        <input type="number" id="telephone">
+                    </div>
+                    
+                    <div class="contrasena">
+                        <label for="password1">Contraseña:</label>
+                        <input type="password" id="password1">
+                    </div>
+                    
+                    
+                </div>    
+
+                
+            </div>    
+        </div>
+
+        <div class="button-container">
+            <!--Luego ver como seguiría el flujo de información. Todavía falta agregar funcionalidad Lo veo entre hoy y mañana-->
+            <button type="button" class="btn-actualizar">
+                <nav>
+                    Actualizar Información Personal
+                </nav>
+            </button>
+            <button type="button" class="btn-cancelar">
+                <nav>
+                    Cancelar
+                </nav>
+            </button>
+        </div>
+    </main>
+</body>
+</html>
