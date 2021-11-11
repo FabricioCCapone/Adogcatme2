@@ -7,7 +7,6 @@ import Adogcatme.Proyecto.entidades.Mascota;
 import exepciones.WebExeption;
 import java.util.List;
 import java.util.Optional;
-import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +20,8 @@ public class MascotaServicio {
     @Autowired
     FiltroRepositorio fr;
 
+    @Autowired
+    DuenoServicio ds;
 
     public List<Mascota> findByFiltro(String raza, String tipo, Integer edad, String sexo, String tamano, Integer castrado) {
         Integer cast_valor;
@@ -32,20 +33,21 @@ public class MascotaServicio {
         return fr.filtro(raza, tipo, edad, sexo, tamano, cast_valor);
     }
 
-   // public List<Mascota> findByDuenoId(String dueno_id) {
-     //   return mr.findByDuenoId(dueno_id);
+    // public List<Mascota> findByDuenoId(String dueno_id) {
+    //   return mr.findByDuenoId(dueno_id);
     //}
-
     public Optional<Mascota> findById(String id) {
         return mr.findById(id);
     }
 
     @Transactional
-    public void registrarMascota(Mascota m) throws WebExeption {
+    public void registrarMascota(Mascota m, Dueno d) throws WebExeption, Exception {
         verificarRegistro(m);
         //dueno.getMascotas().add(m);
         //m.setDueno(dueno);
         mr.save(m);
+        d.getMascotas().add(m);
+        ds.save(d);
     }
 
     @Transactional

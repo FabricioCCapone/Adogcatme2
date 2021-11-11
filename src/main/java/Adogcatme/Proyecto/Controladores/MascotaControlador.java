@@ -17,62 +17,60 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/mascota")
 public class MascotaControlador {
-        
+
     @Autowired
     MascotaServicio ms;
-    
+
     @Autowired
     SolicitudServicio ss;
-    
+
     @GetMapping("/perfilMascota")
-    public String perfilMascota(Model model, Mascota m){
+    public String perfilMascota(Model model, Mascota m) {
         model.addAttribute("mascota", ms.findById(m.getId()));
         model.addAttribute("solicitudes", ss.listAll());
         return "perfil-mascot";
     }
-        
+
     @GetMapping("/registro")
-    public String registrarMascota(Model model, HttpSession session){
-        
-        Mascota mascota = new Mascota();
-        Dueno dueno = (Dueno) session.getAttribute("usuario");
-        model.addAttribute("dueno", dueno);
-        model.addAttribute("mascota", mascota);
+    public String registrarMascota(Model model) {
+        model.addAttribute("mascota", new Mascota());
         return "registro-mascota";
     }
-    
+
     @PostMapping("/registroform")
-    public String registrarMascota(@ModelAttribute Mascota m){
+    public String registrarMascota(@ModelAttribute Mascota mascota, HttpSession session) {
         try {
-            ms.registrarMascota(m);
+            Dueno usuario = (Dueno) session.getAttribute("usuario");
+            ms.registrarMascota(mascota, usuario);
             return "redirect:/dueno/home";
-        } catch (WebExeption e) {         
-            
+        } catch (WebExeption e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return "redirect:/dueno/home";
     }
-    return "redirect:/fsa";
-    }
-    
+
     @PostMapping("/editarMascota")
-    public String editarMascota(@ModelAttribute Mascota m){
+    public String editarMascota(@ModelAttribute Mascota m) {
         try {
             ms.editarMascota(m);
         } catch (Exception e) {
-            
-        }finally{
+
+        } finally {
             return "redirect:/";
         }
     }
-    
+
     @GetMapping("/eliminarMascota")
-    public String eliminarMascota(@ModelAttribute Mascota m){
+    public String eliminarMascota(@ModelAttribute Mascota m) {
         try {
             ms.eliminarMascota(m);
         } catch (Exception e) {
-            
-        }finally{
-            return "redirect:/";
-        }        
-    }
-    
-}
 
+        } finally {
+            return "redirect:/";
+        }
+    }
+
+}
