@@ -43,8 +43,7 @@ public class MascotaServicio {
     @Transactional
     public void registrarMascota(Mascota m, Dueno d) throws WebExeption, Exception {
         verificarRegistro(m);
-        //dueno.getMascotas().add(m);
-        //m.setDueno(dueno);
+        m.setDueno(d);
         mr.save(m);
         d.getMascotas().add(m);
         ds.save(d);
