@@ -2,8 +2,10 @@ package Adogcatme.Proyecto.Controladores;
 
 import Adogcatme.Proyecto.Servicios.MascotaServicio;
 import Adogcatme.Proyecto.Servicios.SolicitudServicio;
+import Adogcatme.Proyecto.entidades.Dueno;
 import Adogcatme.Proyecto.entidades.Mascota;
 import exepciones.WebExeption;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,15 +33,18 @@ public class MascotaControlador {
     
     @GetMapping("/registro")
     public String registrarMascota(Model model){
+        
         Mascota mascota = new Mascota();
+        
         model.addAttribute("mascota", mascota);
         return "registro-mascota";
     }
     
     @PostMapping("/registroform")
-    public String registrarMascota(@ModelAttribute Mascota mascota){
+    public String registrarMascota(@ModelAttribute Mascota m){
         try {
-            ms.registrarMascota(mascota);
+            //System.out.println("LLEGO HASTA ACA!!!!" + dueno.getNombre());
+            ms.registrarMascota(m);
             return "redirect:/dueno/home";
         } catch (WebExeption e) {         
             
