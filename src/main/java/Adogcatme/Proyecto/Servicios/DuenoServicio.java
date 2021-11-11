@@ -8,7 +8,6 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Service
 public class DuenoServicio {
@@ -37,7 +36,7 @@ public class DuenoServicio {
     //Modificar dueño
    
     @Transactional
-    public Dueno modificar(@ModelAttribute Dueno dueno) throws WebExeption {
+    public Dueno modificar(Dueno dueno) throws WebExeption {
         if (duenoRepositorio.existsById(dueno.getId())) {
             return duenoRepositorio.save(dueno);
         }
@@ -46,7 +45,7 @@ public class DuenoServicio {
 
     //Crear dueño 
     @Transactional
-    public Dueno save(@ModelAttribute Dueno dueno) throws Exception {
+    public Dueno save(Dueno dueno) throws Exception {
         if (dueno.getNombre().isEmpty() || dueno.getNombre() == null) {
             throw new Exception(" La persona debe tener un nombre");
         }

@@ -2,10 +2,12 @@ package Adogcatme.Proyecto.Servicios;
 
 import Adogcatme.Proyecto.Repositorios.FiltroRepositorio;
 import Adogcatme.Proyecto.Repositorios.MascotaRepositorio;
+import Adogcatme.Proyecto.entidades.Dueno;
 import Adogcatme.Proyecto.entidades.Mascota;
 import exepciones.WebExeption;
 import java.util.List;
 import java.util.Optional;
+import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,8 @@ public class MascotaServicio {
     @Autowired
     FiltroRepositorio fr;
 
+    @Autowired
+    DuenoServicio ds;
 
     public List<Mascota> findByFiltro(String raza, String tipo, Integer edad, String sexo, String tamano, Integer castrado) {
         Integer cast_valor;
@@ -30,18 +34,19 @@ public class MascotaServicio {
         return fr.filtro(raza, tipo, edad, sexo, tamano, cast_valor);
     }
 
-   // public List<Mascota> findByDuenoId(String dueno_id) {
-     //   return mr.findByDuenoId(dueno_id);
+    // public List<Mascota> findByDuenoId(String dueno_id) {
+    //   return mr.findByDuenoId(dueno_id);
     //}
-
     public Optional<Mascota> findById(String id) {
         return mr.findById(id);
     }
 
     @Transactional
-    public void registrarMascota(Mascota m) throws WebExeption {
+    public void registrarMascota(Mascota m, Dueno d) throws WebExeption, Exception {
         verificarRegistro(m);
         mr.save(m);
+        d.getMascotas().add(m);
+        ds.save(d);
     }
 
     @Transactional
@@ -77,7 +82,7 @@ public class MascotaServicio {
         if (m.getTipo().isEmpty() || m.getTipo() == null) {
             throw new WebExeption("Debes indicar el tipo de mascota.");
         }
-        if (m.getEdad() == 0 || m.getTipo() == null) {
+        if (m.getEdad() == 0 || m.getEdad() == null) {
             throw new WebExeption("La edad de la mascota no puede estar vacia.");
         }
         if (m.getPeso() == 0 || m.getPeso() == null) {
