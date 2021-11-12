@@ -21,28 +21,13 @@ public class DuenoControlador {
     @Autowired
     private DuenoServicio duenoServicio;
     
-    //Listar dueños
-    @GetMapping("/list")
-    public String listDueno(Model model){
-        model.addAttribute("dueno", duenoServicio.listAll());
-        return "perfil-dueno";
-    }
-    
-    //Crear dueño
-    @PostMapping("/login")
-    public String crearDueno (Dueno dueno){        
-        return "redirect:/HOME-DUENO-ADMIN.HTML";
-
-    } 
-    
     //Modificar un dueño
     @GetMapping("/editar")
     public String editarPerfilDueno(Model model, HttpSession session) {
         Dueno dueno = (Dueno) session.getAttribute("usuario");
         model.addAttribute("usuario", dueno);
-        return "perfil-dueno-edicion";
+        return "perfil-dueno";
     }
-    
     
     @PostMapping("/save")
     public String guardarDueno(@ModelAttribute Dueno usuario) throws Exception{
@@ -55,6 +40,7 @@ public class DuenoControlador {
         return "redirect:/dueno/editar";
     }
 
+    
     @GetMapping("/home")
     public String homeDueno(Model model, HttpSession session) {
         Dueno usuario = (Dueno) session.getAttribute("usuario");

@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="css/perfil-dueno-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+    
+    <link rel="stylesheet" href="../css/perfil-dueno-styles.css">
     <title>Perfil</title>
 </head>
-
 <body>
     <header>
         <div>
@@ -58,11 +54,10 @@
                     <h2 th:text="${usuario.telefono}"></h2>
                     <h2 th:text="${usuario.email}"></h2>
                 </div>
-
                 <div class="descr-coint">
                     <p class="descr"></p>
-                </div>
 
+                </div>
                 <div class="info">
                     <h2 th:text="${usuario.nombre}"></h2>
                     <h2 th:text="${usuario.barrio}"></h2>
@@ -70,6 +65,7 @@
                     <h2 th:text="${usuario.telefono}"></h2>
                     <h2 th:text="${usuario.email}"></h2>
                 </div>
+
                 
 
                 <div >
@@ -89,6 +85,7 @@
                                 <th>Estado</th>
                             </tr>
                         </thead>-->
+<<<<<<< HEAD
                         <tbody>
                             <tr th:each="dueno:${dueno}">
                                 <td th:text="${dueno.mascota}!=null? ${dueno.mascota.nombre}:''"></td>
@@ -108,6 +105,23 @@
 
 
                                 <!--                                    <div class="dropdown">
+=======
+<!--                        <tbody>
+                            <tr th:each="us : ${usuario}">
+                                <td th:text="${us.mascota.nombre}"></td>
+                                <td th:text="${us.mascota.raza}"></td>
+                                <td th:text="${us.mascota.tipo}"></td>
+                                <td th:number="${us.mascota.edad}"></td>
+                                <td th:text="${us.mascota.sexo}"></td>
+                                <td th:text="${us.mascota.descripcion}"></td>
+                                <td th:number="${us.mascota.peso}"></td>
+                                <td th:text="${us.mascota.imagen}"></td>
+                                <td th:text="${us.mascota.tamano}"></td>
+                                <td th:if="${us.mascota.castrado}">Si</td>
+                                <td th:unless="${us.mascota.castrado}">No</td>
+                                <td th:text="${us.mascota.estado}"></td>-->
+<!--                                    <div class="dropdown">
+>>>>>>> a149545fcf58eafb9418390390ca298338e87b42
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                             Opciones de Libro
                                         </button>
@@ -148,5 +162,4 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 </body>
-
 </html>

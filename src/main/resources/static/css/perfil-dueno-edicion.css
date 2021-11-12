@@ -1,0 +1,172 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #8e9aaf;
+    width: 100vw;
+    height: 100vh;
+}
+
+header{
+    align-items: center;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    background-color: #F4A261;
+    height: 25%;
+    width: 100%;
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
+main{
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    font-size: 80px;
+}
+
+h3{
+    text-align: center;
+    font-size: 250%;
+}
+
+
+.logo{
+    width: 175px;
+    height: 150px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logo img{
+    width: 150px;
+    height: 150px;
+}
+
+
+
+.contenedor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+}
+
+.contenido{
+    width: 80%;
+    /*min-height: 75%;*/
+}
+
+
+
+
+.foto-masc{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2%;
+    background-color: #5f6d86;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: center;
+}
+
+.foto-masc img{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    margin-bottom: 3%;
+}
+
+
+.titulo{
+    background-color: #F4A261;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-top: 1%;
+    padding-bottom: 0.5%;    
+}
+
+.datos-a-editar {
+    background-color: #5f6d86;
+    display: grid;
+    grid-template-rows: repeat(5, 20%);
+    grid-template-areas: "nombre" "mail" "ubicacion" "telefono" "contrasena";
+    
+    padding-block: 15px;
+    margin-bottom: 2%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: center;
+}
+
+
+
+
+label{
+    width: 300px;
+    text-align: left;
+}
+
+.nombre{
+    grid-area: nombre;
+    display: flex;
+    justify-content: left;
+    margin-left: 25px;
+    /*Ver alineacion entre el label y el input*/
+}
+
+.mail{
+    grid-area: mail;
+    display: flex;
+    justify-content: left;
+    margin-left: 25px;
+}
+
+
+.ubicacion{
+    grid-area: ubicacion;
+    display: flex;
+    justify-content: left;
+    margin-left: 25px;
+}
+
+.telefono{
+    grid-area: telefono;
+    display: flex;
+    justify-content: left;
+    margin-left: 25px;
+}
+
+.contrasena{
+    grid-area: contrasena;
+    display: flex;
+    justify-content: left;
+    margin-left: 25px;
+}
+
+
+#name, #email, #location, #password1, #telephone{
+    margin-left: 30px;
+}
+  
+
+.button-container{
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.btn-actualizar, .btn-cancelar{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+
+
+
