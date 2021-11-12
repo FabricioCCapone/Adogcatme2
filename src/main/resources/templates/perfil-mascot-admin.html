@@ -1,78 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Perfil Mascota Admin</title>
+<html lang="es-AR" xmlns:th="http://www.thymeleaf.org" xmlns:sec"http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+        <title>Perfil Mascota Admin</title>
 
-    <link rel="stylesheet" href="../css/perfil-mascot-admin.css">
-</head>
-<body>
-    <header>  
-        <h1>ADOGCATME</h1>
-        <div class="logo"><img src="../asset/logo.png"></div>
-    </header>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
 
-    
-    <main>
-        <div class="d-flex justify-content-end">
-            <button type="button" class="btn-edicion">
-                <nav>
-                    <a href="registro-mascota.html">
-                        <img src="../asset/ajustes.png" alt="">
-                    </a>
-                </nav>
-            </button>
-        </div>
+        <link rel="stylesheet" href="../css/perfil-mascot-admin.css">
+    </head>
+    <body>
+        <header>  
+            <h1>ADOGCATME</h1>
+            <div class="logo"><img src="../asset/logo.png"></div>
+        </header>
 
-        <div class="contenedor">
-            <div class="foto-masc">
-                <img src="../asset/newgatito.jpeg" alt="">
+
+        <main>
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn-edicion">
+                    <nav>
+                        <a href="registro-mascota.html">
+                            <img src="../asset/ajustes.png" alt="">
+                        </a>
+                    </nav>
+                </button>
             </div>
-            <div class="contenido">
-                
-                <div class="titulo">
-                <h3>Mis datos</h3>
-                </div>
 
-                <div class="texto">
-                    <div class="col-1">
-                        Tipo: 
-                        Raza:
-                        Edad:
-                        Peso:    
+            <div class="contenedor">
+                <div class="foto-masc">
+                    <img src="../asset/newgatito.jpeg" alt="">
+                </div>
+                <div class="contenido">
+
+                    <div class="titulo">
+                        <h3>Mis datos</h3>
                     </div>
-                    <div class="col-2">
+
+                    <div class="texto">
+                        <form th:action="@{/mascota/save}" method="POST" th:object="${mascota}" enctype="multipart/form-data"> 
+                            <div>
+                                <input type="hidden" name="id" th:field="*{id}">
+                            </div>
+                            <div>
+                                <label for="tipo">Seleccione tipo de mascota:</label>
+                                <select name="tipo" id="tipo"th:field="*{tipo}">
+                                    <option value="perro">Perro</option>
+                                    <option value="gato">Gato</option>
+                                    <option value="otro">Otro</option>
+                                </select>   
+                            </div>                            
+                            <div>
+                                <label for="nombre">Ingrese nombre</label>
+                                <input type="text" name="nombre" th:field="*{nombre}">
+                            </div>
+                            <div>
+                                <label for="raza">Ingrese raza:</label>
+                                <input type="text" name="raza" th:field="*{raza}">
+                            </div>
+                            <div>
+                                <label for="edad">Edad de su mascota:</label>
+                                <input type="number" name="edad" th:field="*{edad}">años 
+                                <!--                <input type="number" name="edad"> meses-->
+                            </div>
+                            <div>
+                                <label for="peso"> Peso:</label>
+                                <input type="number" name="peso" th:field="*{peso}"> kg
+                            </div>
+                            <div>
+                                <label for="tamano">Seleccione el tamaño:</label>
+                                <select name="tamano" id="tamano" th:field="*{tamano}">
+                                    <option value="pequeno">Pequeño</option>
+                                    <option value="mediano">Mediano</option>
+                                    <option value="grande">Grande</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="sexo">Sexo:</label>
+                                <select name="sexo" id="sex" th:field="*{sexo}">
+                                    <option value="macho">Macho</option>
+                                    <option value="hembra">Hembra</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="castrado">¿Esta castrado/a?:</label>
+                                Si<input type="radio" value="true" name="castrado" id="castrado" th:field="*{castrado}">
+                                No<input type="radio" value="false" name="castrado" id="castrado"th:field="*{castrado}">
+                            </div>                    
+                            <!--            <div>
+                                            <label for="imagen">Cargue imagen de su mascota</label>
+                                            <input type="file" name="imagen" id="imagen">
+                                        </div>-->
+                            <div>
+                                <div>
+                                    <label for="descripcion">Ingrese una breve descripcion de su mascota:</label>
+                                </div>
+                                <div>
+                                    <textarea name="descripcion" id="description" cols="40" rows="2"></textarea>
+                                </div>
+                            </div>
+                            <div class="enviar">
+                                <input type="submit" value="Enviar" class="btn boton-enviar">
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="titulo">
+                        <h3>Descripción</h3>
+                    </div>
+
+                    <div class="descripcion">
 
                     </div>
-                    <div class="col-1">
-                        Sexo:
-                        Peso:
-                        Castrado:
-                    </div>
-                    <div class="col-2">
-                        
-                    </div>
-                </div>
-                    
-                <div class="titulo">
-                    <h3>Descripción</h3>
-                </div>
-                
-                <div class="descripcion">
-                        
-                </div>
 
-            </div>    
-        </div>
-        
-    </main>
-</body>
+                </div>    
+            </div>
+
+        </main>
+    </body>
 </html>

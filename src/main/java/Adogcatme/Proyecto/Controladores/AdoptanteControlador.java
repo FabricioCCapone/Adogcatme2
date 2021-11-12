@@ -57,24 +57,6 @@ public class AdoptanteControlador {
         return "home-adop";
     }
 
-    //Creo que no se usa
-    @GetMapping("/registro")
-    public String registrarAdoptante(Model model) {
-        model.addAttribute("adoptante", new Adoptante());
-        return "regist-adopt";
-    }
-
-    @PostMapping("/registroForm")
-    public String registrarAdoptante(@ModelAttribute Adoptante adoptante) {
-        try {
-            as.registrarAdoptante(adoptante);
-        } catch (Exception e) {
-
-        } finally {
-            return "redirect:/";
-        }
-    }
-
     @GetMapping("/editarAdopt")
     public String editarAdoptante(Model model, Adoptante a) {
         model.addAttribute("adoptante", a);

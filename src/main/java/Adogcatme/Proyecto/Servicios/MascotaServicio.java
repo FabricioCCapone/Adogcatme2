@@ -28,8 +28,12 @@ public class MascotaServicio {
         return fr.filtro(raza, tipo, edad, sexo, tamano, castrado);
     }
 
-    public Optional<Mascota> findById(String id) {
-        return mr.findById(id);
+    public Mascota findById(String id) {
+        Optional<Mascota> mascota = mr.findById(id);
+        if(mascota.isPresent()){
+            return mascota.get();
+        }
+        return null;
     }
     
     public List<Mascota> listAll() {

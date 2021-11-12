@@ -11,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/mascota")
@@ -23,7 +25,7 @@ public class MascotaControlador {
 
     @Autowired
     SolicitudServicio ss;
-    
+
     @GetMapping("/perfilMascota")
     public String perfilMascota(Model model, Mascota m) {
         model.addAttribute("mascota", ms.findById(m.getId()));
@@ -45,23 +47,34 @@ public class MascotaControlador {
             return "redirect:/dueno/home";
         } catch (WebExeption e) {
             System.out.println(e.getMessage());
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return "redirect:/dueno/home";
     }
 
-    @PostMapping("/editarMascota")
+    @GetMapping("/editar/{id}")
+    public ModelAndView editarMascota(@PathVariable(name = "id") String id) {
+        ModelAndView editarVista = new ModelAndView("perfil-mascot-admin");
+        Mascota mascota = ms.findById(id);
+        editarVista.addObject("mascota", mascota);
+        return editarVista;
+    }
+
+    @PostMapping("/save")
     public String editarMascota(@ModelAttribute Mascota m) {
         try {
+            System.out.println(m.getNombre());
+            System.out.println(m.getId());
+            System.out.println(m.getRaza());
             ms.editarMascota(m);
         } catch (Exception e) {
 
         } finally {
             return "redirect:/";
         }
-    } 
-    
+    }
+
     @GetMapping("/eliminarMascota")
     public String eliminarMascota(@ModelAttribute Mascota m) {
         try {
@@ -72,6 +85,5 @@ public class MascotaControlador {
             return "redirect:/";
         }
     }
-    
 
 }
