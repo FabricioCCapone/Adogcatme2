@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../css/perfil-dueno-styles.css">
+    <link rel="stylesheet" href="css/perfil-dueno-styles.css">
     <title>Perfil</title>
 </head>
 
@@ -72,7 +72,7 @@
                 </div>
                 
 
-                <div th:if ="${mascota.isEmpty}">-->
+                <div >
                     <table class="table table-primary table-striped">
                         <thead>
                             <tr>
@@ -90,19 +90,23 @@
                             </tr>
                         </thead>-->
                         <tbody>
-                            <tr th:each="us : ${mascota}">
-                                <td th:text="${mascota.nombre}"></td>
-                                <td th:text="${mascota.raza}"></td>
-                                <td th:text="${mascota.tipo}"></td>
-                                <td th:number="${mascota.edad}"></td>
-                                <td th:text="${mascota.sexo}"></td>
-                                <td th:text="${mascota.descripcion}"></td>
-                                <td th:number="${mascota.peso}"></td>
-                                <td th:text="${mascota.imagen}"></td>
-                                <td th:text="${mascota.tamano}"></td>
-                                <td th:if="${mascota.castrado}">Si</td>
-                                <td th:unless="${mascota.castrado}">No</td>
-                                <td th:text="${mascota.estado}"></td>-->
+                            <tr th:each="dueno:${dueno}">
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.nombre}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.raza}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.tipo}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.edad}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.sexo}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.descripcion}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.peso}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.imagen}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.tamano}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.castrado}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.estado}:''"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
                                 <!--                                    <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                             Opciones de Libro
@@ -127,16 +131,14 @@
 
                 <div class="container-botom">
                     <button type="button" class=" boton-dueno">
-                        <nav>
                             <a sec:authorize="isAuthenticated()" th:href="@{/logout}"> Log Out</a>
-                        </nav>
                     </button>
                 </div>
 
                 
-                <!--<div class="buton">
+                <div class="buton">
                     <button type="button"><a th:href="@{/mascota/registro}"> Registrar Mascota </a> </button>
-                </div>-->
+                </div>
 
             </div>
 
