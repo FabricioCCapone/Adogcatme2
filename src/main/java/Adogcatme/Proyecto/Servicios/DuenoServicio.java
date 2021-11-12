@@ -1,9 +1,9 @@
 package Adogcatme.Proyecto.Servicios;
 
 import Adogcatme.Proyecto.Repositorios.DuenoRepositorio;
-import Adogcatme.Proyecto.Repositorios.MascotaRepositorio;
-import Adogcatme.Proyecto.entidades.Dueno;
 import Adogcatme.Proyecto.entidades.Mascota;
+import Adogcatme.Proyecto.entidades.Dueno;
+import exepciones.WebExeption;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -15,13 +15,10 @@ public class DuenoServicio {
 
     @Autowired
     private DuenoRepositorio duenoRepositorio;
-    
-    @Autowired
-    private MascotaRepositorio mascotaRepositorio;
-    
+
     @Autowired
     private MascotaServicio mascotaServicio;
-    
+ 
     //Listar dueños
     public List<Dueno> listAll() {
         return duenoRepositorio.findAll();
@@ -42,7 +39,7 @@ public class DuenoServicio {
     
     //Eliminar mascota
     @Transactional
-    public void eliminarMascota (Dueno dueno, Mascota mascota){
+    public void eliminarMascota (Dueno dueno, Mascota mascota) throws Exception{
         if(dueno.getId().equals(mascota.getDueno().getId())){
             mascotaServicio.eliminarMascota(mascota);
         }else{
@@ -55,7 +52,7 @@ public class DuenoServicio {
     
     //Editar mascota
     @Transactional
-    public void editarMascota (Dueno dueno, Mascota mascota){
+    public void editarMascota (Dueno dueno, Mascota mascota) throws Exception{
         if(dueno.getId().equals(mascota.getDueno().getId())){
             mascotaServicio.editarMascota(mascota);
         }else{
@@ -78,21 +75,13 @@ public class DuenoServicio {
     
     //Modificar dueño
     @Transactional
-    public Dueno modificar(Dueno dueno) throws Exception {
+    public Dueno modificar(Dueno dueno) throws WebExeption {
         if (duenoRepositorio.existsById(dueno.getId())) {
-            duenoRepositorio.save(dueno);
+            return duenoRepositorio.save(dueno);
         }
-       return duenoRepositorio.save(dueno);
+        return null;
     }
-    
-//    @Transactional
-//    public Dueno modificar(@ModelAttribute Dueno dueno) throws WebExeption {
-//        if (duenoRepositorio.existsById(dueno.getId())) {
-//            return duenoRepositorio.save(dueno);
-//        }
-//        return null;
-//    }
-    
+
     //Crear dueño 
     @Transactional
     public Dueno save(Dueno dueno) throws Exception {

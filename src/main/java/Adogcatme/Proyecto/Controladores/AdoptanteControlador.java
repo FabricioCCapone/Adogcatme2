@@ -6,8 +6,10 @@
 package Adogcatme.Proyecto.Controladores;
 
 import Adogcatme.Proyecto.Servicios.AdoptanteServicio;
+import Adogcatme.Proyecto.Servicios.MascotaServicio;
 import Adogcatme.Proyecto.Servicios.SolicitudServicio;
 import Adogcatme.Proyecto.entidades.Adoptante;
+import Adogcatme.Proyecto.entidades.Mascota;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,34 +28,46 @@ public class AdoptanteControlador {
     @Autowired
     SolicitudServicio ss;
 
+    @Autowired
+    MascotaServicio ms;
+    
+    private Mascota mascota;
+
     @GetMapping("/perfilAdoptante")
     public String perfilAdoptante(Model model, Adoptante a) {
         model.addAttribute("solicitudes", a.getSolicitud().listIterator());
         return "perfil-adopt";
     }
+
     @GetMapping("/home")
-    public String homeAdoptante(){
-        
-    return "home-adop";
+    public String homeAdoptante(Model model) {
+        model.addAttribute("mascotas", ms.findByFiltro(mascota.getRaza(), mascota.getTipo(), mascota.getEdad(), mascota.getSexo(), mascota.getTamano(), mascota.getCastrado()));
+        return "home-adop";
+    }
+    
+    @PostMapping("/filtro")
+    public String filtro(Model model) {
+        model.addAttribute("mascotas", ms.listAll());
+        return "home-adop";
     }
 
     @GetMapping("/registro")
-    public String registrarAdoptante(Model model){
+    public String registrarAdoptante(Model model) {
         model.addAttribute("adoptante", new Adoptante());
         return "regist-adopt";
-    }   
-    
+    }
+
     @PostMapping("/registroForm")
-    public String registrarAdoptante(@ModelAttribute Adoptante adoptante){
+    public String registrarAdoptante(@ModelAttribute Adoptante adoptante) {
         try {
             as.registrarAdoptante(adoptante);
         } catch (Exception e) {
-            
-        }finally{
+
+        } finally {
             return "redirect:/";
         }
     }
-    
+
     @GetMapping("/editarAdopt")
     public String editarAdoptante(Model model, Adoptante a) {
         model.addAttribute("adoptante", a);
@@ -69,5 +83,5 @@ public class AdoptanteControlador {
         }
         return "redirect:/";
     }
-    
+
 }

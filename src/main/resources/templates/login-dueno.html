@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
+<html lang="es-AR" xmlns:th="http://www.thymeleaf.org" xmlns:sec"http://www.thymeleaf.org/extras/spring-security">
+      <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,14 +17,14 @@
     <body>
         <header>
             <h1 class="titulo-dueno">ADOGCATME</h1> 
-            <div class="logo-dueno"><img src="assets/logo.png" ></div>
+            <div class="logo-dueno"><img src="/assets/logo.png" ></div>
         </header>
         <main class="main-dueno">
             <div class="inicio-sesion">
                 <div class="subt-dueno">
                     <h2>Inicia Sesion</h2>
                 </div>
-                <form th:action="@{/logincheck}" method="POST" class="A" >
+                <form th:action="@{/logincheck}" method="POST" class="A">
                     <div>   
                         <input type="text" name="usuario" id="nombre" placeholder="Ingresa tu usuario">
                     </div>
@@ -39,7 +39,7 @@
             <div class="formulario">
                 <div class="subt-duenoB">
                     <h2>¿No estas registrado?</h2>
-                    <h3>Llena tus datos</h3>
+                    <h3>Llena tus datos</h3> <br> 
                 </div>
                 <form th:action="@{/registro/save}" method="POST" class="B" enctype="multipart/form-data">
                     <div>
@@ -64,7 +64,8 @@
                             <option value="">Distrito Oeste</option>
                         </select>
                     </div>
-                    <input type="text" name="email" placeholder="Ingresa tu correo electronico">
+                    <div>
+                        <input type="text" name="email" placeholder="Ingresa tu correo electronico">
                     </div>
                     <div>
                         <input type="password" name="contrasena1" placeholder="Ingresa tu contraseña">

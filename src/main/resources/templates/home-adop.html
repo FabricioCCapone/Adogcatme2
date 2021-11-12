@@ -38,20 +38,20 @@
                     <div class="A">
                         <img src="../asset/gatito.png" alt="" />
                     </div>
-                    <div class="B">
-                        <p>Tipo de mascota:</p>
-                        <p>Raza:</p>
-                        <p>Edad</p>
-                        <p>Sexo:</p>
-                        <p>Peso:</p>
-                        <p>Tamaño:</p>
-                        <p>¿Esta castrado?</p>
-                        <p>Dueño:</p>
+                    <div class="B" th:each="mascota : ${mascotas}">
+                        <p>Tipo de mascota: <span th:text="${mascota.tipo}"></span></p>
+                        <p>Raza: <span th:text="${mascota.raza}"></span></p>
+                        <p>Edad: <span th:text="${mascota.edad}"></span></p>
+                        <p>Sexo: <span th:text="${mascota.sexo}"></span></p>
+                        <p>Peso: <span th:text="${mascota.peso}">Kg</span></p>
+                        <p>Tamaño: <span th:text="${mascota.tamano}"></span></p>
+                        <p>¿Esta castrado? <span th:text="${mascota.castrado} ? 'Si' : 'No'"></span></p>
+                        <p>Dueño: <span th:text="${mascota.dueno}!=null? ${mascota.dueno.nombre}:''"></span></p>
                     </div>
                 </div>
             </div>
             <div class="form">
-                <form action="">
+                <form th:action="@{}">
                     <div class="selectores">
                         <label for="tipo">¿Que tipo de mascotas queres adoptar?</label>
                         <select name="tipo" id="tipo">
