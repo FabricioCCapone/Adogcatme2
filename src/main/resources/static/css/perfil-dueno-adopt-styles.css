@@ -1,0 +1,168 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #8e9aaf;
+    width: 100vw;
+    height: 100vh;
+    cursor: url("../asset/pata.png");
+}
+
+header{
+    align-items: left;
+    display: flex;
+    background-color: #F4A261;
+    height: 25%;
+    width: 100%;
+}
+
+.titulo{
+    margin: 4%;
+    font-size: 70px;
+}
+
+.logo{
+    width: 200px;
+    height: 200px;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+.header-perfil{
+    position: relative;
+    display: flex;
+    margin-top: 30px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #f5ac70;
+    width: 800px;
+    height: 100px;
+}
+
+.header-perfil > button{
+    display: flex;
+    justify-content: center;
+
+    position: absolute;
+    left: 90%;
+    top: 10%;
+    margin: 10px;
+    border-radius: 50%;
+
+    width: 45px;
+    height: 45px;
+}
+.header-perfil > button > img{
+    
+    width: 30px;
+    height: 30px;
+}
+
+.logo-perfil{
+    position: absolute;
+    top: 50%;
+    left: 28%;
+    transform: translate(-28%, -50%) ;
+    height: 70%;
+}
+.nombre-perfil{
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-55%, -50%) ;
+}
+
+.perfil{
+    background-color: #5f6d86;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 800px;
+    height: 500px;
+
+    display: grid;
+    grid-template-rows: 40% 30% 30%;
+    grid-template-columns: 25% 37.5% 37.5% ;
+    grid-template-areas:
+    "column descr descr"
+    "column datos btn"
+    "column datos btn";
+
+}
+
+.column{
+    grid-area: column;
+    position: relative;
+    display: table;
+    background-color: #4a5568;
+    border-bottom-left-radius: 10px;
+}
+h3{
+    text-align: right;
+    margin-top: 30px;
+    margin-right: 10px;
+}
+.titulos{
+    position: absolute;
+    font-size: 30px;
+}
+
+
+
+
+.profile-pic{
+    width: 100px;
+    height: 100px;
+    margin: 50px;
+}
+
+.descr-coint{
+    grid-area: descr;
+    background-color: #556177;
+}
+
+.x{
+    display: table;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-25%, -60%);
+
+}
+
+.info{   
+    grid-area: datos;
+    text-align: center;
+}
+
+h2{
+
+    font-size: 25px;
+    margin-top: 34px;
+    margin-left: 10px;
+}
+
+.buton{
+
+    position: relative;
+    bottom: -30%;
+    left: 20%;
+    grid-area: btn;
+}
+
+
+#volver{
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%,-30%);
+}
+#ver-masc{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}

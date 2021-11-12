@@ -11,7 +11,6 @@ import Adogcatme.Proyecto.enums.Rol;
 import exepciones.WebExeption;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

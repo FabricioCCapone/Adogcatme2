@@ -22,6 +22,7 @@ public class SolicitudServicio {
 
     @Autowired
     private SolicitudRepositorio solicitudRepositorio;
+    
     @Autowired 
     private DuenoServicio duenoServicio;
     @Autowired

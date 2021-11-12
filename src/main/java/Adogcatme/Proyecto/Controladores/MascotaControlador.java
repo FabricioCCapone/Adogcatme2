@@ -5,8 +5,6 @@ import Adogcatme.Proyecto.Servicios.SolicitudServicio;
 import Adogcatme.Proyecto.entidades.Dueno;
 import Adogcatme.Proyecto.entidades.Mascota;
 import exepciones.WebExeption;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,8 +24,6 @@ public class MascotaControlador {
     @Autowired
     SolicitudServicio ss;
     
-    private List<Mascota> mascotas = new ArrayList<>();
-
     @GetMapping("/perfilMascota")
     public String perfilMascota(Model model, Mascota m) {
         model.addAttribute("mascota", ms.findById(m.getId()));
