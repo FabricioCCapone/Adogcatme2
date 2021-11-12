@@ -68,7 +68,7 @@
 
                 
 
-                <div th:if ="${mascota.isEmpty}">-->
+                <div >
                     <table class="table table-primary table-striped">
                         <thead>
                             <tr>
@@ -85,6 +85,27 @@
                                 <th>Estado</th>
                             </tr>
                         </thead>-->
+<<<<<<< HEAD
+                        <tbody>
+                            <tr th:each="dueno:${dueno}">
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.nombre}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.raza}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.tipo}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.edad}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.sexo}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.descripcion}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.peso}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.imagen}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.tamano}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.castrado}:''"></td>
+                                <td th:text="${dueno.mascota}!=null? ${dueno.mascota.estado}:''"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                                <!--                                    <div class="dropdown">
+=======
 <!--                        <tbody>
                             <tr th:each="us : ${usuario}">
                                 <td th:text="${us.mascota.nombre}"></td>
@@ -100,6 +121,7 @@
                                 <td th:unless="${us.mascota.castrado}">No</td>
                                 <td th:text="${us.mascota.estado}"></td>-->
 <!--                                    <div class="dropdown">
+>>>>>>> a149545fcf58eafb9418390390ca298338e87b42
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                             Opciones de Libro
                                         </button>
@@ -123,16 +145,14 @@
 
                 <div class="container-botom">
                     <button type="button" class=" boton-dueno">
-                        <nav>
                             <a sec:authorize="isAuthenticated()" th:href="@{/logout}"> Log Out</a>
-                        </nav>
                     </button>
                 </div>
 
                 
-                <!--<div class="buton">
+                <div class="buton">
                     <button type="button"><a th:href="@{/mascota/registro}"> Registrar Mascota </a> </button>
-                </div>-->
+                </div>
 
             </div>
 

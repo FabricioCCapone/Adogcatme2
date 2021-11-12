@@ -2,6 +2,7 @@ package Adogcatme.Proyecto.Controladores;
 
 import Adogcatme.Proyecto.Servicios.DuenoServicio;
 import Adogcatme.Proyecto.entidades.Dueno;
+import exepciones.WebExeption;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,14 +31,20 @@ public class DuenoControlador {
     
     @PostMapping("/save")
     public String guardarDueno(@ModelAttribute Dueno usuario) throws Exception{
-        duenoServicio.save(usuario);
-        return "perfil-dueno";
+        try {
+                   duenoServicio.save(usuario);
+                   return "redirect:/dueno/home";
+        } catch (WebExeption ex) {
+        }
+ 
+        return "redirect:/dueno/editar";
     }
 
     
     @GetMapping("/home")
     public String homeDueno(Model model, HttpSession session) {
-        Dueno dueno = (Dueno) session.getAttribute("usuario");
+        Dueno usuario = (Dueno) session.getAttribute("usuario");
+        Dueno dueno = duenoServicio.findByIde(usuario.getId());
         model.addAttribute("usuario", dueno);
         model.addAttribute("mascota", dueno.getMascotas());
         return "perfil-dueno";
