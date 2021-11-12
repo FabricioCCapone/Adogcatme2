@@ -10,13 +10,16 @@ import Adogcatme.Proyecto.Servicios.MascotaServicio;
 import Adogcatme.Proyecto.Servicios.SolicitudServicio;
 import Adogcatme.Proyecto.entidades.Adoptante;
 import Adogcatme.Proyecto.entidades.Mascota;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/adoptante")
@@ -30,8 +33,8 @@ public class AdoptanteControlador {
 
     @Autowired
     MascotaServicio ms;
-    
-    private Mascota mascota;
+
+    private Mascota mascota = new Mascota();
 
     @GetMapping("/perfilAdoptante")
     public String perfilAdoptante(Model model, Adoptante a) {
@@ -40,17 +43,21 @@ public class AdoptanteControlador {
     }
 
     @GetMapping("/home")
-    public String homeAdoptante(Model model) {
-        model.addAttribute("mascotas", ms.findByFiltro(mascota.getRaza(), mascota.getTipo(), mascota.getEdad(), mascota.getSexo(), mascota.getTamano(), mascota.getCastrado()));
-        return "home-adop";
-    }
-    
-    @PostMapping("/filtro")
-    public String filtro(Model model) {
-        model.addAttribute("mascotas", ms.listAll());
+    public String homeAdoptante(Model model, @RequestParam(required = false) String raza, @RequestParam(required = false) String tipo, @RequestParam(required = false) Integer edad, @RequestParam(required = false) String sexo, @RequestParam(required = false) String tamano, @RequestParam(required = false) Boolean castrado) {
+        try {
+            if ((raza != null) || (tipo != null) || (edad != null) || (sexo != null) || (tamano != null) || (castrado != null)) {
+                model.addAttribute("mascotas", ms.findByFiltro(raza, tipo, edad, sexo, tamano, castrado));
+            } else {
+                model.addAttribute("mascotas", ms.listAll());
+            }
+            return "home-adop";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         return "home-adop";
     }
 
+    //Creo que no se usa
     @GetMapping("/registro")
     public String registrarAdoptante(Model model) {
         model.addAttribute("adoptante", new Adoptante());

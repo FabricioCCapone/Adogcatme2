@@ -25,13 +25,7 @@ public class MascotaServicio {
 
 
     public List<Mascota> findByFiltro(String raza, String tipo, Integer edad, String sexo, String tamano, Boolean castrado) {
-        Integer cast_valor;
-        if (castrado) {
-            cast_valor = 0;
-        } else {
-            cast_valor = 1;
-        }
-        return fr.filtro(raza, tipo, edad, sexo, tamano, cast_valor);
+        return fr.filtro(raza, tipo, edad, sexo, tamano, castrado);
     }
 
     public Optional<Mascota> findById(String id) {
