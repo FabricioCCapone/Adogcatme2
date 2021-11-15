@@ -25,8 +25,10 @@
                     <h2>Inicia Sesion</h2>
                 </div>
                 <form th:action="@{/logincheck}" method="POST" class="A">
+                    <p th:if="${error != null}" th:text="${error}" style="color: white"></p>
+
                     <div>   
-                        <input type="text" name="usuario" id="nombre" placeholder="Ingresa tu usuario">
+                        <input type="text" name="usuario" placeholder="Ingresa tu usuario">
                     </div>
                     <div>
                         <input type="password" name="contrasena"  placeholder="Ingresa tu contraseña">
@@ -43,16 +45,20 @@
                 </div>
                 <form th:action="@{/registro/save}" method="POST" class="B" enctype="multipart/form-data">
                     <div>
-                        <input hidden type="number" name="selector" value="0">
-                    </div>
-                    <div>
-                        <input type="text" name="usuario"  placeholder="usuario">
+                        <label for="selector">Que desea hacer?</label>
+                        <select name="selector" id="selector">
+                            <option value="1">Adoptar</option>
+                            <option value="0">Dar en Adopcion</option>
+                        </select>
                     </div>
                     <div>
                         <input type="text" name="nombre" id="name" placeholder="Nombre completo">
                     </div>
                     <div>
                         <input type="number" name="telefono" placeholder="Ingresa tu telefono">
+                    </div>
+                    <div>
+                        <input type="text" name="direccion" placeholder="Direccion Completa">
                     </div>
                     <div>
                         <label for="barrio">Elija su distrito</label>
@@ -68,17 +74,13 @@
                         <input type="text" name="email" placeholder="Ingresa tu correo electronico">
                     </div>
                     <div>
+                        <input type="text" name="usuario"  placeholder="usuario">
+                    </div>
+                    <div>
                         <input type="password" name="contrasena1" placeholder="Ingresa tu contraseña">
                     </div>
                     <div>
                         <input type="password" name="contrasena2" placeholder="Confirmar Contraseña">
-                    </div>
-                    <div>
-                        <input type="text" name="direccion" placeholder="Direccion Completa">
-                    </div>
-                    <div>
-                        <label for="imagen">Cargue imagen de perfil</label>
-                        <input type="file" name="imagen" id="imagen">
                     </div>
                     <div>
                         <input type="submit" value="Enviar" class="btn boton2">

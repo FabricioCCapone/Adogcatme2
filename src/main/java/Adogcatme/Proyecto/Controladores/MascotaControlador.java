@@ -64,9 +64,6 @@ public class MascotaControlador {
     @PostMapping("/save")
     public String editarMascota(@ModelAttribute Mascota m) {
         try {
-            System.out.println(m.getNombre());
-            System.out.println(m.getId());
-            System.out.println(m.getRaza());
             ms.editarMascota(m);
         } catch (Exception e) {
 
