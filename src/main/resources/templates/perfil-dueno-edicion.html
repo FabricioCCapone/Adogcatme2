@@ -31,10 +31,7 @@
                         <h3>Mis datos</h3>
                     </div>
 
-                    <form th:action="@{/dueno/save}" method="POST" th:object="${usuario}" class="B" enctype="multipart/form-data">
-                        <div>
-                            <input hidden type="number" name="selector" value="0">
-                        </div>
+                    <form th:action="@{/dueno/save}" method="POST" th:object="${usuario}" class="B" enctype="multipart/form-data">                      
                         <div>
                             <input type="hidden" name="id"  placeholder="id" th:field="*{id}" th:value="*{id}">
                         </div>

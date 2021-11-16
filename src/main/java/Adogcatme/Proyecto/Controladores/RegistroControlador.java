@@ -48,14 +48,14 @@ public class RegistroControlador {
         return "redirect:/";
     }
 
-    @GetMapping("/login")
-    public String login(Model model, @RequestParam(required = false) String error, @RequestParam(required = false) String username, @RequestParam(required = false) String logout) {
-        if (error != null) {
-            model.addAttribute("error", "El usuario o la contraseña son incorrectos");
-        }
-        if (username != null) {
-            model.addAttribute("username", username);
-        }
-        return "redirect:/";
-    }
+//    @GetMapping("/login")
+//    public String login(Model model, @RequestParam(required = false) String error, @RequestParam(required = false) String username, @RequestParam(required = false) String logout) {
+//        if (error != null) {
+//            model.addAttribute("error", "El usuario o la contraseña son incorrectos");
+//        }
+//        if (username != null) {
+//            model.addAttribute("username", username);
+//        }
+//        return "redirect:/";
+//    }
 }

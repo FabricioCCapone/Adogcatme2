@@ -24,5 +24,9 @@ public class Dueno extends Usuario implements Serializable {
     public void setMascotas(Mascota mascota) {
         mascotas.add(mascota);
     }
+    public void setMascotas2(List<Mascota> mascotas) {
+        this.mascotas = mascotas;
+    }
+
 
 }

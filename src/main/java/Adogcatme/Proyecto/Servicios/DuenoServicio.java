@@ -4,6 +4,7 @@ import Adogcatme.Proyecto.Repositorios.DuenoRepositorio;
 import Adogcatme.Proyecto.entidades.Mascota;
 import Adogcatme.Proyecto.entidades.Dueno;
 import exepciones.WebExeption;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -18,7 +19,7 @@ public class DuenoServicio {
 
     @Autowired
     private MascotaServicio mascotaServicio;
- 
+
     //Listar dueños
     public List<Dueno> listAll() {
         return duenoRepositorio.findAll();
@@ -32,47 +33,47 @@ public class DuenoServicio {
     public Dueno findByEmail(String email) {
         return duenoRepositorio.findByEmail(email);
     }
-    
+
     public Dueno findByUsuario(String usuario) {
         return duenoRepositorio.findByUsuario(usuario);
     }
-    
+
     //Eliminar mascota
     @Transactional
-    public void eliminarMascota (Dueno dueno, Mascota mascota) throws Exception{
-        if(dueno.getId().equals(mascota.getDueno().getId())){
+    public void eliminarMascota(Dueno dueno, Mascota mascota) throws Exception {
+        if (dueno.getId().equals(mascota.getDueno().getId())) {
             mascotaServicio.eliminarMascota(mascota);
-        }else{
+        } else {
             try {
                 System.out.println("El usuario no es dueño de la mascota");
             } catch (Exception e) {
             }
         }
     }
-    
+
     //Editar mascota
     @Transactional
-    public void editarMascota (Dueno dueno, Mascota mascota) throws Exception{
-        if(dueno.getId().equals(mascota.getDueno().getId())){
+    public void editarMascota(Dueno dueno, Mascota mascota) throws Exception {
+        if (dueno.getId().equals(mascota.getDueno().getId())) {
             mascotaServicio.editarMascota(mascota);
-        }else{
+        } else {
             try {
                 System.out.println("El usuario no es dueño de la mascota");
             } catch (Exception e) {
             }
         }
     }
-    
+
     //Agregar mascota
     @Transactional
-    public void agregarMascota (Dueno dueno, Mascota mascota){
+    public void agregarMascota(Dueno dueno, Mascota mascota) {
         try {
             mascota.setDueno(dueno);
             mascotaServicio.registrarMascota(mascota, dueno);
         } catch (Exception e) {
         }
     }
-    
+
     //Modificar dueño
     @Transactional
     public Dueno modificar(Dueno dueno) throws WebExeption {
@@ -98,6 +99,23 @@ public class DuenoServicio {
             throw new Exception(" La persona debe tener un teléfono de contacto");
         }
         return duenoRepositorio.save(dueno);
+    }
+
+    @Transactional
+    public Dueno saveEdicion(Dueno dueno) throws Exception {
+        if (dueno.getNombre().isEmpty() || dueno.getNombre() == null) {
+            throw new Exception(" La persona debe tener un nombre");
+        }
+        if (dueno.getEmail().isEmpty() || dueno.getEmail() == null) {
+            throw new Exception(" La persona debe tener un mail de contacto");
+        }
+        if (dueno.getContrasena().isEmpty() || dueno.getContrasena() == null) {
+            throw new Exception(" La contraseña es obligatoria");
+        }
+        if (dueno.getTelefono().isEmpty() || dueno.getTelefono() == null) {
+            throw new Exception(" La persona debe tener un teléfono de contacto");
+        }
+        return duenoRepositorio.save(dueno); 
     }
 
     //Eliminar dueño (Creada en el caso de que haya un usuario de administrador)
