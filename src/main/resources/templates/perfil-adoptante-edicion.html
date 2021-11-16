@@ -31,7 +31,7 @@
                         <h3>Mis datos</h3>
                     </div>
 
-                    <form th:action="@{/dueno/save}" method="POST" th:object="${usuario}" class="B" enctype="multipart/form-data">                      
+                    <form th:action="@{/adoptante/editarAdoptante}" method="POST" th:object="${adoptante}" class="B" enctype="multipart/form-data">                      
                         <div>
                             <input type="hidden" name="id"  placeholder="id" th:field="*{id}" th:value="*{id}">
                         </div>
@@ -80,7 +80,7 @@
 
                 <button type="button" class="btn-cancelar">
                     <nav>
-                        <a th:href="@{/dueno/home}"> Cancelar </a>
+                        <a th:href="@{/adoptante/perfilAdoptante}"> Cancelar </a>
                     </nav>
                 </button>
             </div>

@@ -6,6 +6,7 @@ import Adogcatme.Proyecto.Servicios.SolicitudServicio;
 import Adogcatme.Proyecto.entidades.Dueno;
 import Adogcatme.Proyecto.entidades.Mascota;
 import exepciones.WebExeption;
+import java.security.Principal;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,12 +67,13 @@ public class MascotaControlador {
     }
 
     @PostMapping("/save")
-    public String editarMascota(@ModelAttribute Mascota m) {
+    public String editarMascota(@ModelAttribute Mascota m,Principal principal,HttpSession session) {
         try {
+            Dueno dueno = (Dueno) session.getAttribute("usuario");
             System.out.println(m.getNombre());
             System.out.println(m.getId());
             System.out.println(m.getRaza());
-            ms.editarMascota(m);
+            ms.editarMascotaEnDueño(m,dueno);
         } catch (Exception e) {
 
         } finally {
@@ -79,14 +81,15 @@ public class MascotaControlador {
         }
     }
 
-    @PostMapping("/eliminarMascota/{id}")
-    public String eliminarMascota(Mascota m) {
+
+    @GetMapping("/eliminar/{id}")
+    public String eliminarMascota(@PathVariable(name = "id") String id) {
         try {
-            ms.eliminarMascota(m);
+            ms.eliminarMascota(id);
         } catch (Exception e) {
 
         } finally {
-            return "redirect:/";
+            return "redirect:/dueno/home";
         }
     }
 

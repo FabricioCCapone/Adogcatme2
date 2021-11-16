@@ -24,11 +24,12 @@
     </header>
 
     <main>
-
+        <p th:if="${error}" th:text="${error}"></p>
+        
         <div class="container-botom">
             <button type="button" class=" boton-adop">
                 <nav>
-                    <a th:href="@{registro/adoptante}" class="adop">Adoptar</a> 
+                    <a th:href="@{registro/usuario}" class="adop">Registrarse</a> 
                 </nav>
              </button>
         </div>
@@ -40,7 +41,7 @@
         <div class="container-botom">
             <button type="button" class=" boton-dueno"  >
                 <nav>
-                    <a th:href="@{registro/dueno}"> Dar en Adopción</a>
+                    <a th:href="@{registro/usuario}">Ingresar</a>
                 </nav>
             </button>
         </div>

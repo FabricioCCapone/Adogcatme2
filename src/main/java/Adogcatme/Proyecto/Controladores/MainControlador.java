@@ -6,6 +6,7 @@
 package Adogcatme.Proyecto.Controladores;
 
 import Adogcatme.Proyecto.entidades.Usuario;
+import java.security.Principal;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainControlador {
 
     @GetMapping("")
-    public String home(HttpSession session) {
+    public String home(HttpSession session, Principal principal) {
         Usuario usuario = (Usuario) session.getAttribute("usuario");
         try {
             if (usuario != null) {
@@ -32,10 +33,15 @@ public class MainControlador {
                 }
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return "home";
     }
-    
-    
+
+    @GetMapping("/?logout")
+    public String logout(HttpSession session){
+        session.removeAttribute("usuario");
+        return "redirect:/home";
+    }
 }

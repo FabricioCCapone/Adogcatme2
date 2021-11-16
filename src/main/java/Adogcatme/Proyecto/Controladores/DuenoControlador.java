@@ -1,8 +1,12 @@
 package Adogcatme.Proyecto.Controladores;
 
 import Adogcatme.Proyecto.Servicios.DuenoServicio;
+import Adogcatme.Proyecto.Servicios.MascotaServicio;
 import Adogcatme.Proyecto.entidades.Dueno;
+import Adogcatme.Proyecto.entidades.Mascota;
 import exepciones.WebExeption;
+import java.security.Principal;
+import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,18 +24,24 @@ public class DuenoControlador {
 
     @Autowired
     private DuenoServicio duenoServicio;
+    
+    @Autowired
+    private MascotaServicio ms;
 
     //Modificar un dueño
     @GetMapping("/editar")
     public String editarPerfilDueno(Model model, HttpSession session) {
         Dueno dueno = (Dueno) session.getAttribute("usuario");
         model.addAttribute("usuario", dueno);
-        return "perfil-dueno";
+        return "perfil-dueno-edicion";
     }
 
     @PostMapping("/save")
     public String guardarDueno(@ModelAttribute Dueno usuario) throws Exception {
         try {
+            Dueno dueno = duenoServicio.findByIde(usuario.getId());
+            List<Mascota> listaMascotas = dueno.getMascotas();
+            usuario.setMascotas2(listaMascotas);
             duenoServicio.save(usuario);
             return "redirect:/dueno/home";
         } catch (WebExeption ex) {
@@ -42,9 +52,10 @@ public class DuenoControlador {
 
     @GetMapping("/home")
     public String homeDueno(Model model, HttpSession session) {
-        Dueno usuario = (Dueno) session.getAttribute("usuario");
+        Dueno dueno = (Dueno) session.getAttribute("usuario");
+        Dueno usuario = duenoServicio.findByIde(dueno.getId());
         model.addAttribute("usuario", usuario);
-        model.addAttribute("mascotas", usuario.getMascotas());
+        model.addAttribute("mascotas", ms.mascotasDisponibles());
         return "perfil-dueno";
     }
 }

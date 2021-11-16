@@ -10,14 +10,14 @@ import Adogcatme.Proyecto.Servicios.MascotaServicio;
 import Adogcatme.Proyecto.Servicios.SolicitudServicio;
 import Adogcatme.Proyecto.entidades.Adoptante;
 import Adogcatme.Proyecto.entidades.Mascota;
-import java.util.List;
+import java.security.Principal;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,12 +34,10 @@ public class AdoptanteControlador {
     @Autowired
     MascotaServicio ms;
 
-    private Mascota mascota = new Mascota();
-
     @GetMapping("/perfilAdoptante")
     public String perfilAdoptante(Model model, Adoptante a) {
-        model.addAttribute("solicitudes", a.getSolicitud().listIterator());
-        return "perfil-adopt";
+        //model.addAttribute("solicitudes", a.getSolicitud().listIterator());
+        return "perfil-dueno-adop";
     }
 
     @GetMapping("/home")
@@ -58,15 +56,17 @@ public class AdoptanteControlador {
     }
 
     @GetMapping("/editarAdopt")
-    public String editarAdoptante(Model model, Adoptante a) {
-        model.addAttribute("adoptante", a);
-        return "perfil-adopt";
+    public String editarAdoptante(Model model, HttpSession session) {
+        Adoptante adoptante = (Adoptante) session.getAttribute("usuario");
+        model.addAttribute("adoptante", adoptante);
+        return "perfil-adoptante-edicion";
     }
 
     @PostMapping("/editarAdoptante")
     public String modificar(@ModelAttribute Adoptante a) {
         try {
             as.editarAdoptante(a);
+            return "redirect:/adoptante/perfilAdoptante";
         } catch (Exception e) {
 
         }
