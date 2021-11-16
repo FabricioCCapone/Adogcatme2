@@ -10,13 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
     
-    <link rel="stylesheet" href="../css/perfil-dueno-adopt-styles.css">
+    <link rel="stylesheet" href="css/perfil-dueno-adopt-styles.css">
     <title>Perfil</title>
 </head>
 <body>
     <header>
         <div>
-            <img class="logo" src="../asset/logo.png" alt="">
+            <img class="logo" src="/asset/logo.png" alt="">
         </div>
         <h1 class="titulo">ADOGCATME</h1>     
     </header>
@@ -25,15 +25,15 @@
         
         <div >
             <div class="header-perfil">
-                <button type="button" class="btn btn-secondary"> <img src="../asset/gear.png"/></button>
-                <img class="logo-perfil" src="../asset/foto-perfil.png"/>
+                <button type="button" class="btn btn-secondary"> <img src="/asset/gear.png"/></button>
+                <img class="logo-perfil" src="/asset/foto-perfil.png"/>
                 <h1 class="nombre-perfil"> UserName </h1>
             </div>
             <div class="perfil">
                 
                 <div class="column">
                     <div class="titulos">
-                        <img class="profile-pic" src="../asset/deter.png" alt="No Profile Pic"/>
+                        <img class="profile-pic" src="/asset/deter.png" alt="No Profile Pic"/>
 
                         <h3> Nombre: </h3>
                         <h3>Ubicacion:</h3>
@@ -43,9 +43,9 @@
                 </div>
                 <div class="descr-coint">
                     <div class="x">
-                        <img src="../asset/owner.png" />
-                        <img src="../asset/owner2.png" />
-                        <img src="../asset/owner3.png" />
+                        <img src="/asset/owner.png" />
+                        <img src="/asset/owner2.png" />
+                        <img src="/asset/owner3.png" />
                     </div>
                 </div>
 
@@ -56,9 +56,12 @@
                     <h2>No Mail</h2>
                 </div>
 
+                
                 <div class="buton">
-                    <button id="volver" class="btn-dark " type="button" > Volver al Inicio </button>
-                    <button id="ver-masc" class="btn-dark" type="button"> <a th:href="@{HOME-ADOPT.HTML}"></a> Ver Mascotas </button>
+                    <button id="ver-masc" class="btn-dark" type="button"> <a th:href="@{/adoptante/editarAdopt}">Editar perfil</a>  </button>
+                </div>
+                <div class="buton">
+                    <button id="ver-masc" class="btn-dark" type="button"> <a th:href="@{/adoptante/home}">Volver al inicio</a>  </button>
                 </div>
             </div>
         </div>

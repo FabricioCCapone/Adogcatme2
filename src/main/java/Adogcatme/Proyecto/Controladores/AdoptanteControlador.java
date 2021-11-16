@@ -10,6 +10,8 @@ import Adogcatme.Proyecto.Servicios.MascotaServicio;
 import Adogcatme.Proyecto.Servicios.SolicitudServicio;
 import Adogcatme.Proyecto.entidades.Adoptante;
 import Adogcatme.Proyecto.entidades.Mascota;
+import java.security.Principal;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,8 +36,8 @@ public class AdoptanteControlador {
 
     @GetMapping("/perfilAdoptante")
     public String perfilAdoptante(Model model, Adoptante a) {
-        model.addAttribute("solicitudes", a.getSolicitud().listIterator());
-        return "perfil-adopt";
+        //model.addAttribute("solicitudes", a.getSolicitud().listIterator());
+        return "perfil-dueno-adop";
     }
 
     @GetMapping("/home")
@@ -54,15 +56,17 @@ public class AdoptanteControlador {
     }
 
     @GetMapping("/editarAdopt")
-    public String editarAdoptante(Model model, Adoptante a) {
-        model.addAttribute("adoptante", a);
-        return "perfil-adopt";
+    public String editarAdoptante(Model model, HttpSession session) {
+        Adoptante adoptante = (Adoptante) session.getAttribute("usuario");
+        model.addAttribute("adoptante", adoptante);
+        return "perfil-adoptante-edicion";
     }
 
     @PostMapping("/editarAdoptante")
     public String modificar(@ModelAttribute Adoptante a) {
         try {
             as.editarAdoptante(a);
+            return "redirect:/adoptante/perfilAdoptante";
         } catch (Exception e) {
 
         }
