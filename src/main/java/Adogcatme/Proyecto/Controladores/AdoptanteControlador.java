@@ -32,10 +32,12 @@ public class AdoptanteControlador {
     @Autowired
     MascotaServicio ms;
 
-    @GetMapping("/perfilAdoptante")
-    public String perfilAdoptante(Model model, Adoptante a) {
-        //model.addAttribute("solicitudes", a.getSolicitud().listIterator());
-        return "perfil-dueno-adop";
+    @GetMapping("/perfil")
+    public String homeDueno(Model model, HttpSession session) {
+        Adoptante adop = (Adoptante) session.getAttribute("usuario");
+        Adoptante usuario = as.findByIde(adop.getId());
+        model.addAttribute("usuario", usuario);
+        return "perfil-adop";
     }
 
     @GetMapping("/home")
@@ -61,12 +63,13 @@ public class AdoptanteControlador {
     }
 
     @PostMapping("/editarAdoptante")
-    public String modificar(@ModelAttribute Adoptante a) {
+    public String modificar(@ModelAttribute Adoptante adoptante) {
         try {
-            as.editarAdoptante(a);
-            return "redirect:/adoptante/perfilAdoptante";
+            System.out.println(adoptante.toString());
+            as.editarAdoptante(adoptante);
+            return "redirect:/adoptante/perfil";
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         return "redirect:/";
     }
