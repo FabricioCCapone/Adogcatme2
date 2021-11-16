@@ -96,7 +96,7 @@
                                     <td th:text="${mascota.sexo}"></td>
                                     <td th:text="${mascota.descripcion}"></td>
                                     <td th:text="${mascota.peso}"></td>
-                                    <td th:text="${mascota.imagen}"></td>
+                                    <td><img th:if="${mascota.imagen != null}" th:src="${'/img/mascota?id=' + mascota.id}" width="120"/></td>
                                     <td th:text="${mascota.tamano}"></td>
                                     <td th:if="${mascota.castrado}">Si</td>
                                     <td th:unless="${mascota.castrado}">No</td>
@@ -117,40 +117,6 @@
                                 </tr>
                             </tbody>
                         </table>
-
-
-                        <!--                                    <div class="dropdown">
-    =======
-                        <!--                        <tbody>
-                                                    <tr th:each="us : ${usuario}">
-                                                        <td th:text="${us.mascota.nombre}"></td>
-                                                        <td th:text="${us.mascota.raza}"></td>
-                                                        <td th:text="${us.mascota.tipo}"></td>
-                                                        <td th:number="${us.mascota.edad}"></td>
-                                                        <td th:text="${us.mascota.sexo}"></td>
-                                                        <td th:text="${us.mascota.descripcion}"></td>
-                                                        <td th:number="${us.mascota.peso}"></td>
-                                                        <td th:text="${us.mascota.imagen}"></td>
-                                                        <td th:text="${us.mascota.tamano}"></td>
-                                                        <td th:if="${us.mascota.castrado}">Si</td>
-                                                        <td th:unless="${us.mascota.castrado}">No</td>
-                                                        <td th:text="${us.mascota.estado}"></td>-->
-                        <!--                                    <div class="dropdown">
-                                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                    Opciones de Libro
-                                                                </button>
-                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                                    <li><a class="dropdown-item" th:href="@{/libro/editarlibro/__${libro.id}__}">Editar</a></li>
-                                                                    <li><a class="dropdown-item" th:href="@{/libro/alta/__${libro.id}__}">Cambiar disponibilidad</a></li>
-                                                                    <li><a class="dropdown-item" th:href="@{/libro/eliminar/__${libro.id}__}">Eliminar</a></li>
-                                                                </ul>
-                                                            </div>-->
-                        <!--                                </td>-->
-                        <!--                            </tr>
-                </tbody>-->
-                        <!--                    </table>-->
-                        <!--                </div>-->
-
                     </div>
 
                     <div class="buton">
