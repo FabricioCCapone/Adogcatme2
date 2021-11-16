@@ -23,19 +23,18 @@ public class MascotaServicio {
     @Autowired
     DuenoServicio ds;
 
-
     public List<Mascota> findByFiltro(String raza, String tipo, Integer edad, String sexo, String tamano, Boolean castrado) {
         return fr.filtro(raza, tipo, edad, sexo, tamano, castrado);
     }
 
     public Mascota findById(String id) {
         Optional<Mascota> mascota = mr.findById(id);
-        if(mascota.isPresent()){
+        if (mascota.isPresent()) {
             return mascota.get();
         }
         return null;
     }
-    
+
     public List<Mascota> listAll() {
         return mr.findAll();
     }
@@ -61,6 +60,13 @@ public class MascotaServicio {
     }
 
     @Transactional
+    public void editarMascotaEnDueño(Mascota m, Dueno dueno) throws WebExeption, Exception {
+        if (mr.existsById(m.getId())) {
+            m.setDueno(dueno);
+            mr.save(m);
+            ds.save(dueno);
+        }
+    }
     public void eliminarMascota(String id_mascota) throws WebExeption {
         Mascota m = mr.findByIde(id_mascota);
         if (m != null) {

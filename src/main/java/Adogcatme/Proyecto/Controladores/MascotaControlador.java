@@ -5,6 +5,7 @@ import Adogcatme.Proyecto.Servicios.SolicitudServicio;
 import Adogcatme.Proyecto.entidades.Dueno;
 import Adogcatme.Proyecto.entidades.Mascota;
 import exepciones.WebExeption;
+import java.security.Principal;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,9 +63,13 @@ public class MascotaControlador {
     }
 
     @PostMapping("/save")
-    public String editarMascota(@ModelAttribute Mascota m) {
+    public String editarMascota(@ModelAttribute Mascota m,Principal principal,HttpSession session) {
         try {
-            ms.editarMascota(m);
+            Dueno dueno = (Dueno) session.getAttribute("usuario");
+            System.out.println(m.getNombre());
+            System.out.println(m.getId());
+            System.out.println(m.getRaza());
+            ms.editarMascotaEnDueño(m,dueno);
         } catch (Exception e) {
 
         } finally {

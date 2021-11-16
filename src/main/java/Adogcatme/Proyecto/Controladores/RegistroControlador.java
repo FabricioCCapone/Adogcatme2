@@ -42,4 +42,5 @@ public class RegistroControlador {
         return "redirect:/";
     }
 
+
 }
