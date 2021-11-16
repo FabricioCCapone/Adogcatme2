@@ -48,6 +48,7 @@
                         <p>Peso: <span th:text="${mascota.peso}">Kg</span></p>
                         <p>Tamaño: <span th:text="${mascota.tamano}"></span></p>
                         <p>¿Esta castrado? <span th:text="${mascota.castrado} ? 'Si' : 'No'"></span></p>
+                        <p><img th:if="${mascota.imagen != null}" th:src="${'/img/mascota?id=' + mascota.id}" width="120"/></p>
                         <p>Dueño: <span th:text="${mascota.dueno}!=null? ${mascota.dueno.nombre}:''"></span></p>
                         <a sec:authorize="isAuthenticated()" th:href="@{/}">Ver Mascota</a>
                     </div>

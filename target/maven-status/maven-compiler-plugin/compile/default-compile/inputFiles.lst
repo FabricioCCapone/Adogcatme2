@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 D:\Users\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\RegistroControlador.java
 D:\Users\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\SolicitudServicio.java
 D:\Users\Documents\NetBeansProjects\Adogcatme2\src\main\java\exepciones\WebExeption.java
@@ -30,33 +29,3 @@ D:\Users\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\
 D:\Users\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\UsuarioServicio.java
 D:\Users\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\ImagenControlador.java
 D:\Users\Documents\NetBeansProjects\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Imagen.java
-=======
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\MascotaControlador.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\AdoptanteRepositorio.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\DuenoServicio.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\LoginController.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\AdoptanteControlador.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Mascota.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Solicitud.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\RegistroControlador.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Adoptante.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Imagen.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\MascotaRepositorio.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\enums\Rol.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\FiltroRepositorio.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\AdoptanteServicio.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\ProyectoApplication.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\MascotaServicio.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\ErrorsControlador.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\SolicitudServicio.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\DuenoRepositorio.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Security.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\exepciones\WebExeption.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\SolicitudRepositorio.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Dueno.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Servicios\UsuarioServicio.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\MainControlador.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\entidades\Usuario.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Repositorios\UsuarioRepositorio.java
-E:\Valentin\Programacion\Curso UNR\Proyecto Adogcatme\Adogcatme2\src\main\java\Adogcatme\Proyecto\Controladores\DuenoControlador.java
->>>>>>> 4408810a8365f4df4f6494d7f8d0798ec183e975

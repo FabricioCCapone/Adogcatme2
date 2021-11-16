@@ -19,7 +19,7 @@ public class RegistroControlador {
 
     @GetMapping("/usuario")
     public String registroDueno() {
-        return "login-usuario"; 
+        return "registro-usuario"; 
     }
 
     @PostMapping("/save")
@@ -29,11 +29,11 @@ public class RegistroControlador {
         try {
             if (selector == 0) {
                 usuarioServicio.saveDueno(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
-                return "redirect:/registro/usuario";
+                return "login-usuario";
             }
             if (selector == 1) {
                 usuarioServicio.saveAdotante(usuario,contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
-                return "redirect:/registro/usuario";
+                return "login-usuario";
             }
             
         } catch (WebExeption ex) {
@@ -42,5 +42,9 @@ public class RegistroControlador {
         return "redirect:/";
     }
 
+    @GetMapping("/ingreso")
+    public String ingreso(){
+        return "login-usuario";
+    }
 
 }
