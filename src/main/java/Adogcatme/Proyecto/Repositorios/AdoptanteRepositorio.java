@@ -21,4 +21,7 @@ public interface AdoptanteRepositorio extends JpaRepository<Adoptante, String> {
     @Query("select a from Adoptante a where usuario = :usuario")
     public Adoptante findByUsuario(@Param("usuario") String usuario);
 
+    @Query("select a from Adoptante a where id = :id")
+    public Adoptante findByIde(@Param("id") String id);
+
 }
