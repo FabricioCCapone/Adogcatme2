@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<head lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec"http://www.thymeleaf.org/extras/spring-security">
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,42 +12,36 @@
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
     
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <title>Adogcatme</title>
 </head>
 <body>
     
     <header> 
-        <div class="perro"> <img src="/assets/perro.png"> </div> 
+        <div class="perro"> <img src="assets/perro.png"> </div> 
         <h1>ADOGCATME</h1> 
-        <div class="gato"> <img src="/assets/gato.png"> </div> 
+        <div class="gato"> <img src="assets/gato.png"> </div> 
     </header>
 
     <main>
-
+        <p th:if="${error}" th:text="${error}"></p>
+        
         <div class="container-botom">
             <button type="button" class=" boton-adop">
                 <nav>
-                    <a th:href="@{/adoptante/home}" class="adop">Adoptar</a> 
+                    <a th:href="@{registro/usuario}" class="adop">Registrarse</a> 
                 </nav>
-            </button>
+             </button>
         </div>
 
         <div class="logo-container">
-            <img src="../asset/logo.png" class="logo">
+            <img src="assets/logo.png" class="logo">
         </div>
 
         <div class="container-botom">
-            <button type="button" class=" boton-dueno">
+            <button type="button" class=" boton-dueno"  >
                 <nav>
-                    <a th:href="@{/registro/dueno}"> Dar en Adopción</a>
-                </nav>
-            </button>
-        </div>
-        <div class="container-botom">
-            <button type="button" class=" boton-dueno">
-                <nav>
-                    <a  sec:authorize="isAuthenticated()" th:href="@{/logout}"> Log Out</a>
+                    <a th:href="@{registro/usuario}">Ingresar</a>
                 </nav>
             </button>
         </div>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
@@ -15,12 +16,15 @@
     <body>
         <header>
             <h1>ADOGCATME</h1> 
-            <div class="img-registroMascota"><img src="/asset/logo.png" alt=""></div>
+            <div class="img-registroMascota"><img src="/assets/logo.png" alt=""></div>
         </header>
         <main>
             <h3>Registre su Mascota</h3>
             <div class="formulario">
-                <form th:action="@{/mascota/registroform}" method="POST" th:object="${mascota}"enctype="multipart/form-data">
+                <form th:action="@{/mascota/registroform}" method="POST" th:object="${mascota}" enctype="multipart/form-data"> 
+                    <div>
+                        <input type="hidden" name="dueno" th:field="*{dueno}">
+                    </div>
                     <div>
                         <label for="tipo">Seleccione tipo de mascota:</label>
                         <select name="tipo" id="tipo"th:field="*{tipo}">
@@ -62,9 +66,9 @@
                     </div>
                     <div>
                         <label for="castrado">¿Esta castrado/a?:</label>
-                        Si<input type="radio" value="si" name="castrado" id="si" th:field="*{castrado}">
-                        No<input type="radio" value="no" name="castrado" id="no"th:field="*{castrado}">
-                    </div>
+                        Si<input type="radio" value="true" name="castrado" id="castrado" th:field="*{castrado}">
+                        No<input type="radio" value="false" name="castrado" id="castrado"th:field="*{castrado}">
+                    </div>                    
                     <!--            <div>
                                     <label for="imagen">Cargue imagen de su mascota</label>
                                     <input type="file" name="imagen" id="imagen">
@@ -82,7 +86,7 @@
                     </div>
                 </form>
             </div>
-        </main>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    </body>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
 </html>

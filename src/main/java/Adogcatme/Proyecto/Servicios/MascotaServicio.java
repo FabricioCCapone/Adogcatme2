@@ -2,6 +2,7 @@ package Adogcatme.Proyecto.Servicios;
 
 import Adogcatme.Proyecto.Repositorios.FiltroRepositorio;
 import Adogcatme.Proyecto.Repositorios.MascotaRepositorio;
+import Adogcatme.Proyecto.entidades.Dueno;
 import Adogcatme.Proyecto.entidades.Mascota;
 import exepciones.WebExeption;
 import java.util.List;
@@ -19,29 +20,36 @@ public class MascotaServicio {
     @Autowired
     FiltroRepositorio fr;
 
+    @Autowired
+    DuenoServicio ds;
 
-    public List<Mascota> findByFiltro(String raza, String tipo, Integer edad, String sexo, String tamano, Integer castrado) {
-        Integer cast_valor;
-        if (castrado.equals("SI")) {
-            cast_valor = 0;
-        } else {
-            cast_valor = 1;
-        }
-        return fr.filtro(raza, tipo, edad, sexo, tamano, cast_valor);
+    public List<Mascota> findByFiltro(String raza, String tipo, Integer edad, String sexo, String tamano, Boolean castrado) {
+        return fr.filtro(raza, tipo, edad, sexo, tamano, castrado);
     }
 
-   // public List<Mascota> findByDuenoId(String dueno_id) {
-     //   return mr.findByDuenoId(dueno_id);
-    //}
+    public Mascota findById(String id) {
+        Optional<Mascota> mascota = mr.findById(id);
+        if (mascota.isPresent()) {
+            return mascota.get();
+        }
+        return null;
+    }
 
-    public Optional<Mascota> findById(String id) {
-        return mr.findById(id);
+    public List<Mascota> listAll() {
+        return mr.findAll();
+    }
+
+    public List<Mascota> mascotasDisponibles() {
+        return mr.mascotasDisponibles(Boolean.TRUE);
     }
 
     @Transactional
-    public void registrarMascota(Mascota m) throws WebExeption {
+    public void registrarMascota(Mascota m, Dueno d) throws WebExeption, Exception {
         verificarRegistro(m);
+        m.setDueno(d);
         mr.save(m);
+        d.getMascotas().add(m);
+        ds.save(d);
     }
 
     @Transactional
@@ -52,9 +60,17 @@ public class MascotaServicio {
     }
 
     @Transactional
-    public void eliminarMascota(Mascota m) throws WebExeption {
+    public void editarMascotaEnDueño(Mascota m, Dueno dueno) throws WebExeption, Exception {
         if (mr.existsById(m.getId())) {
-            mr.deleteById(m.getId());
+            m.setDueno(dueno);
+            mr.save(m);
+            ds.save(dueno);
+        }
+    }
+    public void eliminarMascota(String id_mascota) throws WebExeption {
+        Mascota m = mr.findByIde(id_mascota);
+        if (m != null) {
+            m.setEstado(Boolean.FALSE);
         }
     }
 
@@ -77,7 +93,7 @@ public class MascotaServicio {
         if (m.getTipo().isEmpty() || m.getTipo() == null) {
             throw new WebExeption("Debes indicar el tipo de mascota.");
         }
-        if (m.getEdad() == 0 || m.getTipo() == null) {
+        if (m.getEdad() == 0 || m.getEdad() == null) {
             throw new WebExeption("La edad de la mascota no puede estar vacia.");
         }
         if (m.getPeso() == 0 || m.getPeso() == null) {

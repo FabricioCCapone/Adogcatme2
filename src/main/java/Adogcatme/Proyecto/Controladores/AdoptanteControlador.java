@@ -6,8 +6,10 @@
 package Adogcatme.Proyecto.Controladores;
 
 import Adogcatme.Proyecto.Servicios.AdoptanteServicio;
+import Adogcatme.Proyecto.Servicios.MascotaServicio;
 import Adogcatme.Proyecto.Servicios.SolicitudServicio;
 import Adogcatme.Proyecto.entidades.Adoptante;
+import Adogcatme.Proyecto.entidades.Mascota;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/adoptante")
@@ -26,34 +29,30 @@ public class AdoptanteControlador {
     @Autowired
     SolicitudServicio ss;
 
+    @Autowired
+    MascotaServicio ms;
+
     @GetMapping("/perfilAdoptante")
     public String perfilAdoptante(Model model, Adoptante a) {
         model.addAttribute("solicitudes", a.getSolicitud().listIterator());
         return "perfil-adopt";
     }
+
     @GetMapping("/home")
-    public String homeAdoptante(){
-        
-    return "home-adop";
+    public String homeAdoptante(Model model, @RequestParam(required = false) String raza, @RequestParam(required = false) String tipo, @RequestParam(required = false) Integer edad, @RequestParam(required = false) String sexo, @RequestParam(required = false) String tamano, @RequestParam(required = false) Boolean castrado) {
+        try {
+            if ((raza != null) || (tipo != null) || (edad != null) || (sexo != null) || (tamano != null) || (castrado != null)) {
+                model.addAttribute("mascotas", ms.findByFiltro(raza, tipo, edad, sexo, tamano, castrado));
+            } else {
+                model.addAttribute("mascotas", ms.listAll());
+            }
+            return "home-adop";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return "home-adop";
     }
 
-    @GetMapping("/registro")
-    public String registrarAdoptante(Model model){
-        model.addAttribute("adoptante", new Adoptante());
-        return "regist-adopt";
-    }   
-    
-    @PostMapping("/registroForm")
-    public String registrarAdoptante(@ModelAttribute Adoptante adoptante){
-        try {
-            as.registrarAdoptante(adoptante);
-        } catch (Exception e) {
-            
-        }finally{
-            return "redirect:/";
-        }
-    }
-    
     @GetMapping("/editarAdopt")
     public String editarAdoptante(Model model, Adoptante a) {
         model.addAttribute("adoptante", a);
@@ -69,5 +68,5 @@ public class AdoptanteControlador {
         }
         return "redirect:/";
     }
-    
+
 }

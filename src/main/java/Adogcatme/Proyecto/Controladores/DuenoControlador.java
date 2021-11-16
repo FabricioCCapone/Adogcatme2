@@ -1,8 +1,12 @@
 package Adogcatme.Proyecto.Controladores;
 
 import Adogcatme.Proyecto.Servicios.DuenoServicio;
+import Adogcatme.Proyecto.Servicios.MascotaServicio;
 import Adogcatme.Proyecto.entidades.Dueno;
+import Adogcatme.Proyecto.entidades.Mascota;
 import exepciones.WebExeption;
+import java.security.Principal;
+import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 @RequestMapping("/dueno")
@@ -21,33 +24,38 @@ public class DuenoControlador {
 
     @Autowired
     private DuenoServicio duenoServicio;
+    
+    @Autowired
+    private MascotaServicio ms;
 
     //Modificar un dueño
     @GetMapping("/editar")
     public String editarPerfilDueno(Model model, HttpSession session) {
         Dueno dueno = (Dueno) session.getAttribute("usuario");
         model.addAttribute("usuario", dueno);
-        return "editar-dueno";
+        return "perfil-dueno-edicion";
     }
 
     @PostMapping("/save")
-    public String editarDueno(@ModelAttribute Dueno usuario, Model model) {
+    public String guardarDueno(@ModelAttribute Dueno usuario) throws Exception {
         try {
-            duenoServicio.modificar(usuario);
+            Dueno dueno = duenoServicio.findByIde(usuario.getId());
+            List<Mascota> listaMascotas = dueno.getMascotas();
+            usuario.setMascotas2(listaMascotas);
+            duenoServicio.save(usuario);
             return "redirect:/dueno/home";
-        } catch (WebExeption e) {
-            model.addAttribute("error", e.getMessage());
+        } catch (WebExeption ex) {
         }
+
         return "redirect:/dueno/editar";
     }
 
     @GetMapping("/home")
     public String homeDueno(Model model, HttpSession session) {
         Dueno dueno = (Dueno) session.getAttribute("usuario");
-        model.addAttribute("usuario", dueno);
-        model.addAttribute("mascota", dueno.getMascotas());
+        Dueno usuario = duenoServicio.findByIde(dueno.getId());
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("mascotas", ms.mascotasDisponibles());
         return "perfil-dueno";
     }
-    //QUEDAMOS ACA
-    //Como distinguir al loggear y como pasar los datos del objeto al loggear
 }

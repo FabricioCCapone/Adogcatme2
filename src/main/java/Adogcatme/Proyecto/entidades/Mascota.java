@@ -1,8 +1,8 @@
-
 package Adogcatme.Proyecto.entidades;
-    
+
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -11,18 +11,18 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Mascota implements Serializable {
-    
+
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-    
-    @ManyToOne
+
+    @ManyToOne (fetch = FetchType.EAGER)
     private Dueno dueno;
-    
-    @ManyToOne
+
+    @ManyToOne (fetch = FetchType.EAGER)
     private Adoptante adoptante;
-    
+
     private String nombre;
     private String raza;
     private String tipo;
@@ -30,18 +30,18 @@ public class Mascota implements Serializable {
     private String sexo;
     private String descripcion;
     private Double peso;
-    
+
     @OneToOne
     private Imagen imagen;
-    
+
     private String tamano;
     private Boolean castrado;
-    private String estado;
+    private Boolean estado = true;
 
     public Mascota() {
     }
 
-    public Mascota(String id, Dueno dueno, Adoptante adoptante, String nombre, String raza, String tipo, Integer edad, String sexo, String descripcion, Double peso, Imagen imagen, String tamano, Boolean castrado, String estado) {
+    public Mascota(String id, Dueno dueno, Adoptante adoptante, String nombre, String raza, String tipo, Integer edad, String sexo, String descripcion, Double peso, Imagen imagen, String tamano, Boolean castrado, Boolean estado) {
         this.id = id;
         this.dueno = dueno;
         this.adoptante = adoptante;
@@ -56,7 +56,7 @@ public class Mascota implements Serializable {
         this.tamano = tamano;
         this.castrado = castrado;
         this.estado = estado;
-    }    
+    }
 
     public String getId() {
         return id;
@@ -73,6 +73,7 @@ public class Mascota implements Serializable {
     public void setDueno(Dueno dueno) {
         this.dueno = dueno;
     }
+
 
     public Adoptante getAdoptante() {
         return adoptante;
@@ -162,13 +163,13 @@ public class Mascota implements Serializable {
         this.castrado = castrado;
     }
 
-    public String getEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
-    
-    
+
+
 }

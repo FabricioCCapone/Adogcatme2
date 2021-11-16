@@ -1,0 +1,157 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #8e9aaf;
+    width: 100vw;
+    height: 100vh;
+}
+
+header{
+    align-items: center;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    background-color: #F4A261;
+    height: 25%;
+    width: 100%;
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
+main{
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    font-size: 90px;
+}
+
+h3{
+    text-align: center;
+    font-size: 250%;
+}
+
+p{
+    font-size: 400%;
+}
+
+.logo{
+    width: 175px;
+    height: 150px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logo img{
+    width: 150px;
+    height: 150px;
+}
+
+
+
+.contenedor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+}
+
+.perfil-izq{
+    margin-right: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 400px;
+
+}
+
+.contenido{
+    width: 80%;
+    /*min-height: 75%;*/
+}
+
+
+
+
+.foto-masc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5%;
+    border-radius: 10px;
+    padding-right: 75px;
+    padding-left: 75px;
+    background-color: #4a5568;
+    height: 250px;
+    width: 260px;
+}
+
+.foto-masc img{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}
+
+.btn-adoptar{
+    font-size: 150%;
+    border-radius: 50px;
+    width: 90%;
+    background-color: #E76F51;
+    border-color: #E76F51;
+    text-decoration-color: black;
+}
+
+.btn-adoptar:hover{
+    background-color: #ed9078;
+}
+
+
+
+
+.titulo{
+    background-color: #F4A261;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-top: 1%;
+    padding-bottom: 0.5%;    
+}
+
+.texto {
+    background-color: #5f6d86;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    padding-block: 15px;
+    margin-bottom: 2%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.col-1{
+    font-size: x-large;
+}
+
+.col-2{
+    font-size: medium; /*Para ir preparando, luego cambios*/
+    /*Info de la mascota - a completar*/
+}
+
+.descripcion{
+    padding-block: 50px; /*Para hacer "figurar" el espacio, ver el agregado. Además, ver si se sigue usando*/
+    text-align: justify; /*Para un futuro*/
+    background-color: #5f6d86;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    min-height: 40%;
+}
+  
+
+
+
+
+
+
+
+

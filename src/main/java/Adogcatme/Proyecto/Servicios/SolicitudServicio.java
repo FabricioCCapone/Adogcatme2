@@ -6,8 +6,6 @@
 package Adogcatme.Proyecto.Servicios;
 
 import Adogcatme.Proyecto.Repositorios.SolicitudRepositorio;
-import Adogcatme.Proyecto.entidades.Adoptante;
-import Adogcatme.Proyecto.entidades.Dueno;
 import Adogcatme.Proyecto.entidades.Solicitud;
 import exepciones.WebExeption;
 import java.util.List;
@@ -24,8 +22,7 @@ public class SolicitudServicio {
 
     @Autowired
     private SolicitudRepositorio solicitudRepositorio;
-    @Autowired
-    private UsuarioServicio usuarioServicio;
+    
     @Autowired 
     private DuenoServicio duenoServicio;
     @Autowired
