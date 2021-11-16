@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -41,15 +42,15 @@ public class MascotaControlador {
     }
 
     @PostMapping("/registroform")
-    public String registrarMascota(@ModelAttribute Mascota mascota, HttpSession session) {
+    public String registrarMascota(@ModelAttribute Mascota mascota, HttpSession session, MultipartFile archivo) {
         try {
             Dueno usuario = (Dueno) session.getAttribute("usuario");
-            ms.registrarMascota(mascota, usuario);
+            ms.registrarMascota(mascota, usuario, archivo);
             return "redirect:/dueno/home";
         } catch (WebExeption e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         return "redirect:/dueno/home";
     }
@@ -66,12 +67,9 @@ public class MascotaControlador {
     public String editarMascota(@ModelAttribute Mascota m,Principal principal,HttpSession session) {
         try {
             Dueno dueno = (Dueno) session.getAttribute("usuario");
-            System.out.println(m.getNombre());
-            System.out.println(m.getId());
-            System.out.println(m.getRaza());
             ms.editarMascotaEnDueño(m,dueno);
         } catch (Exception e) {
-
+            e.printStackTrace();
         } finally {
             return "redirect:/";
         }
@@ -82,7 +80,7 @@ public class MascotaControlador {
         try {
             ms.eliminarMascota(id);
         } catch (Exception e) {
-
+            e.printStackTrace();
         } finally {
             return "redirect:/dueno/home";
         }

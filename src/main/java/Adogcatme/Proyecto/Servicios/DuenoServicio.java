@@ -4,7 +4,6 @@ import Adogcatme.Proyecto.Repositorios.DuenoRepositorio;
 import Adogcatme.Proyecto.entidades.Mascota;
 import Adogcatme.Proyecto.entidades.Dueno;
 import exepciones.WebExeption;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -36,17 +35,6 @@ public class DuenoServicio {
 
     public Dueno findByUsuario(String usuario) {
         return duenoRepositorio.findByUsuario(usuario);
-    }
-
-
-    //Agregar mascota
-    @Transactional
-    public void agregarMascota(Dueno dueno, Mascota mascota) {
-        try {
-            mascota.setDueno(dueno);
-            mascotaServicio.registrarMascota(mascota, dueno);
-        } catch (Exception e) {
-        }
     }
 
     //Modificar dueño
