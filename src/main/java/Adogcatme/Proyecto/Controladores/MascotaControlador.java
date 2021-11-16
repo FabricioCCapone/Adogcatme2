@@ -1,5 +1,6 @@
 package Adogcatme.Proyecto.Controladores;
 
+import Adogcatme.Proyecto.Servicios.DuenoServicio;
 import Adogcatme.Proyecto.Servicios.MascotaServicio;
 import Adogcatme.Proyecto.Servicios.SolicitudServicio;
 import Adogcatme.Proyecto.entidades.Dueno;
@@ -27,6 +28,9 @@ public class MascotaControlador {
 
     @Autowired
     SolicitudServicio ss;
+    
+    @Autowired
+    DuenoServicio ds;
 
     @GetMapping("/perfilMascota")
     public String perfilMascota(Model model, Mascota m) {
@@ -74,6 +78,7 @@ public class MascotaControlador {
             return "redirect:/";
         }
     }
+
 
     @GetMapping("/eliminar/{id}")
     public String eliminarMascota(@PathVariable(name = "id") String id) {

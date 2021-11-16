@@ -79,6 +79,7 @@ public class MascotaServicio {
         Mascota m = mr.findByIde(id_mascota);
         if (m != null) {
             m.setEstado(Boolean.FALSE);
+            mr.save(m);
         }
     }
 

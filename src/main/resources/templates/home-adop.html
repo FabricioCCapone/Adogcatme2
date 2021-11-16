@@ -23,7 +23,7 @@
     <body>
         <header>
             <h1>ADOGCATME</h1>
-            <div class="img-adop"><img src="../asset/logo.png" alt="" /></div>
+            <div class="img-adop"><img src="/asset/logo.png" alt="" /></div>
         </header>
         <main>
             <div class="navegador">
@@ -32,12 +32,13 @@
                     <a sec:authorize="!isAuthenticated()" th:href="@{/registro/adoptante}">Iniciar Sesion</a>
                     <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar Sesion</a>
                     <a sec:authorize="!isAuthenticated()" th:href="@{/registro/adoptante}">Registrarse</a>
+                    <a sec:authorize="isAuthenticated()" th:href="@{/adoptante/perfilAdoptante}">Ir a mi perfil</a>
                 </nav>
             </div>
             <div class="container">
                 <div class="mascotas">
                     <div class="A">
-                        <img src="../asset/gatito.png" alt="" />
+                        <img src="/asset/gatito.png" alt="" />
                     </div>
                     <div class="B" th:each="mascota : ${mascotas}">
                         <p>Tipo de mascota: <span th:text="${mascota.tipo}"></span></p>
@@ -48,6 +49,7 @@
                         <p>Tamaño: <span th:text="${mascota.tamano}"></span></p>
                         <p>¿Esta castrado? <span th:text="${mascota.castrado} ? 'Si' : 'No'"></span></p>
                         <p>Dueño: <span th:text="${mascota.dueno}!=null? ${mascota.dueno.nombre}:''"></span></p>
+                        <a sec:authorize="isAuthenticated()" th:href="@{/}">Ver Mascota</a>
                     </div>
                 </div>
             </div>
