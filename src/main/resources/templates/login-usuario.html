@@ -38,55 +38,6 @@
                     </div>
                 </form>
             </div>
-            <div class="formulario">
-                <div class="subt-duenoB">
-                    <h2>¿No estas registrado?</h2>
-                    <h3>Llena tus datos</h3> <br> 
-                </div>
-                <form th:action="@{/registro/save}" method="POST" class="B" enctype="multipart/form-data">
-                    <div>
-                        <label for="selector">Que desea hacer?</label>
-                        <select name="selector" id="selector">
-                            <option value="1">Adoptar</option>
-                            <option value="0">Dar en Adopcion</option>
-                        </select>
-                    </div>
-                    <div>
-                        <input type="text" name="nombre" id="name" placeholder="Nombre completo">
-                    </div>
-                    <div>
-                        <input type="number" name="telefono" placeholder="Ingresa tu telefono">
-                    </div>
-                    <div>
-                        <input type="text" name="direccion" placeholder="Direccion Completa">
-                    </div>
-                    <div>
-                        <label for="barrio">Elija su distrito</label>
-                        <select name="barrio" id="barrio">
-                            <option value="distrito norte">Distrito Norte</option>
-                            <option value="distrito sur">Distrito Sur</option>
-                            <option value="distrito centro">Distrito Centro</option>
-                            <option value="distrito este">Distrito Este</option>
-                            <option value="distrito oeste">Distrito Oeste</option>
-                        </select>
-                    </div>
-                    <div>
-                        <input type="text" name="email" placeholder="Ingresa tu correo electronico">
-                    </div>
-                    <div>
-                        <input type="text" name="usuario"  placeholder="usuario">
-                    </div>
-                    <div>
-                        <input type="password" name="contrasena1" placeholder="Ingresa tu contraseña">
-                    </div>
-                    <div>
-                        <input type="password" name="contrasena2" placeholder="Confirmar Contraseña">
-                    </div>
-                    <div>
-                        <input type="submit" value="Enviar" class="btn boton2">
-                    </div>
-                </form>
-            </div>
         </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
