@@ -38,8 +38,9 @@ public class UsuarioServicio implements UserDetailsService {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         validar(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
         Adoptante adoptante = adoptanteServicio.findByEmail(email);
+        Adoptante adoptanteUsuario = adoptanteServicio.findByUsuario(usuario);
 
-        if (adoptante == null) {
+        if (adoptante == null && adoptanteUsuario == null) {
             adoptante = new Adoptante();
             adoptante.setUsuario(usuario);
             adoptante.setContrasena(encoder.encode(contrasena1));
@@ -59,6 +60,7 @@ public class UsuarioServicio implements UserDetailsService {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         validar(usuario, contrasena1, contrasena2, nombre, telefono, email, barrio, direccion);
         Dueno dueno = duenoServicio.findByEmail(email);
+        Dueno duenoUsuario = duenoServicio.findByUsuario(usuario);
 
         if (dueno == null) {
             dueno = new Dueno();

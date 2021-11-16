@@ -1,6 +1,7 @@
 package Adogcatme.Proyecto.Controladores;
 
 import Adogcatme.Proyecto.Servicios.DuenoServicio;
+import Adogcatme.Proyecto.Servicios.MascotaServicio;
 import Adogcatme.Proyecto.entidades.Dueno;
 import exepciones.WebExeption;
 import javax.servlet.http.HttpSession;
@@ -20,6 +21,9 @@ public class DuenoControlador {
 
     @Autowired
     private DuenoServicio duenoServicio;
+    
+    @Autowired
+    private MascotaServicio ms;
 
     //Modificar un dueño
     @GetMapping("/editar")
@@ -44,7 +48,7 @@ public class DuenoControlador {
     public String homeDueno(Model model, HttpSession session) {
         Dueno usuario = (Dueno) session.getAttribute("usuario");
         model.addAttribute("usuario", usuario);
-        model.addAttribute("mascotas", usuario.getMascotas());
+        model.addAttribute("mascotas", ms.mascotasDisponibles());
         return "perfil-dueno";
     }
 }
