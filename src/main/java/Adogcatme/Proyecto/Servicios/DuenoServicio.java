@@ -38,31 +38,6 @@ public class DuenoServicio {
         return duenoRepositorio.findByUsuario(usuario);
     }
 
-    //Eliminar mascota
-    @Transactional
-    public void eliminarMascota(Dueno dueno, Mascota mascota) throws Exception {
-        if (dueno.getId().equals(mascota.getDueno().getId())) {
-            mascotaServicio.eliminarMascota(mascota);
-        } else {
-            try {
-                System.out.println("El usuario no es dueño de la mascota");
-            } catch (Exception e) {
-            }
-        }
-    }
-
-    //Editar mascota
-    @Transactional
-    public void editarMascota(Dueno dueno, Mascota mascota) throws Exception {
-        if (dueno.getId().equals(mascota.getDueno().getId())) {
-            mascotaServicio.editarMascota(mascota);
-        } else {
-            try {
-                System.out.println("El usuario no es dueño de la mascota");
-            } catch (Exception e) {
-            }
-        }
-    }
 
     //Agregar mascota
     @Transactional

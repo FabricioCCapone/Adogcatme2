@@ -108,8 +108,8 @@
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                 <li><a class="dropdown-item" th:href="@{/mascota/editar/__${mascota.id}__}">Editar</a></li>
-                                                <li><a class="dropdown-item">Ver solicitudes</a></li>
-                                                <li><a class="dropdown-item">Eliminar</a></li>
+                                                <li><a class="dropdown-item" th:href="@{/mascota/eliminar/__${mascota.id}__}">Ver solicitudes</a></li>
+                                                <li><a class="dropdown-item" th:href="@{/mascota/eliminar/__${mascota.id}__}">Eliminar</a></li>
                                             </ul>
                                         </div>
                                     </td>

@@ -116,4 +116,11 @@ public class Usuario {
     public void setSolicitud(List<Solicitud> solicitud) {
         this.solicitud = solicitud;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "id=" + id + ", usuario=" + usuario + ", contrasena=" + contrasena + ", nombre=" + nombre + ", email=" + email + ", barrio=" + barrio + ", direccion=" + direccion + ", solicitud=" + solicitud + ", telefono=" + telefono + ", rol=" + rol + '}';
+    }
+    
+    
 }
