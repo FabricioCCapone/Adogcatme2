@@ -72,14 +72,14 @@ public class MascotaControlador {
         }
     }
 
-    @GetMapping("/eliminarMascota")
-    public String eliminarMascota(@ModelAttribute Mascota m) {
+    @GetMapping("/eliminar/{id}")
+    public String eliminarMascota(@PathVariable(name = "id") String id) {
         try {
-            ms.eliminarMascota(m);
+            ms.eliminarMascota(id);
         } catch (Exception e) {
 
         } finally {
-            return "redirect:/";
+            return "redirect:/dueno/home";
         }
     }
 

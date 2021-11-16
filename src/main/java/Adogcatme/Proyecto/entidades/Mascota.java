@@ -36,12 +36,12 @@ public class Mascota implements Serializable {
 
     private String tamano;
     private Boolean castrado;
-    private String estado;
+    private Boolean estado = true;
 
     public Mascota() {
     }
 
-    public Mascota(String id, Dueno dueno, Adoptante adoptante, String nombre, String raza, String tipo, Integer edad, String sexo, String descripcion, Double peso, Imagen imagen, String tamano, Boolean castrado, String estado) {
+    public Mascota(String id, Dueno dueno, Adoptante adoptante, String nombre, String raza, String tipo, Integer edad, String sexo, String descripcion, Double peso, Imagen imagen, String tamano, Boolean castrado, Boolean estado) {
         this.id = id;
         this.dueno = dueno;
         this.adoptante = adoptante;
@@ -163,12 +163,13 @@ public class Mascota implements Serializable {
         this.castrado = castrado;
     }
 
-    public String getEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
+
 
 }

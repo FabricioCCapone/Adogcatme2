@@ -40,6 +40,10 @@ public class MascotaServicio {
         return mr.findAll();
     }
 
+    public List<Mascota> mascotasDisponibles() {
+        return mr.mascotasDisponibles(Boolean.TRUE);
+    }
+
     @Transactional
     public void registrarMascota(Mascota m, Dueno d) throws WebExeption, Exception {
         verificarRegistro(m);
@@ -57,9 +61,10 @@ public class MascotaServicio {
     }
 
     @Transactional
-    public void eliminarMascota(Mascota m) throws WebExeption {
-        if (mr.existsById(m.getId())) {
-            mr.deleteById(m.getId());
+    public void eliminarMascota(String id_mascota) throws WebExeption {
+        Mascota m = mr.findByIde(id_mascota);
+        if (m != null) {
+            m.setEstado(Boolean.FALSE);
         }
     }
 
