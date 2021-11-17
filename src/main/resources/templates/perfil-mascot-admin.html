@@ -33,9 +33,11 @@
             </div>
 
             <div class="contenedor">
+
                 <div class="foto-masc">
-                    <img src="/asset/newgatito.jpeg" alt="">
+                    <p><img th:if="${mascota.imagen != null}" th:src="${'/img/mascota?id=' + mascota.id}" width="120"/></p>
                 </div>
+
                 <div class="contenido">
 
                     <div class="titulo">
@@ -55,7 +57,10 @@
                                     <option value="otro">Otro</option>
                                 </select>   
                             </div>    
-
+                            <div>
+                                <label for="imagen">Actualice la imagen de su mascota</label>
+                                <input type="file" name="archivo" id="archivo">
+                            </div>
                             <div>
                                 <label for="nombre">Ingrese nombre</label>
                                 <input type="text" name="nombre" th:field="*{nombre}">
