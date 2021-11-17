@@ -6,6 +6,9 @@
 package Adogcatme.Proyecto.Servicios;
 
 import Adogcatme.Proyecto.Repositorios.SolicitudRepositorio;
+import Adogcatme.Proyecto.entidades.Adoptante;
+import Adogcatme.Proyecto.entidades.Dueno;
+import Adogcatme.Proyecto.entidades.Mascota;
 import Adogcatme.Proyecto.entidades.Solicitud;
 import exepciones.WebExeption;
 import java.util.List;
@@ -34,10 +37,14 @@ public class SolicitudServicio {
     }
 
     @Transactional
-    public Solicitud save(String emailAdop ,String emailDueno) throws WebExeption {
+    public Solicitud save(Adoptante adoptante,Mascota mascota) throws WebExeption {
         Solicitud solicitud = new Solicitud();
-//        solicitud.setAdoptante(adoptanteServicio.findByEmail(emailAdop));
-        solicitud.setDueno(duenoServicio.findByEmail(emailDueno));
+        solicitud.setAdoptante(adoptante);
+        solicitud.setMascota(mascota);
+        Dueno dueno = duenoServicio.findByIde(mascota.getDueno().getId());
+        solicitud.setDueno(dueno);
+        adoptanteServicio.save(adoptante,solicitud);
+        duenoServicio.saveSolicitud(dueno, solicitud);
         return solicitudRepositorio.save(solicitud);
     }
 

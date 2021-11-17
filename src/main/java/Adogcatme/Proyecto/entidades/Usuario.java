@@ -113,9 +113,10 @@ public class Usuario {
         return solicitud;
     }
 
-    public void setSolicitud(List<Solicitud> solicitud) {
-        this.solicitud = solicitud;
+    public void setSolicitud(Solicitud solicitud) {
+        this.solicitud.add(solicitud);
     }
+    
 
     @Override
     public String toString() {

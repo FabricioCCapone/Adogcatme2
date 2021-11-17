@@ -7,6 +7,7 @@ package Adogcatme.Proyecto.Servicios;
 
 import Adogcatme.Proyecto.Repositorios.AdoptanteRepositorio;
 import Adogcatme.Proyecto.entidades.Adoptante;
+import Adogcatme.Proyecto.entidades.Solicitud;
 import exepciones.WebExeption;
 import java.util.List;
 import java.util.Optional;
@@ -51,6 +52,10 @@ public class AdoptanteServicio {
             throw new WebExeption("no se encontro el usuario");
         }
 
+    }
+    public Adoptante save(Adoptante adoptante,Solicitud solicitud){
+        adoptante.setSolicitud(solicitud);   
+    return adoptanteRepositorio.save(adoptante);
     }
      
     public Adoptante findByEmail(String email) {
