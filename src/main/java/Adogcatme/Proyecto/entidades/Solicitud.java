@@ -22,6 +22,7 @@ public class Solicitud implements Serializable {
     private Mascota mascota;
     @OneToOne
     private Adoptante adoptante;
+    
 //    private Date fecha;
 //    private Boolean estado; //0 = aceptada 1 = rechazada
 

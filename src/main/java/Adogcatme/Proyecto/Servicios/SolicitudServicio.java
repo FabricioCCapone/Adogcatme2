@@ -39,12 +39,13 @@ public class SolicitudServicio {
     @Transactional
     public Solicitud save(Adoptante adoptante,Mascota mascota) throws WebExeption {
         Solicitud solicitud = new Solicitud();
+        Dueno dueno = duenoServicio.findByIde(mascota.getDueno().getId());
         solicitud.setAdoptante(adoptante);
         solicitud.setMascota(mascota);
-        Dueno dueno = duenoServicio.findByIde(mascota.getDueno().getId());
         solicitud.setDueno(dueno);
         adoptanteServicio.save(adoptante,solicitud);
         duenoServicio.saveSolicitud(dueno, solicitud);
+        System.out.println("ID de la solicitud que llega" + solicitud.getId());
         return solicitudRepositorio.save(solicitud);
     }
 
