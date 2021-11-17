@@ -3,6 +3,7 @@ package Adogcatme.Proyecto.entidades;
 import Adogcatme.Proyecto.enums.Rol;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -27,8 +28,10 @@ public class Usuario {
     private String email;
     private String barrio;
     private String direccion;
-    @OneToMany
+    
+    @OneToMany (cascade = CascadeType.PERSIST)
     private List<Solicitud> solicitud;
+    
     private String telefono;
     @Enumerated(EnumType.STRING)
     private Rol rol;

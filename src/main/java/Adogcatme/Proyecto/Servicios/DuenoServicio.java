@@ -88,7 +88,9 @@ public class DuenoServicio {
         duenoRepositorio.delete(dueno);
     }
 
+    @Transactional
     public Dueno saveSolicitud(Dueno dueno, Solicitud solicitud) {
+        System.out.println("ID de la solicitud que llega" + solicitud.getId());
         dueno.setSolicitud(solicitud);
         return duenoRepositorio.save(dueno);
     }

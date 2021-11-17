@@ -53,7 +53,10 @@ public class AdoptanteServicio {
         }
 
     }
+    
+    @Transactional
     public Adoptante save(Adoptante adoptante,Solicitud solicitud){
+        System.out.println("ID de la solicitud que llega" + solicitud.getId());
         adoptante.setSolicitud(solicitud);   
     return adoptanteRepositorio.save(adoptante);
     }
