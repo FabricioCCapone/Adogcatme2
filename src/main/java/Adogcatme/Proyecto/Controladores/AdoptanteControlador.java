@@ -9,15 +9,18 @@ import Adogcatme.Proyecto.Servicios.AdoptanteServicio;
 import Adogcatme.Proyecto.Servicios.MascotaServicio;
 import Adogcatme.Proyecto.Servicios.SolicitudServicio;
 import Adogcatme.Proyecto.entidades.Adoptante;
+import Adogcatme.Proyecto.entidades.Mascota;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/adoptante")
@@ -58,20 +61,30 @@ public class AdoptanteControlador {
     @GetMapping("/editarAdopt")
     public String editarAdoptante(Model model, HttpSession session) {
         Adoptante adoptante = (Adoptante) session.getAttribute("usuario");
-        model.addAttribute("adoptante", adoptante);
+        
+        Adoptante usuario = as.findByIde(adoptante.getId());
+        
+        model.addAttribute("adoptante", usuario);
         return "perfil-adoptante-edicion";
     }
 
     @PostMapping("/editarAdoptante")
     public String modificar(@ModelAttribute Adoptante adoptante) {
         try {
-            System.out.println(adoptante.toString());
             as.editarAdoptante(adoptante);
             return "redirect:/adoptante/perfil";
         } catch (Exception e) {
             e.printStackTrace();
         }
         return "redirect:/";
+    }
+    
+    @GetMapping("/perfilmascota/{id}")
+    public ModelAndView verMascota(@PathVariable(name = "id") String id) {
+        ModelAndView editarVista = new ModelAndView("perfil-mascot");
+        Mascota mascota = ms.findById(id);
+        editarVista.addObject("mascota", mascota);
+        return editarVista;
     }
 
 }

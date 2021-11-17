@@ -12,12 +12,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
 
-    <link rel="stylesheet" href="../css/perfil-masc.css">
+    <link rel="stylesheet" href="/css/perfil-masc.css">
 </head>
 <body>
     <header>  
         <h1>ADOGCATME</h1>
-        <div class="logo"><img src="../asset/logo.png"></div>
+        <div class="logo"><img src="/assets/logo.png"></div>
     </header>
 
     
@@ -25,7 +25,7 @@
         <div class="contenedor">
             <div class="perfil-izq">
                 <div class="foto-masc">
-                    <img src="../asset/newgatito.jpeg" alt="">
+                    <p><img th:if="${mascota.imagen != null}" th:src="${'/img/mascota?id=' + mascota.id}" width="120"/></p>
                 </div>
                 <h2>¿Quiere adoptarme?</h2>
                 <div class="lista">
@@ -40,13 +40,30 @@
                         </li>
                     </ul>
                 </div>
+                <div class="buton">
+                    <button id="ver-masc" class="btn-dark" type="button"> <a th:href="@{/adoptante/home}">Volver al inicio</a>  </button>
+                </div>
 
             </div>
             <div class="contenido">
                 <div class="titulo">
                 <h3>Mis datos</h3>
                 </div>
-                <div class="texto">
+
+                <div class="info">
+                    <p>Tipo de mascota: <span th:text="${mascota.tipo}"></span></p>
+                    <p>Raza: <span th:text="${mascota.raza}"></span></p>
+                    <p>Edad: <span th:text="${mascota.edad}"></span></p>
+                    <p>Sexo: <span th:text="${mascota.sexo}"></span></p>
+                    <p>Peso: <span th:text="${mascota.peso}">Kg</span></p>
+                    <p>Tamaño: <span th:text="${mascota.tamano}"></span></p>
+                    <p>¿Esta castrado? <span th:text="${mascota.castrado} ? 'Si' : 'No'"></span></p>                    
+                    <p>Dueño: <span th:text="${mascota.dueno}!=null? ${mascota.dueno.nombre}:''"></span></p>
+                </div>
+
+                <!-- 
+                ------------------------------
+               <div class="texto">
                     <div class="col-1">
                         Tipo: 
                         Raza:
@@ -82,8 +99,8 @@
                     </div>
                 </div>  
             </div>
-
-
+            -------------------------
+            -->
 
         </div>
 
