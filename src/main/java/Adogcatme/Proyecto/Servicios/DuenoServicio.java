@@ -3,6 +3,7 @@ package Adogcatme.Proyecto.Servicios;
 import Adogcatme.Proyecto.Repositorios.DuenoRepositorio;
 import Adogcatme.Proyecto.entidades.Mascota;
 import Adogcatme.Proyecto.entidades.Dueno;
+import Adogcatme.Proyecto.entidades.Solicitud;
 import exepciones.WebExeption;
 import java.util.List;
 import java.util.Optional;
@@ -78,7 +79,7 @@ public class DuenoServicio {
         if (dueno.getTelefono().isEmpty() || dueno.getTelefono() == null) {
             throw new Exception(" La persona debe tener un teléfono de contacto");
         }
-        return duenoRepositorio.save(dueno); 
+        return duenoRepositorio.save(dueno);
     }
 
     //Eliminar dueño (Creada en el caso de que haya un usuario de administrador)
@@ -87,7 +88,11 @@ public class DuenoServicio {
         duenoRepositorio.delete(dueno);
     }
 
-    //Eliminar dueño por ID
+    public Dueno saveSolicitud(Dueno dueno, Solicitud solicitud) {
+        dueno.setSolicitud(solicitud);
+        return duenoRepositorio.save(dueno);
+    }
+
     @Transactional
     public void deleteById(String id) {
         Optional<Dueno> optional = duenoRepositorio.findById(id);

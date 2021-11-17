@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es-AR" xmlns:th="http://www.thymeleaf.org" xmlns:sec"http://www.thymeleaf.org/extras/spring-security">
-    <head>
+      <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -105,6 +105,10 @@
                             <div>
                                 <div>
                                     <label for="descripcion">Ingrese una breve descripcion de su mascota:</label>
+                                </div>
+                                <div>
+                                    <label for="imagen">Cargue una imagen de su mascota</label>
+                                    <input type="file" name="archivo" id="archivo">
                                 </div>
                                 <div>
                                     <textarea name="descripcion" id="description" cols="40" rows="2" th:field="*{descripcion}"></textarea>

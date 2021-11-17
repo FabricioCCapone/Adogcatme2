@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -15,23 +16,25 @@ public class Solicitud implements Serializable {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     
+    @OneToOne
     private Dueno dueno;
+    @OneToOne
     private Mascota mascota;
+    @OneToOne
     private Adoptante adoptante;
-    
-    private Date fecha;
-    private Boolean estado; //0 = aceptada 1 = rechazada
+//    private Date fecha;
+//    private Boolean estado; //0 = aceptada 1 = rechazada
 
     public Solicitud() {
     }
 
-    public Solicitud(String id, Dueno dueno, Mascota mascota, Adoptante adoptante, Date fecha, Boolean estado) {
+    public Solicitud(String id, Dueno dueno, Mascota mascota, Adoptante adoptante/*, Date fecha, Boolean estado*/) {
         this.id = id;
         this.dueno = dueno;
         this.mascota = mascota;
         this.adoptante = adoptante;
-        this.fecha = fecha;
-        this.estado = estado;
+//        this.fecha = fecha;
+//        this.estado = estado;
     }
 
     public String getId() {
@@ -66,21 +69,21 @@ public class Solicitud implements Serializable {
         this.adoptante = adoptante;
     }
 
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
+//    public Date getFecha() {
+//        return fecha;
+//    }
+//
+//    public void setFecha(Date fecha) {
+//        this.fecha = fecha;
+//    }
+//
+//    public Boolean getEstado() {
+//        return estado;
+//    }
+//
+//    public void setEstado(Boolean estado) {
+//        this.estado = estado;
+//    }
 
 
     

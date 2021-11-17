@@ -68,10 +68,10 @@ public class MascotaControlador {
     }
 
     @PostMapping("/save")
-    public String editarMascota(@ModelAttribute Mascota m,Principal principal,HttpSession session) {
+    public String editarMascota(@ModelAttribute Mascota m,Principal principal,HttpSession session,MultipartFile archivo) {
         try {
             Dueno dueno = (Dueno) session.getAttribute("usuario");
-            ms.editarMascotaEnDueño(m,dueno);
+            ms.editarMascotaEnDueño(m,dueno,archivo);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
