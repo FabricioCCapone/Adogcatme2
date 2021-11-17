@@ -1,110 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Perfil Mascota</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+
+        <link rel="stylesheet" href="/css/perfil-masc.css">
+    </head>
+    <body>
+        <header>  
+            <h1>ADOGCATME</h1>
+            <div class="logo"><img src="/assets/logo.png"></div>
+        </header>
+
+
+        <main>
+            <div class="contenedor">
+                <div class="perfil-izq">
+                    <div class="foto-masc">
+                        <p><img th:if="${mascota.imagen != null}" th:src="${'/img/mascota?id=' + mascota.id}" width="120"/></p>
+                    </div>
+                    <button type="button" class="btn">
+
+                        <a th:href="@{/solicitud/guardar/__${mascota.id}__}">¿Quieres adoptarme?</a>
+                        <!--Como se manda la solicitud? Es todo en el back?-->
+                    </button>
+                    <div class="buton">
+                        <button id="ver-masc" class="btn-dark" type="button"> <a th:href="@{/adoptante/home}">Volver al inicio</a>  </button>
+                    </div>                   
+                </div>
+                <div class="contenido">
+                    <div class="titulo">
+                        <h3>Mis datos</h3>
+                    </div>
+
+                    <div class="info">
+                        <p>Tipo de mascota: <span th:text="${mascota.tipo}"></span></p>
+                        <p>Raza: <span th:text="${mascota.raza}"></span></p>
+                        <p>Edad: <span th:text="${mascota.edad}"></span></p>
+                        <p>Sexo: <span th:text="${mascota.sexo}"></span></p>
+                        <p>Peso: <span th:text="${mascota.peso}">Kg</span></p>
+                        <p>Tamaño: <span th:text="${mascota.tamano}"></span></p>
+                        <p>¿Esta castrado? <span th:text="${mascota.castrado} ? 'Si' : 'No'"></span></p>                    
+                        <p>Dueño: <span th:text="${mascota.dueno}!=null? ${mascota.dueno.nombre}:''"></span></p>
+                    </div>
+
+                    <!-- 
+                    ------------------------------
+                   <div class="texto">
+                        <div class="col-1">
+                            Tipo: 
+                            Raza:
+                            Edad:
+                            Peso:    
+                        </div>
+                        <div class="col-2"></div>
+                        <div class="col-1">
+                            Sexo:
+                            Peso:
+                            Castrado:
+                        </div>
+                        <div class="col-2"></div>
+                    </div>    
+                    <div class="titulo">
+                        <h3>Descripción</h3>
+                    </div>                
+                    <div class="descripcion">                    
+                    </div>
+                </div>
     
-    <title>Perfil Mascota</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
-
-    <link rel="stylesheet" href="/css/perfil-masc.css">
-</head>
-<body>
-    <header>  
-        <h1>ADOGCATME</h1>
-        <div class="logo"><img src="/assets/logo.png"></div>
-    </header>
-
-    
-    <main>
-        <div class="contenedor">
-            <div class="perfil-izq">
-                <div class="foto-masc">
-                    <p><img th:if="${mascota.imagen != null}" th:src="${'/img/mascota?id=' + mascota.id}" width="120"/></p>
-                </div>
-                <h2>¿Quiere adoptarme?</h2>
-                <div class="lista">
-                    <ul type="none">
-                        <li>
-                            <form action="">
-                                Si<input type="radio" name="aceptar" value="si">
-                                No<input type="radio" name="aceptar" value="no">
-                                <input type="submit" value="Enviar">
-                            </form>
-
-                        </li>
-                    </ul>
-                </div>
-                <div class="buton">
-                    <button id="ver-masc" class="btn-dark" type="button"> <a th:href="@{/adoptante/home}">Volver al inicio</a>  </button>
-                </div>
-
-            </div>
-            <div class="contenido">
-                <div class="titulo">
-                <h3>Mis datos</h3>
-                </div>
-
-                <div class="info">
-                    <p>Tipo de mascota: <span th:text="${mascota.tipo}"></span></p>
-                    <p>Raza: <span th:text="${mascota.raza}"></span></p>
-                    <p>Edad: <span th:text="${mascota.edad}"></span></p>
-                    <p>Sexo: <span th:text="${mascota.sexo}"></span></p>
-                    <p>Peso: <span th:text="${mascota.peso}">Kg</span></p>
-                    <p>Tamaño: <span th:text="${mascota.tamano}"></span></p>
-                    <p>¿Esta castrado? <span th:text="${mascota.castrado} ? 'Si' : 'No'"></span></p>                    
-                    <p>Dueño: <span th:text="${mascota.dueno}!=null? ${mascota.dueno.nombre}:''"></span></p>
-                </div>
-
-                <!-- 
-                ------------------------------
-               <div class="texto">
-                    <div class="col-1">
-                        Tipo: 
-                        Raza:
-                        Edad:
-                        Peso:    
+                <div class="contenido">
+                    <div class="titulo">
+                    <h3>Dueño</h3>
                     </div>
-                    <div class="col-2"></div>
-                    <div class="col-1">
-                        Sexo:
-                        Peso:
-                        Castrado:
-                    </div>
-                    <div class="col-2"></div>
-                </div>    
-                <div class="titulo">
-                    <h3>Descripción</h3>
-                </div>                
-                <div class="descripcion">                    
+                    <div class="texto">
+                        <div class="col-1">
+                            Nombre: 
+                            Direccion:
+                            Barrio:
+                            Email:    
+                            Telefono:
+                        </div>
+                    </div>  
                 </div>
-            </div>
+                -------------------------
+                -->
 
-            <div class="contenido">
-                <div class="titulo">
-                <h3>Dueño</h3>
                 </div>
-                <div class="texto">
-                    <div class="col-1">
-                        Nombre: 
-                        Direccion:
-                        Barrio:
-                        Email:    
-                        Telefono:
-                    </div>
-                </div>  
-            </div>
-            -------------------------
-            -->
-
-        </div>
 
 
-    </main>
-</body>
+        </main>
+    </body>
 </html>

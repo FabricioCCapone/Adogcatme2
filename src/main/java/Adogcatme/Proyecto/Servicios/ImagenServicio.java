@@ -16,14 +16,14 @@ public class ImagenServicio {
 
     @Autowired
     ImagenRepositorio ir;
-    
-    public Imagen findByIde(String id){
+
+    public Imagen findByIde(String id) {
         return ir.findByIde(id);
     }
-    
+
     @Transactional
-    public Imagen guardarImagen(MultipartFile archivo){
-        if(archivo != null){
+    public Imagen guardarImagen(MultipartFile archivo) {
+        if (archivo != null) {
             try {
                 Imagen imagen = new Imagen();
                 imagen.setMime(archivo.getContentType());
@@ -37,4 +37,3 @@ public class ImagenServicio {
         return null;
     }
 }
-

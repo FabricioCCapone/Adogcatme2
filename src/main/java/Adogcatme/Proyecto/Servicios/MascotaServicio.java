@@ -67,8 +67,11 @@ public class MascotaServicio {
     }
 
     @Transactional
-    public void editarMascotaEnDueño(Mascota m, Dueno dueno) throws WebExeption, Exception {
+    public void editarMascotaEnDueño(Mascota m, Dueno dueno, MultipartFile archivo) throws WebExeption, Exception {
         if (mr.existsById(m.getId())) {
+            Imagen imagen = is.guardarImagen(archivo);
+            verificarRegistro(m, imagen);
+            m.setImagen(imagen);
             m.setDueno(dueno);
             mr.save(m);
             ds.save(dueno);
