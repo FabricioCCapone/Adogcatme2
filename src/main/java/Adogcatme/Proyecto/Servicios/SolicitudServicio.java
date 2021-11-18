@@ -25,33 +25,41 @@ public class SolicitudServicio {
 
     @Autowired
     private SolicitudRepositorio solicitudRepositorio;
-    
-    @Autowired 
+
+    @Autowired
     private DuenoServicio duenoServicio;
     @Autowired
     private AdoptanteServicio adoptanteServicio;
-    
+
     public List<Solicitud> listAll() {
-        
+
         return solicitudRepositorio.findAll();
     }
 
     @Transactional
-    public Solicitud save(Adoptante adoptante,Mascota mascota) throws WebExeption {
-        Solicitud solicitud = new Solicitud();
-        Dueno dueno = duenoServicio.findByIde(mascota.getDueno().getId());
-        solicitud.setAdoptante(adoptante);
-        solicitud.setMascota(mascota);
-        solicitud.setDueno(dueno);
-        adoptanteServicio.save(adoptante,solicitud);
-        duenoServicio.saveSolicitud(dueno, solicitud);
-        System.out.println("ID de la solicitud que llega" + solicitud.getId());
-        return solicitudRepositorio.save(solicitud);
+    public Solicitud save(Adoptante adoptante, Mascota mascota) throws WebExeption {
+        try {
+            Solicitud solicitud = solicitudRepositorio.findByAyM(adoptante.getId(), mascota.getId());
+            if (solicitud == null) {
+                solicitud = new Solicitud();
+                Dueno dueno = duenoServicio.findByIde(mascota.getDueno().getId());
+                solicitud.setAdoptante(adoptante);
+                solicitud.setMascota(mascota);
+                solicitud.setDueno(dueno);
+//              adoptanteServicio.save(adoptante,solicitud);
+//              duenoServicio.saveSolicitud(dueno, solicitud);
+                System.out.println("ID de la solicitud que llega" + solicitud.getId());
+                return solicitudRepositorio.save(solicitud);
+            }
+        } catch (Exception e) {
+            new WebExeption("Ya has enviado una solitud por esta macota, espere la respuesta.");
+        }
+        return null;
     }
 
     @Transactional
     public void delete(Solicitud solicitud) {
-        
+
         solicitudRepositorio.delete(solicitud);
     }
 }
