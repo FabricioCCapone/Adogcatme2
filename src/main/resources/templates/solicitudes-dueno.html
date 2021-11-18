@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec"http://www.thymeleaf.org/extras/spring-security">
 
 <head>
   <meta charset="UTF-8" />
@@ -13,13 +13,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 
-  <link rel="stylesheet" href="/css/solicitudes-dueno.css" />
+  <link rel="stylesheet" href="../css/solicitudes-dueno.css" />
 </head>
 
 <body>
   <header>
     <h1 class="titulo-dueno">ADOGCATME</h1>
-    <div class="logo-dueno"><img src="/asset/logo.png" alt="" /></div>
+    <div class="logo-dueno"><img src="../asset/logo.png" alt="" /></div>
   </header>
 
   <main>
@@ -28,14 +28,14 @@
         <div class="mascota">
 
             <div class="header">
-              <h2>Nombre Mascota</h2>
+              <h2 th:text="${solicitud.mascota}!=null? ${solicitud.mascota.nombre}:''"></h2>
               <label class="pregunta">
                 ¿Quien a preguntado por tu mascota?</label>
             </div>
             
           <div class="perfil">
             <div class="fondo-foto">
-              <img class="img" src="/asset/cat.jpg" />
+              <img class="img" src="../asset/cat.jpg" />
             </div>
           </div>
 
@@ -43,9 +43,11 @@
             <div class="container">
 
               <a class="solicitante">
-                <h5>Nombre Solicitante</h5>
-                <button class="btn btn-success">Aceptar</button>
-                <button class="btn btn-danger">Denegar</button>
+                <h5 th:text="${solicitud.adoptante}!=null? ${solicitud.adoptante.nombre}:''"></h5>
+                <form action="@{/dueno/accion/__{solicitud.id}__}">
+                  <button class="btn btn-success" th:value:"true" >Aceptar</button>
+                  <button class="btn btn-danger" th:value:"false" >Denegar</button>
+                </form>
               </a>
 
             </div>
