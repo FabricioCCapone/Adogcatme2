@@ -2,6 +2,7 @@ package Adogcatme.Proyecto.Controladores;
 
 import Adogcatme.Proyecto.Servicios.DuenoServicio;
 import Adogcatme.Proyecto.Servicios.MascotaServicio;
+import Adogcatme.Proyecto.Servicios.SolicitudServicio;
 import Adogcatme.Proyecto.entidades.Dueno;
 import Adogcatme.Proyecto.entidades.Mascota;
 import exepciones.WebExeption;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 @RequestMapping("/dueno")
@@ -23,7 +26,10 @@ public class DuenoControlador {
 
     @Autowired
     private DuenoServicio duenoServicio;
-    
+
+    @Autowired
+    private SolicitudServicio ss;
+
     @Autowired
     private MascotaServicio ms;
 
@@ -56,5 +62,26 @@ public class DuenoControlador {
         model.addAttribute("usuario", usuario);
         model.addAttribute("mascotas", ms.mascotasDisponibles());
         return "perfil-dueno";
+    }
+
+    @GetMapping("/solicitudes")
+    public String solicitudesDueno(Model model, HttpSession session) {
+        Dueno dueno = (Dueno) session.getAttribute("usuario");
+        Dueno usuario = duenoServicio.findByIde(dueno.getId());
+        model.addAttribute("solicitud", ss.solicitudesDisp(usuario.getId()));
+        return "solicitudes-dueno";
+    }
+
+    @PostMapping("/accion/{id}")
+    public String accionSolicitud(@PathVariable(name = "id") String id_solicitud, @RequestParam(required = false) Boolean accion, HttpSession session) {
+        try {
+            Dueno dueno = (Dueno) session.getAttribute("usuario");
+            Dueno usuario = duenoServicio.findByIde(dueno.getId());
+            ss.solicitudAccion(id_solicitud, usuario, accion);
+            return "perfil-dueno";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
     }
 }

@@ -79,4 +79,8 @@ public class SolicitudServicio {
     public void delete(Solicitud solicitud) {
         solicitudRepositorio.delete(solicitud);
     }
+
+    public List<Solicitud> solicitudesDisp(String id) {
+        return solicitudRepositorio.findSolicitudesDisp(id, null);
+    }
 }

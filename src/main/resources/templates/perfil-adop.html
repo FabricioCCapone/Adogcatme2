@@ -1,74 +1,96 @@
 <!DOCTYPE html>
-<html lang="es-AR" xmlns:th="http://www.thymeleaf.org" xmlns:sec"http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec"http://www.thymeleaf.org/extras/spring-security">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
 
-        <link rel="stylesheet" href="css/perfil-dueno-adopt-styles.css">
-        <title>Perfil</title>
-    </head>
-    <body>
-        <header>
-            <div>
-                <img class="logo" src="/asset/logo.png" alt="">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/perfil-adop.css">
+    <title>Perfil</title>
+</head>
+
+<body>
+    <header>
+        <h1 class="titulo">ADOGCATME</h1>
+        <div class="img-logo">
+            <img src="../asset/logo.png" alt="">
+        </div>
+    </header>
+
+    <main>
+
+        <div>
+            <div class="header-perfil">
+                <img class="logo-perfil" src="../asset/foto-perfil.png" />
+                <h1 class="nombre-perfil" th:text="${usuario.usuario}"></h1>
+                <button type="button" class="btn btn-secondary">
+                    <nav>
+                        <a href="perfil-dueno-edicion.html"><img src="../asset/gear.png" /></a>
+                    </nav>
+                </button>
             </div>
-            <h1 class="titulo">ADOGCATME</h1>     
-        </header>
+            <div class="perfil">
 
-        <main>
+                <div class="column">
+                    <div class="titulos">
 
-            <div >
-                <div class="header-perfil">
-                    <button type="button" class="btn btn-secondary"> <img src="/asset/gear.png"/></button>
-                    <img class="logo-perfil" src="/asset/foto-perfil.png"/>
-                    <h1 class="nombre-perfil" th:text="${usuario.nombre}"> </h1>
-                </div>
-                <div class="perfil">
-
-                    <div class="header-perfil">
-                        <img class="logo-perfil" src="/assets/foto-perfil.png" />
-                        <h1 class="nombre-perfil" th:text="${usuario.usuario}"></h1>
-                    </div>
-                    <div class="perfil">
-
-                        <div class="column">
-                            <div class="titulos">
-                                <h3> Nombre: <span th:text="${usuario.nombre}"></span></h3>
-                                <h3> Barrio: <span th:text="${usuario.barrio}"></span></h3>
-                                <h3> Direccion: <span th:text="${usuario.direccion}"></span></h3>
-                                <h3> Telefono: <span th:text="${usuario.telefono}"></span></h3>
-                                <h3> Mail: <span th:text="${usuario.email}"></span></h3>
-                            </div>
-                        </div>
-
-                        <div class="descr-coint">
-                            <div class="x">
-                                <img src="/assets/owner.png" />
-                                <img src="/assets/owner2.png" />
-                                <img src="/assets/owner3.png" />
-                            </div>
-                        </div>
-                        <div class="descr-coint">
-                            <p class="descr"></p>
-
-                        </div>
-                        <div class="buton">
-                            <button id="ver-masc" class="btn-dark" type="button"> <a th:href="@{/adoptante/editarAdopt}">Editar perfil</a>  </button>
-                        </div>
-                        <div class="buton">
-                            <button id="ver-masc" class="btn-dark" type="button"> <a th:href="@{/adoptante/home}">Volver al inicio</a>  </button>
-                        </div>
+                        <p> Nombre: </p>
+                        <p>Usuario</p>
+                        <p>Distrito:</p>
+                        <p>Telefono:</p>
+                        <p>Mail:</p>
                     </div>
                 </div>
 
-        </main>
+                <div class="descr-coint">
+                    <div class="x">
+                        <img src="../asset/owner.png" />
+                        <img src="../asset/owner2.png" />
+                        <img src="../asset/owner3.png" />
+                    </div>
+                </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    </body>
+                <div class="info">
+                    <h2 th:text="${usuario.nombre}"></h2>
+                    <h2 th:text="${usuario.usuario}"></h2>
+                    <h2 th:text="${usuario.barrio}"></h2>
+                    <h2 th:text="${usuario.telefono}"></h2>
+                    <h2 th:text="${usuario.email}"></h2>
+                </div>
+
+                <div class="buton">
+                    <button class="ver-masc" type="button">
+                        <nav>
+                            <a th:href="@{/adoptante/home}">Adoptar Mascotas</a>
+                        </nav>
+                    </button>
+                    <button class="ver-solic" type="button">
+                        <nav>
+                            <a th:href="@{/adoptante/solicitudes/__{id}__}">Ver Solicitudes</a>
+                        </nav>
+                    </button>
+                    <button class="agregar" type="button">
+                        <nav>
+                            <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar Sesion</a>
+                        </nav>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>
