@@ -6,10 +6,10 @@
 package Adogcatme.Proyecto.Servicios;
 
 import Adogcatme.Proyecto.Repositorios.AdoptanteRepositorio;
+import Adogcatme.Proyecto.Repositorios.SolicitudRepositorio;
 import Adogcatme.Proyecto.entidades.Adoptante;
 import Adogcatme.Proyecto.entidades.Solicitud;
 import exepciones.WebExeption;
-import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +20,9 @@ public class AdoptanteServicio {
 
     @Autowired
     private AdoptanteRepositorio adoptanteRepositorio;
+
+    @Autowired
+    private SolicitudRepositorio solicitudRepositorio;
     
     @Transactional
     public void registrar(String nombre, String email, String contrasena, String telefono) throws WebExeption {
@@ -55,7 +58,8 @@ public class AdoptanteServicio {
     }
     
     @Transactional
-    public Adoptante save(Adoptante adoptante,Solicitud solicitud){
+    public Adoptante save(Adoptante adoptante, String id_solicitud){
+        Solicitud solicitud = solicitudRepositorio.getById(id_solicitud);
         System.out.println("ID de la solicitud que llega" + solicitud.getId());
         adoptante.setSolicitud(solicitud);   
     return adoptanteRepositorio.save(adoptante);

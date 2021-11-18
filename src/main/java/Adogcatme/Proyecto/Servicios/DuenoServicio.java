@@ -1,7 +1,7 @@
 package Adogcatme.Proyecto.Servicios;
 
 import Adogcatme.Proyecto.Repositorios.DuenoRepositorio;
-import Adogcatme.Proyecto.entidades.Mascota;
+import Adogcatme.Proyecto.Repositorios.SolicitudRepositorio;
 import Adogcatme.Proyecto.entidades.Dueno;
 import Adogcatme.Proyecto.entidades.Solicitud;
 import exepciones.WebExeption;
@@ -18,7 +18,7 @@ public class DuenoServicio {
     private DuenoRepositorio duenoRepositorio;
 
     @Autowired
-    private MascotaServicio mascotaServicio;
+    private SolicitudRepositorio solicitudRepositorio;
 
     //Listar dueños
     public List<Dueno> listAll() {
@@ -89,7 +89,8 @@ public class DuenoServicio {
     }
 
     @Transactional
-    public Dueno saveSolicitud(Dueno dueno, Solicitud solicitud) {
+    public Dueno saveSolicitud(Dueno dueno, String id_solicitud) {
+        Solicitud solicitud = solicitudRepositorio.getById(id_solicitud);
         System.out.println("ID de la solicitud que llega" + solicitud.getId());
         dueno.setSolicitud(solicitud);
         return duenoRepositorio.save(dueno);

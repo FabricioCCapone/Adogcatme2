@@ -11,6 +11,9 @@ import Adogcatme.Proyecto.entidades.Dueno;
 import Adogcatme.Proyecto.entidades.Mascota;
 import Adogcatme.Proyecto.entidades.Solicitud;
 import exepciones.WebExeption;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +31,6 @@ public class SolicitudServicio {
 
     @Autowired
     private DuenoServicio duenoServicio;
-    @Autowired
-    private AdoptanteServicio adoptanteServicio;
 
     public List<Solicitud> listAll() {
 
@@ -42,13 +43,15 @@ public class SolicitudServicio {
             Solicitud solicitud = solicitudRepositorio.findByAyM(adoptante.getId(), mascota.getId());
             if (solicitud == null) {
                 solicitud = new Solicitud();
+                ZoneId defaultZoneId = ZoneId.systemDefault();
+                LocalDate horaActual = LocalDate.now();
+                Date fechaActual = Date.from(horaActual.atStartOfDay(defaultZoneId).toInstant());
+                solicitud.setFecha(fechaActual);
                 Dueno dueno = duenoServicio.findByIde(mascota.getDueno().getId());
                 solicitud.setAdoptante(adoptante);
                 solicitud.setMascota(mascota);
                 solicitud.setDueno(dueno);
-//              adoptanteServicio.save(adoptante,solicitud);
-//              duenoServicio.saveSolicitud(dueno, solicitud);
-                System.out.println("ID de la solicitud que llega" + solicitud.getId());
+                adoptante.setSolicitud(solicitud);
                 return solicitudRepositorio.save(solicitud);
             }
         } catch (Exception e) {
@@ -58,8 +61,22 @@ public class SolicitudServicio {
     }
 
     @Transactional
-    public void delete(Solicitud solicitud) {
+    public void solicitudAccion(String id_solicitud, Dueno dueno, Boolean accion) {
+        Solicitud solicitud = solicitudRepositorio.getById(id_solicitud);
+        if (accion) {
+            if (solicitud.getDueno().getId() == dueno.getId()) {
+                solicitud.getMascota().setEstado(false);
+                solicitud.setEstado(true);
+            }
+        } else if (accion == false) {
+            solicitud.setEstado(false);
+        } else {
+            solicitud.setEstado(null);
+        }
+    }
 
+    @Transactional
+    public void delete(Solicitud solicitud) {
         solicitudRepositorio.delete(solicitud);
     }
 }

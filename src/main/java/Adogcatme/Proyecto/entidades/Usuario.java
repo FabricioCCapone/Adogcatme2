@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -29,7 +30,7 @@ public class Usuario {
     private String barrio;
     private String direccion;
     
-    @OneToMany (cascade = CascadeType.PERSIST)
+    @ManyToMany (cascade = CascadeType.PERSIST)
     private List<Solicitud> solicitud;
     
     private String telefono;
@@ -37,7 +38,7 @@ public class Usuario {
     private Rol rol;
 
     public Usuario() {
-        new ArrayList<Solicitud>();
+       this.solicitud = new ArrayList<Solicitud>();
     }
 
     public String getId() {
