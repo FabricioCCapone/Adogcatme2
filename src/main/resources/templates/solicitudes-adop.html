@@ -1,63 +1,63 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec"http://www.thymeleaf.org/extras/spring-security">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap"
-      rel="stylesheet"
-    />
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap"
+            rel="stylesheet"
+            />
 
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="../css/solicitudes-adop.css" />
-    <title>Solicitudes Adoptante</title>
-  </head>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+            />
+        <link rel="stylesheet" href="../css/solicitudes-adop.css" />
+        <title>Solicitudes Adoptante</title>
+    </head>
 
-  <body>
-    <header>
-      <h1>ADOGCATME</h1>
-      <div class="img-perfilAdop"><img src="../asset/logo.png" alt="" /></div>
-    </header>
-    <main>
-      <div class="navegador">
-        <nav class="menu">
-          <a th:href="@{/adoptante/home}">Adoptar Mascotas</a>
-            <a th:href="@{/adoptante/perfil}" class="btn">Mi Perfil</a>
-            <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar Sesion</a>
-        </nav>
-      </div>
-      <h2>Estado de solicitudes</h2>
-      <div class="contenedor">
-        <div class="contenedor-hijo">
-          <div class="datos-masc">
-            <div class="masc-datos">
-              <p th:each="solicitud : ${solicitudes}">Tipo de mascota:</p>
-              <p>Nombre: <span th:text="${solicitud.mascota}!=null? ${solicitud.mascota.nombre}:''"></span></p>
-              <p>Raza: <span th:text="${solicitud.mascota}!=null? ${solicitud.mascota.raza}:''"></span></p>
-              <p>Edad: <span th:text="${solicitud.mascota}!=null? ${solicitud.mascota.edad}:''"></span></p>
-              <p>Sexo: <span th:text="${solicitud.mascota}!=null? ${solicitud.mascota.sexo}:''"></span></p>
-              <p>Peso: <span th:text="${solicitud.mascota}!=null? ${solicitud.mascota.peso}:''"></span></p>
-              <p>Tamaño: <span th:text="${solicitud.mascota}!=null? ${solicitud.mascota.tamano}:''"></span></p>
-              <p>¿Esta castrado?: <span th:text="${solicitud.mascota}!=null? ${solicitud.mascota.castrado}:''"></span></p>
-              <p>Dueño: <span th:text="${solicitud.mascota}!=null? ${solicitud.dueno.nombre}:''"></span></p>
+    <body>
+        <header>
+            <h1>ADOGCATME</h1>
+            <div class="img-perfilAdop"><img src="../asset/logo.png" alt="" /></div>
+        </header>
+        <main>
+            <div class="navegador">
+                <nav class="menu">
+                    <a th:href="@{/adoptante/home}">Adoptar Mascotas</a>
+                    <a th:href="@{/adoptante/perfil}" class="btn">Mi Perfil</a>
+                    <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar Sesion</a>
+                </nav>
             </div>
-            <div class="contenedor-estado">
-              <p>Estado de solicitud: <span th:if="${solicitud.estado}==null? 'pendiente':'${solicitud.estado}==true? 'Aceptada:'Rechazada'"></span></p>
+            <h2>Estado de solicitudes</h2>
+            <div class="contenedor">
+                <div class="contenedor-hijo">
+                    <div class="datos-masc">
+                        <div class="masc-datos">
+                            <p th:each="solicitud : ${solicitudes}">Tipo de mascota:</p>
+                            <p>Nombre: <span th:utext="${solicitud.mascota}!=null? ${solicitud.mascota.nombre}:''"></span></p>
+                            <p>Raza: <span th:utext="${solicitud.mascota}!=null? ${solicitud.mascota.raza}:''"></span></p>
+                            <p>Edad: <span th:utext="${solicitud.mascota}!=null? ${solicitud.mascota.edad}:''"></span></p>
+                            <p>Sexo: <span th:utext="${solicitud.mascota}!=null? ${solicitud.mascota.sexo}:''"></span></p>
+                            <p>Peso: <span th:utext="${solicitud.mascota}!=null? ${solicitud.mascota.peso}:''"></span></p>
+                            <p>Tamaño: <span th:utext="${solicitud.mascota}!=null? ${solicitud.mascota.tamano}:''"></span></p>
+                            <p>¿Esta castrado?: <span th:utext="${solicitud.mascota}!=null? ${solicitud.mascota.castrado}:''"></span></p>
+                            <p>Dueño: <span th:utext="${solicitud.mascota}!=null? ${solicitud.dueno.nombre}:''"></span></p>
+                        </div>
+                        <div class="contenedor-estado">
+                            <p>Estado de solicitud: <span th:if="${solicitud.estado}==null? 'pendiente':'${solicitud.estado}==true? 'Aceptada:'Rechazada'"></span></p>
+                        </div>
+                    </div>
+                    <div class="foto-masc">
+                        <img src="../asset/gatito.png" alt="" />
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="foto-masc">
-            <img src="../asset/gatito.png" alt="" />
-          </div>
-        </div>
-      </div>
-    </main>
-  </body>
+        </main>
+    </body>
 </html>

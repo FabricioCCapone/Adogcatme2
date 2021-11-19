@@ -171,5 +171,10 @@ public class Mascota implements Serializable {
         this.estado = estado;
     }
 
+    @Override
+    public String toString() {
+        return "Mascota{" + "id=" + id + ", dueno=" + dueno + ", adoptante=" + adoptante + ", nombre=" + nombre + ", raza=" + raza + ", tipo=" + tipo + ", edad=" + edad + ", sexo=" + sexo + ", descripcion=" + descripcion + ", peso=" + peso + ", imagen=" + imagen + ", tamano=" + tamano + ", castrado=" + castrado + ", estado=" + estado + '}';
+    }
+
 
 }

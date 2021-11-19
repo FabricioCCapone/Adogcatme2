@@ -10,6 +10,8 @@ import Adogcatme.Proyecto.Servicios.MascotaServicio;
 import Adogcatme.Proyecto.Servicios.SolicitudServicio;
 import Adogcatme.Proyecto.entidades.Adoptante;
 import Adogcatme.Proyecto.entidades.Mascota;
+import Adogcatme.Proyecto.entidades.Solicitud;
+import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,9 +63,9 @@ public class AdoptanteControlador {
     @GetMapping("/editarAdopt")
     public String editarAdoptante(Model model, HttpSession session) {
         Adoptante adoptante = (Adoptante) session.getAttribute("usuario");
-        
+
         Adoptante usuario = as.findByIde(adoptante.getId());
-        
+
         model.addAttribute("adoptante", usuario);
         return "perfil-adoptante-edicion";
     }
@@ -78,7 +80,7 @@ public class AdoptanteControlador {
         }
         return "redirect:/";
     }
-    
+
     @GetMapping("/perfilmascota/{id}")
     public ModelAndView verMascota(@PathVariable(name = "id") String id) {
         ModelAndView editarVista = new ModelAndView("perfil-mascot");
@@ -87,4 +89,16 @@ public class AdoptanteControlador {
         return editarVista;
     }
 
+    @GetMapping("/solicitudes")
+    public String solicitudesAdop(Model model, HttpSession session) {
+        try {
+            Adoptante adoptante = (Adoptante) session.getAttribute("usuario");
+            Adoptante usuario = as.findByIde(adoptante.getId());
+            model.addAttribute("solicitudes", ss.solicitudesDisp(usuario.getId()));
+            return "solicitudes-adop";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "redirect:/adoptante/home";
+    }
 }

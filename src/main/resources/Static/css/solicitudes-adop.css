@@ -1,5 +1,5 @@
 *{
-    margin:0;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
@@ -17,7 +17,10 @@ header {
     background-color:#F4A261;
     justify-content: center;
 }
-
+ main {
+     height: 75%;
+     width: 100%;
+ }
 h1 {
     width: 65%;
     display: flex;
@@ -27,72 +30,54 @@ h1 {
     font-size: 80px;
 }
 
-.img-adop {
+.img-perfilAdop {
     width: 35%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.img-adop img {
+.img-perfilAdop> img {
+
     width: 30%;
 }
 
-main{
-    background-color: #8e9aaf;
-    height: 75%;
+.contenedor{
     width: 100%;
-}
-
-.form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 30%;
-    margin-bottom:1%;
-}
-.form-A {
-    width: 33.3%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.form-B{
-    width: 33.3%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.form-C {
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    height: 30%;
-}
-h3{
-    text-align: center;
-}
-
-form {
-    width: 50%;
-    height: 98%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #ed9078;
     border-radius: 2%;
 }
-
-.ok{
-    width: 40%;
+.contenedor-hijo {
+    width: 65%;
+    background-color: #E9C46A;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+}  
+.datos-masc {
+    width: 50%;
+    margin-left: 7px;
 }
-.ok>input {
-    width: 60%;
+.foto-masc {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.foto-masc> img {
+    width: 50%;
+    border-radius: 1%;
+    border: 1px solid black;
+}
+
+h2 {
+    height: 12%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .navegador {
     width: 100%;
@@ -118,34 +103,6 @@ nav a {
     background-color: white;
     color: black!important;
 }
- a:hover{
+a:hover{
     border: 1px solid black;
 }
-.container {
-    width: 100%;
-    background-color: #E9C46A;
-    display: flex;
-    border-radius: 1%;
-}
-.A {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-}
-.B {
-    width: 50%;
-    height: 100%;
-    margin-top: 4px;
-
-}
-
-
-.foto-mascota{
-    width: 80%;
-    border-radius: 1%;
-    border: 1px solid black;
-}
-

@@ -5,6 +5,7 @@
  */
 package Adogcatme.Proyecto.Servicios;
 
+import Adogcatme.Proyecto.Repositorios.MascotaRepositorio;
 import Adogcatme.Proyecto.Repositorios.SolicitudRepositorio;
 import Adogcatme.Proyecto.entidades.Adoptante;
 import Adogcatme.Proyecto.entidades.Dueno;
@@ -13,6 +14,7 @@ import Adogcatme.Proyecto.entidades.Solicitud;
 import exepciones.WebExeption;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.transaction.Transactional;
@@ -31,6 +33,9 @@ public class SolicitudServicio {
 
     @Autowired
     private DuenoServicio duenoServicio;
+
+    @Autowired
+    private MascotaRepositorio mascotaRepositorio;
 
     public List<Solicitud> listAll() {
 
@@ -81,6 +86,15 @@ public class SolicitudServicio {
     }
 
     public List<Solicitud> solicitudesDisp(String id) {
+//        List<Solicitud> solicitudes = solicitudRepositorio.findSolicitudesDisp(id, null);
+//        List<Mascota> mascotasSolicitadas = new ArrayList<>();
+//        for (Mascota mascota : mascotasSolicitadas) {
+//            for (Solicitud solicitud : solicitudes) {
+//                mascota = mascotaRepositorio.findByIde(solicitud.getMascota().getId());
+//                System.out.println(mascota.toString());
+//                mascotasSolicitadas.add(mascota);
+//            }
+//        }
         return solicitudRepositorio.findSolicitudesDisp(id, null);
     }
 }
