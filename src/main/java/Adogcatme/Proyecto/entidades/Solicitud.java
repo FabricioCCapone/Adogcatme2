@@ -5,7 +5,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -16,11 +17,14 @@ public class Solicitud implements Serializable {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     
-    @OneToOne
+    @ManyToOne
     private Dueno dueno;
-    @OneToOne
+    
+    @ManyToOne
+    @JoinColumn(name = "mascota_id", nullable = false)
     private Mascota mascota;
-    @OneToOne
+    
+    @ManyToOne
     private Adoptante adoptante;
     
     private Date fecha;

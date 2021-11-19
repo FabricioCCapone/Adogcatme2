@@ -5,25 +5,37 @@ body{
     height: 100vh;
 }
 
-header{
-    align-items: center;
-    align-self: center;
-    display: flex;
-    justify-content: center;
-    background-color: #F4A261;
-    height: 25%;
+header {
     width: 100%;
-    padding-left: 300px;
-    padding-right: 300px;
+    height: 25%;
+    display: flex;
+    background-color:#F4A261;
+    justify-content: center;
+}
+
+h1 {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 80px;
+}
+
+.img-logo {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.img-logo img {
+    width: 30%;
 }
 
 main{
     align-items: center;
     justify-content: center;
-}
-
-h1{
-    font-size: 90px;
 }
 
 h3{
@@ -35,32 +47,54 @@ p{
     font-size: 400%;
 }
 
-.logo{
-    width: 175px;
-    height: 150px;
+.buton{
     display: flex;
-    justify-content: flex-end;
+    justify-content: end;
+    margin-right: 10%;
+    margin-top: 2%;
 }
 
-.logo img{
-    width: 150px;
-    height: 150px;
+.volver{
+    border-radius: 110px;
+    width: 15%;
+    height: 10%;
+    border: white 1px solid;
+    padding: 0.5%;
+}
+
+.volver:hover{
+    border-radius: 110px;
+    border: 1px black solid;
+    background-color: #ed9078;
+}
+
+nav a{
+    text-decoration: none!important;
+    font-family:'Poppins', sans-serif!important;
+    color: black!important;
 }
 
 
+.mascota-container{
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 2%;
+    border: 2px black solid;
+    border-radius: 50px;
+    padding: 1% 2% 2% 2%;
+}
 
 
 .btn-edicion{
-    margin-top: 2%;
-    margin-right: 10%;
     background-color: rgba(211, 211, 211, 0.007);
-    border-color: rgba(211, 211, 211, 0);
-    /*Probando*/
+    border: rgba(211, 211, 211, 0) solid 1px;
+    padding: 1%;
 }
 
 .btn-edicion:hover{
-    background-color: darkmagenta;
-    /*Probando - ver efectos e imagenes*/
+    border: black solid 1px;
+    border-radius: 90px;    
+    
 }
 
 .btn-edicion img{
@@ -72,10 +106,8 @@ p{
 
 .contenedor{
     display: flex;
-    align-items: center; /*¿Está de más?*/
+    align-items: center;
     justify-content: center;
-    margin-left: 10%;
-    margin-right: 10%;
     margin-top: 1%;
 }
 
@@ -94,7 +126,6 @@ p{
 
 .contenido{
     width: 80%;
-    /*min-height: 75%;*/
 }
 
 
@@ -144,8 +175,3 @@ p{
     border-bottom-right-radius: 10px;
     min-height: 40%;
 }
-
-
-
-
-

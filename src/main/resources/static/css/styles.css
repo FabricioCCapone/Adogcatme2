@@ -106,17 +106,10 @@ nav a{
 .logo-dueno img {
     width: 30%;
 }
-.main-dueno {
-    display: grid;
-    grid-template-columns: 1fr 1fr ;
-    width: 100%;
-    ;
-    
-    
-    
-}
+.main-dueno {  
 
-.inicio-sesion, .formulario {
+}
+.inicio-sesion /*, .formulario*/ {
     
     height: 53%;
     display: flex;
@@ -130,7 +123,7 @@ nav a{
  
 }
 form{
-    height: 80%;
+    height: 70%;
     
     display: flex;
     flex-direction: column;
@@ -149,8 +142,17 @@ input{
     height: 100%;
     width: 100%;
 }
+.enviar, .registrarse{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .inicio-sesion{
     background-color: #ed9078;
+    border-radius: 2%;
+    width: 55%;
 }
 .subt-dueno {
     background-color: #e76a4b;
@@ -160,12 +162,20 @@ input{
 }
 .formulario{
     background-color:#E9C46A;
+    width: 50%;
+    height: 70%;
+}
+.contenedorSubt-duenoB{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .subt-duenoB{
-    background-color: #dda822;
-    width: 65%;
-    border-radius: 3px;
-    text-align: center;
+    background-color:#dea821;
+    width: 60%;
+    border-radius: 1%;
 }
 .A>div>input {
     background-color: #fcece9 ;
@@ -177,7 +187,39 @@ input{
 .boton1:hover, .boton2:hover{
     border: 1px solid black;
 }
-input[type="file"]{
-    height: 50%;
-   
+.boton1,.boton2 {
+    width: 50%;
+}
+
+*.formulario{
+    border-radius: 2%;
+}
+.navegadores, .navegadoresB {
+    background-color: #E9C46A;
+    border-radius: 2%;
+    height:40%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
+.navegadoresB {
+    background-color:#ed9078!important ;
+}
+.navLogin {
+    height: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.a {
+    background-color:#f8eed3;
+    display: inline-block;
+    align-items: center;
+    height: 25%;
+}
+.a:hover{
+    border: 1px solid black;
+    background-color: white;
 }
