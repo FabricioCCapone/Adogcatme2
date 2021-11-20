@@ -36,7 +36,8 @@ public class DuenoControlador {
     //Modificar un dueño
     @GetMapping("/editar")
     public String editarPerfilDueno(Model model, HttpSession session) {
-        Dueno dueno = (Dueno) session.getAttribute("usuario");
+        Dueno usuario = (Dueno) session.getAttribute("usuario");
+        Dueno dueno = duenoServicio.findByIde(usuario.getId());
         model.addAttribute("usuario", dueno);
         return "perfil-dueno-edicion";
     }
