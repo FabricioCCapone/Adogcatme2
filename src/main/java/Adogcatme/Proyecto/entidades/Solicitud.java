@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.lang.Nullable;
 
 @Entity
 public class Solicitud implements Serializable {
@@ -28,6 +29,8 @@ public class Solicitud implements Serializable {
     private Adoptante adoptante;
     
     private Date fecha;
+    
+    @Nullable
     private Boolean estado = null; //0 = aceptada 1 = rechazada
 
     public Solicitud() {

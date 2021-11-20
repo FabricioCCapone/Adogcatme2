@@ -101,4 +101,11 @@ public class AdoptanteControlador {
         }
         return "redirect:/adoptante/home";
     }
+
+    @GetMapping("/perfildueno")
+    public String ingresaralperfildeldueno(@PathVariable(name = "id") String id, Model model) {
+        Mascota mascota = ms.findById(id);
+        model.addAttribute("dueno", mascota.getDueno());
+        return "perfil-dueno-adop";
+    }
 }

@@ -22,6 +22,10 @@
 
         <main>
 
+
+            <div class="buton">
+                <button type="button"><a th:href="@{/dueno/solicitudes}"> Solicitudes </a> </button>
+            </div>
             <div>
                 <div class="header-perfil">
                     <img class="logo-perfil" src="/assets/foto-perfil.png" />
@@ -83,7 +87,6 @@
                                     <th>Imagen</th>
                                     <th>Tamaño</th>
                                     <th>Castrado</th>
-                                    <th>Estado</th>
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
@@ -100,7 +103,6 @@
                                     <td th:text="${mascota.tamano}"></td>
                                     <td th:if="${mascota.castrado}">Si</td>
                                     <td th:unless="${mascota.castrado}">No</td>
-                                    <td th:text="${mascota.estado}"></td>
                                     <td>
                                         <div class="dropdown">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -116,16 +118,17 @@
                                     </td>
                                 </tr>
                             </tbody>
-                            
+
                         </table>
 
-                        
+
 
                     </div>
 
                     <div class="buton">
                         <button type="button"><a th:href="@{/dueno/editar}"> Editar </a> </button>
                     </div>
+
 
                     <div class="container-botom">
                         <button type="button" class=" boton-dueno">

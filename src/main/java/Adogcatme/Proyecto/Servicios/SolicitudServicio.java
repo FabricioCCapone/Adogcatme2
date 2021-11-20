@@ -79,6 +79,7 @@ public class SolicitudServicio {
             solicitud.setEstado(null);
         }
     }
+    
 
     @Transactional
     public void delete(Solicitud solicitud) {
@@ -86,15 +87,6 @@ public class SolicitudServicio {
     }
 
     public List<Solicitud> solicitudesDisp(String id) {
-//        List<Solicitud> solicitudes = solicitudRepositorio.findSolicitudesDisp(id, null);
-//        List<Mascota> mascotasSolicitadas = new ArrayList<>();
-//        for (Mascota mascota : mascotasSolicitadas) {
-//            for (Solicitud solicitud : solicitudes) {
-//                mascota = mascotaRepositorio.findByIde(solicitud.getMascota().getId());
-//                System.out.println(mascota.toString());
-//                mascotasSolicitadas.add(mascota);
-//            }
-//        }
         return solicitudRepositorio.findSolicitudesDisp(id, null);
     }
 }
