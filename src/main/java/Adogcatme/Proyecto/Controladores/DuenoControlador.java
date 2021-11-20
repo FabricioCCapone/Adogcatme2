@@ -68,7 +68,7 @@ public class DuenoControlador {
     public String solicitudesDueno(Model model, HttpSession session) {
         Dueno dueno = (Dueno) session.getAttribute("usuario");
         Dueno usuario = duenoServicio.findByIde(dueno.getId());
-        model.addAttribute("solicitud", ss.solicitudesDisp(usuario.getId()));
+        model.addAttribute("solicitudes", ss.solicitudesDisp(usuario.getId()));
         return "solicitudes-dueno";
     }
 
@@ -78,7 +78,7 @@ public class DuenoControlador {
             Dueno dueno = (Dueno) session.getAttribute("usuario");
             Dueno usuario = duenoServicio.findByIde(dueno.getId());
             ss.solicitudAccion(id_solicitud, usuario, accion);
-            return "perfil-dueno";
+            return "redirect:/dueno/home";
         } catch (Exception e) {
             e.printStackTrace();
             return "error";

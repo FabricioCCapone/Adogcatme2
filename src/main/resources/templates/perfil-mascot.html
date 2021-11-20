@@ -50,6 +50,9 @@
                         <p>Tamaño: <span th:text="${mascota.tamano}"></span></p>
                         <p>¿Esta castrado? <span th:text="${mascota.castrado} ? 'Si' : 'No'"></span></p>                    
                         <p>Dueño: <span th:text="${mascota.dueno}!=null? ${mascota.dueno.nombre}:''"></span></p>
+                        <nav>
+                            <a th:href="@{/adoptante/perfildueno}" class="enlace-dueno">Ver&nbspDueño</a>
+                        </nav>
                     </div>
 
                     <!-- 

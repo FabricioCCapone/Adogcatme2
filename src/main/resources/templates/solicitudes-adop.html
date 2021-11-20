@@ -36,11 +36,12 @@
             </div>
             <h2>Estado de solicitudes</h2>
             <div class="contenedor">
-                <div class="contenedor-hijo">
+                <div class="contenedor-hijo" th:each="solicitud : ${solicitudes}">
                     <div class="datos-masc">
                         <div class="masc-datos">
-                            <p th:each="solicitud : ${solicitudes}">Tipo de mascota:</p>
-                            <p>Nombre: <span th:utext="${solicitud.mascota}!=null? ${solicitud.mascota.nombre}:''"></span></p>
+                            <hr size="2px" color="black" />
+                            <p>Nombre: <span th:utext="${solicitud.mascota }? ${solicitud.mascota.nombre}:''"></span></p>
+                            <p>Tipo de mascota: <span th:utext="${solicitud.mascota }? ${solicitud.mascota.tipo}:''"></span></p>
                             <p>Raza: <span th:utext="${solicitud.mascota}!=null? ${solicitud.mascota.raza}:''"></span></p>
                             <p>Edad: <span th:utext="${solicitud.mascota}!=null? ${solicitud.mascota.edad}:''"></span></p>
                             <p>Sexo: <span th:utext="${solicitud.mascota}!=null? ${solicitud.mascota.sexo}:''"></span></p>
@@ -48,13 +49,12 @@
                             <p>Tamaño: <span th:utext="${solicitud.mascota}!=null? ${solicitud.mascota.tamano}:''"></span></p>
                             <p>¿Esta castrado?: <span th:utext="${solicitud.mascota}!=null? ${solicitud.mascota.castrado}:''"></span></p>
                             <p>Dueño: <span th:utext="${solicitud.mascota}!=null? ${solicitud.dueno.nombre}:''"></span></p>
-                        </div>
-                        <div class="contenedor-estado">
-                            <p>Estado de solicitud: <span th:if="${solicitud.estado}==null? 'pendiente':'${solicitud.estado}==true? 'Aceptada:'Rechazada'"></span></p>
+                            <p>Estado de solicitud: <span th:if="${solicitud.estado}==null? 'pendiente':'${solicitud.estado}'"></span></p>
+                            <hr size="2px" color="black" />
                         </div>
                     </div>
                     <div class="foto-masc">
-                        <img src="../asset/gatito.png" alt="" />
+                        <img class="img" th:if="${solicitud.mascota} != null" th:src="${'/img/mascota?id=' + solicitud.mascota.id}"/>
                     </div>
                 </div>
             </div>

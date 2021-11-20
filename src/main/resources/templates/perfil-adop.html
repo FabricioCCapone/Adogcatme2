@@ -21,7 +21,7 @@
     <header>
         <h1 class="titulo">ADOGCATME</h1>
         <div class="img-logo">
-            <img src="../asset/logo.png" alt="">
+            <img src="../assets/logo.png" alt="">
         </div>
     </header>
 
@@ -29,11 +29,11 @@
 
         <div>
             <div class="header-perfil">
-                <img class="logo-perfil" src="../asset/foto-perfil.png" />
+                <img class="logo-perfil" src="../assets/foto-perfil.png" />
                 <h1 class="nombre-perfil" th:text="${usuario.usuario}"></h1>
                 <button type="button" class="btn btn-secondary">
                     <nav>
-                        <a href="perfil-dueno-edicion.html"><img src="../asset/gear.png" /></a>
+                        <a th:href="@{/adoptante/editarAdopt}"><img src="../assets/gear.png" /></a>
                     </nav>
                 </button>
             </div>
@@ -41,7 +41,6 @@
 
                 <div class="column">
                     <div class="titulos">
-
                         <p> Nombre: </p>
                         <p>Usuario</p>
                         <p>Distrito:</p>
@@ -52,9 +51,9 @@
 
                 <div class="descr-coint">
                     <div class="x">
-                        <img src="../asset/owner.png" />
-                        <img src="../asset/owner2.png" />
-                        <img src="../asset/owner3.png" />
+                        <img src="../assets/owner.png" />
+                        <img src="../assets/owner2.png" />
+                        <img src="../assets/owner3.png" />
                     </div>
                 </div>
 
@@ -69,7 +68,7 @@
                 <div class="buton">
                     <button class="ver-masc" type="button">
                         <nav>
-                            <a th:href="@{/adoptante/home}">Adoptar Mascotas</a>
+                            <a th:href="@{/adoptante/home}">Editar Perfil</a>
                         </nav>
                     </button>
                     <button class="ver-solic" type="button">
