@@ -24,4 +24,7 @@ public interface SolicitudRepositorio extends JpaRepository<Solicitud, String> {
 
     @Query("SELECT s FROM Solicitud s WHERE dueno_id = :dueno_id AND estado is NULL OR estado is 1")
     public List<Solicitud> findSolicitudesDisp(@Param("dueno_id") String dueno_id);
+
+    @Query("SELECT s FROM Solicitud s WHERE dueno_id = :dueno_id AND estado is NULL")
+    public List<Solicitud> findSolicitudesDispDueno(@Param("dueno_id") String dueno_id);
 }

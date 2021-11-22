@@ -87,6 +87,6 @@ public class SolicitudServicio {
     }
 
     public List<Solicitud> solicitudesDisp(String id) {
-        return solicitudRepositorio.findSolicitudesDisp(id);
+        return solicitudRepositorio.findSolicitudesDispDueno(id);
     }
 }
