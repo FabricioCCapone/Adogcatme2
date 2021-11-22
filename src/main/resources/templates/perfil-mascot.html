@@ -17,7 +17,7 @@
     <body>
         <header>  
             <h1>ADOGCATME</h1>
-            <div class="logo"><img src="/assets/logo.png"></div>
+            <div class="img-logo"><img src="/assets/logo.png"></div>
         </header>
 
 
@@ -25,78 +25,58 @@
             <div class="contenedor">
                 <div class="perfil-izq">
                     <div class="foto-masc">
-                        <p><img th:if="${mascota.imagen != null}" th:src="${'/img/mascota?id=' + mascota.id}" width="120"/></p>
+                        <img th:if="${mascota.imagen != null}" th:src="${'/img/mascota?id=' + mascota.id}" alt="">
                     </div>
-                    <button type="button" class="btn">
 
-                        <a th:href="@{/solicitud/guardar/__${mascota.id}__}">¿Quieres adoptarme?</a>
-                        <!--Como se manda la solicitud? Es todo en el back?-->
+                    <button type="button" class="btn">
+                        <nav>
+                            <a th:href="@{/solicitud/guardar/__${mascota.id}__}">¿Quieres adoptarme?</a>
+                        </nav>
                     </button>
-                    <div class="buton">
-                        <button id="ver-masc" class="btn-dark" type="button"> <a th:href="@{/adoptante/home}">Volver al inicio</a>  </button>
-                    </div>                   
+
+                    <button type="button" class="btn">
+                        <nav>
+                            <a th:href="@{/adoptante/home}">Volver al inicio</a>
+                        </nav>
+                    </button>
+                    <button type="button" class="btn">
+                        <nav>
+                            <a th:href="@{/adoptante/perfildueno/__${mascota.id}__}">Ver perfil de mi Dueño</a>
+                        </nav>
+                    </button>
                 </div>
                 <div class="contenido">
                     <div class="titulo">
                         <h3>Mis datos</h3>
                     </div>
-
-                    <div class="info">
-                        <p>Tipo de mascota: <span th:text="${mascota.tipo}"></span></p>
-                        <p>Raza: <span th:text="${mascota.raza}"></span></p>
-                        <p>Edad: <span th:text="${mascota.edad}"></span></p>
-                        <p>Sexo: <span th:text="${mascota.sexo}"></span></p>
-                        <p>Peso: <span th:text="${mascota.peso}">Kg</span></p>
-                        <p>Tamaño: <span th:text="${mascota.tamano}"></span></p>
-                        <p>¿Esta castrado? <span th:text="${mascota.castrado} ? 'Si' : 'No'"></span></p>                    
-                        <p>Dueño: <span th:text="${mascota.dueno}!=null? ${mascota.dueno.nombre}:''"></span></p>
-                        <nav>
-                            <a th:href="@{/adoptante/perfildueno}" class="enlace-dueno">Ver&nbspDueño</a>
-                        </nav>
-                    </div>
-
-                    <!-- 
-                    ------------------------------
-                   <div class="texto">
+                    <div class="texto">
                         <div class="col-1">
                             Tipo: 
                             Raza:
                             Edad:
                             Peso:    
                         </div>
-                        <div class="col-2"></div>
-                        <div class="col-1">
+                        <div>
+                            <p class="col-2"></p>
+                        </div>
+                        <div class="col-3">
                             Sexo:
                             Peso:
                             Castrado:
                         </div>
-                        <div class="col-2"></div>
+                        <div>
+                            <p class="col-4"></p>
+                        </div>
                     </div>    
                     <div class="titulo">
-                        <h3>Descripción</h3>
-                    </div>                
-                    <div class="descripcion">                    
+                        <h3>Comentarios</h3>
                     </div>
-                </div>
-    
-                <div class="contenido">
-                    <div class="titulo">
-                    <h3>Dueño</h3>
+                    <div class="descripcion">
+                        <p></p>
                     </div>
-                    <div class="texto">
-                        <div class="col-1">
-                            Nombre: 
-                            Direccion:
-                            Barrio:
-                            Email:    
-                            Telefono:
-                        </div>
-                    </div>  
-                </div>
-                -------------------------
-                -->
 
-                </div>
+                </div>    
+            </div>
 
 
         </main>

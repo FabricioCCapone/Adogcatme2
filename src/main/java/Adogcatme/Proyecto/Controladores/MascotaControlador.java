@@ -61,7 +61,7 @@ public class MascotaControlador {
 
     @GetMapping("/editar/{id}")
     public ModelAndView editarMascota(@PathVariable(name = "id") String id) {
-        ModelAndView editarVista = new ModelAndView("perfil-mascot-admin");
+        ModelAndView editarVista = new ModelAndView("perfil-mascota-edicion-dueno");
         Mascota mascota = ms.findById(id);
         editarVista.addObject("mascota", mascota);
         return editarVista;

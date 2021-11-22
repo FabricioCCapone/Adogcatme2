@@ -40,7 +40,7 @@ public class SolicitudControlador {
             Adoptante adoptante = adoptanteServicio.findByIde(adoptanteSession.getId());
             Mascota mascota = mascotaServicio.findById(id);
             solicitudServicio.save(adoptante,mascota);
-            return "redirect:/adoptante/home";
+            return "congrats";
         } catch (WebExeption e) {
         }
         return "redirect:/adoptante/home";
