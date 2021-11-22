@@ -51,6 +51,7 @@ public class AdoptanteControlador {
             if ((raza != null) || (tipo != null) || (edad != null) || (sexo != null) || (tamano != null) || (castrado != null)) {
                 model.addAttribute("mascotas", ms.findByFiltro(raza, tipo, edad, sexo, tamano, castrado));
             } else {
+                //aca falta poner que traiga solo las que estan disponibles
                 model.addAttribute("mascotas", ms.listAll());
             }
             return "home-adop";

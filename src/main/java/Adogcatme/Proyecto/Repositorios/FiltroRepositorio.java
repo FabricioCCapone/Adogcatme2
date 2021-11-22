@@ -39,6 +39,7 @@ public class FiltroRepositorio {
         if (filtrar(castrado)) {
             consulta.setParameter("castrado", castrado);
         } 
+        consulta.setParameter("estado", true);
         return consulta.getResultList();
     }
 
@@ -57,7 +58,7 @@ public class FiltroRepositorio {
     private String consulta(String raza, String tipo, Integer edad, String sexo, String tamano, Boolean castrado) {
         StringBuilder consulta = new StringBuilder();
 
-        consulta.append("SELECT m FROM Mascota m WHERE char_length(nombre) > 0");
+        consulta.append("SELECT m FROM Mascota m WHERE estado = 1");
 
         if (filtrar(raza)) {
             consulta.append(" AND raza LIKE :raza");
