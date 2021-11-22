@@ -3,6 +3,7 @@ package Adogcatme.Proyecto.Servicios;
 import Adogcatme.Proyecto.Repositorios.FiltroRepositorio;
 import Adogcatme.Proyecto.Repositorios.MascotaRepositorio;
 import Adogcatme.Proyecto.entidades.Dueno;
+import Adogcatme.Proyecto.entidades.Imagen;
 import Adogcatme.Proyecto.entidades.Mascota;
 import exepciones.WebExeption;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class MascotaServicio {
@@ -22,6 +24,9 @@ public class MascotaServicio {
 
     @Autowired
     DuenoServicio ds;
+
+    @Autowired
+    ImagenServicio is;
 
     public List<Mascota> findByFiltro(String raza, String tipo, Integer edad, String sexo, String tamano, Boolean castrado) {
         return fr.filtro(raza, tipo, edad, sexo, tamano, castrado);
@@ -44,8 +49,10 @@ public class MascotaServicio {
     }
 
     @Transactional
-    public void registrarMascota(Mascota m, Dueno d) throws WebExeption, Exception {
-        verificarRegistro(m);
+    public void registrarMascota(Mascota m, Dueno d, MultipartFile archivo) throws WebExeption, Exception {
+        Imagen imagen = is.guardarImagen(archivo);
+        verificarRegistro(m, imagen);
+        m.setImagen(imagen);
         m.setDueno(d);
         mr.save(m);
         d.getMascotas().add(m);
@@ -60,21 +67,26 @@ public class MascotaServicio {
     }
 
     @Transactional
-    public void editarMascotaEnDueño(Mascota m, Dueno dueno) throws WebExeption, Exception {
+    public void editarMascotaEnDueño(Mascota m, Dueno dueno, MultipartFile archivo) throws WebExeption, Exception {
         if (mr.existsById(m.getId())) {
+            Imagen imagen = is.guardarImagen(archivo);
+            verificarRegistro(m, imagen);
+            m.setImagen(imagen);
             m.setDueno(dueno);
             mr.save(m);
             ds.save(dueno);
         }
     }
+
     public void eliminarMascota(String id_mascota) throws WebExeption {
         Mascota m = mr.findByIde(id_mascota);
         if (m != null) {
             m.setEstado(Boolean.FALSE);
+            mr.save(m);
         }
     }
 
-    public void verificarRegistro(Mascota m) throws WebExeption {
+    public void verificarRegistro(Mascota m, Imagen i) throws WebExeption {
         if (m.getNombre().isEmpty() || m.getNombre() == null) {
             throw new WebExeption("El nombre de la mascota no puede estar vacio.");
         }
@@ -99,9 +111,9 @@ public class MascotaServicio {
         if (m.getPeso() == 0 || m.getPeso() == null) {
             throw new WebExeption("El peso de la mascota no puede estar vacio.");
         }
-//        if (m.getImagen() == null) {
-//            throw new WebExeption("Debe subir una imagen de la mascota.");
-//        }
+        if (i == null) {
+            throw new WebExeption("Debe subir una imagen de la mascota.");
+        }
         if (m.getCastrado() == null) {
             throw new WebExeption("Debe indicar si la mascota esta castrada o no.");
         }

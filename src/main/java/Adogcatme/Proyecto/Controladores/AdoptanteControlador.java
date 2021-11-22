@@ -10,14 +10,19 @@ import Adogcatme.Proyecto.Servicios.MascotaServicio;
 import Adogcatme.Proyecto.Servicios.SolicitudServicio;
 import Adogcatme.Proyecto.entidades.Adoptante;
 import Adogcatme.Proyecto.entidades.Mascota;
+import Adogcatme.Proyecto.entidades.Solicitud;
+import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/adoptante")
@@ -32,10 +37,12 @@ public class AdoptanteControlador {
     @Autowired
     MascotaServicio ms;
 
-    @GetMapping("/perfilAdoptante")
-    public String perfilAdoptante(Model model, Adoptante a) {
-        model.addAttribute("solicitudes", a.getSolicitud().listIterator());
-        return "perfil-adopt";
+    @GetMapping("/perfil")
+    public String homeDueno(Model model, HttpSession session) {
+        Adoptante adop = (Adoptante) session.getAttribute("usuario");
+        Adoptante usuario = as.findByIde(adop.getId());
+        model.addAttribute("usuario", usuario);
+        return "perfil-adop";
     }
 
     @GetMapping("/home")
@@ -54,19 +61,52 @@ public class AdoptanteControlador {
     }
 
     @GetMapping("/editarAdopt")
-    public String editarAdoptante(Model model, Adoptante a) {
-        model.addAttribute("adoptante", a);
-        return "perfil-adopt";
+    public String editarAdoptante(Model model, HttpSession session) {
+        Adoptante adoptante = (Adoptante) session.getAttribute("usuario");
+
+        Adoptante usuario = as.findByIde(adoptante.getId());
+
+        model.addAttribute("adoptante", usuario);
+        return "perfil-adoptante-edicion";
     }
 
     @PostMapping("/editarAdoptante")
-    public String modificar(@ModelAttribute Adoptante a) {
+    public String modificar(@ModelAttribute Adoptante adoptante) {
         try {
-            as.editarAdoptante(a);
+            as.editarAdoptante(adoptante);
+            return "redirect:/adoptante/perfil";
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         return "redirect:/";
     }
 
+    @GetMapping("/perfilmascota/{id}")
+    public ModelAndView verMascota(@PathVariable(name = "id") String id) {
+        ModelAndView editarVista = new ModelAndView("perfil-mascot");
+        Mascota mascota = ms.findById(id);
+        editarVista.addObject("mascota", mascota);
+        return editarVista;
+    }
+
+    @GetMapping("/solicitudes")
+    public String solicitudesAdop(Model model, HttpSession session) {
+        try {
+            Adoptante adoptante = (Adoptante) session.getAttribute("usuario");
+            Adoptante usuario = as.findByIde(adoptante.getId());
+            model.addAttribute("solicitudes", ss.solicitudesDisp(usuario.getId()));
+            return "solicitudes-adop";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "redirect:/adoptante/home";
+    }
+
+    @GetMapping("/perfildueno/{id}")
+    public String ingresaralperfildeldueno(@PathVariable(name = "id") String id, Model model) {
+        Mascota mascota = ms.findById(id);
+        model.addAttribute("dueno", mascota.getDueno());
+        model.addAttribute("mascota" , mascota);
+        return "perfil-dueno-adop";
+    }
 }

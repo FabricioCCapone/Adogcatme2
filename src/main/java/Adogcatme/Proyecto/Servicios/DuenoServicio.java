@@ -1,10 +1,10 @@
 package Adogcatme.Proyecto.Servicios;
 
 import Adogcatme.Proyecto.Repositorios.DuenoRepositorio;
-import Adogcatme.Proyecto.entidades.Mascota;
+import Adogcatme.Proyecto.Repositorios.SolicitudRepositorio;
 import Adogcatme.Proyecto.entidades.Dueno;
+import Adogcatme.Proyecto.entidades.Solicitud;
 import exepciones.WebExeption;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -18,7 +18,7 @@ public class DuenoServicio {
     private DuenoRepositorio duenoRepositorio;
 
     @Autowired
-    private MascotaServicio mascotaServicio;
+    private SolicitudRepositorio solicitudRepositorio;
 
     //Listar dueños
     public List<Dueno> listAll() {
@@ -36,17 +36,6 @@ public class DuenoServicio {
 
     public Dueno findByUsuario(String usuario) {
         return duenoRepositorio.findByUsuario(usuario);
-    }
-
-
-    //Agregar mascota
-    @Transactional
-    public void agregarMascota(Dueno dueno, Mascota mascota) {
-        try {
-            mascota.setDueno(dueno);
-            mascotaServicio.registrarMascota(mascota, dueno);
-        } catch (Exception e) {
-        }
     }
 
     //Modificar dueño
@@ -90,7 +79,7 @@ public class DuenoServicio {
         if (dueno.getTelefono().isEmpty() || dueno.getTelefono() == null) {
             throw new Exception(" La persona debe tener un teléfono de contacto");
         }
-        return duenoRepositorio.save(dueno); 
+        return duenoRepositorio.save(dueno);
     }
 
     //Eliminar dueño (Creada en el caso de que haya un usuario de administrador)
@@ -99,7 +88,14 @@ public class DuenoServicio {
         duenoRepositorio.delete(dueno);
     }
 
-    //Eliminar dueño por ID
+    @Transactional
+    public Dueno saveSolicitud(Dueno dueno, String id_solicitud) {
+        Solicitud solicitud = solicitudRepositorio.getById(id_solicitud);
+        System.out.println("ID de la solicitud que llega" + solicitud.getId());
+        dueno.setSolicitud(solicitud);
+        return duenoRepositorio.save(dueno);
+    }
+
     @Transactional
     public void deleteById(String id) {
         Optional<Dueno> optional = duenoRepositorio.findById(id);

@@ -5,7 +5,10 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.lang.Nullable;
 
 @Entity
 public class Solicitud implements Serializable {
@@ -15,12 +18,20 @@ public class Solicitud implements Serializable {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     
+    @ManyToOne
     private Dueno dueno;
+    
+    @ManyToOne
+    @JoinColumn(name = "mascota_id", nullable = false)
     private Mascota mascota;
+    
+    @ManyToOne
     private Adoptante adoptante;
     
     private Date fecha;
-    private Boolean estado; //0 = aceptada 1 = rechazada
+    
+    @Nullable
+    private Boolean estado = null; //0 = aceptada 1 = rechazada
 
     public Solicitud() {
     }

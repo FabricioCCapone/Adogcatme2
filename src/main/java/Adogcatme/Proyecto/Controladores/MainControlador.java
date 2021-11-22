@@ -38,7 +38,7 @@ public class MainControlador {
 
         return "home";
     }
-    
+
     @GetMapping("/?logout")
     public String logout(HttpSession session){
         session.removeAttribute("usuario");

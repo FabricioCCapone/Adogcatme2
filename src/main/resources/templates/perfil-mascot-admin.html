@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es-AR" xmlns:th="http://www.thymeleaf.org" xmlns:sec"http://www.thymeleaf.org/extras/spring-security">
-    <head>
+      <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,12 +12,12 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">    
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
 
-        <link rel="stylesheet" href="../css/perfil-mascot-admin.css">
+        <link rel="stylesheet" href="/css/perfil-mascot-admin.css">
     </head>
     <body>
         <header>  
             <h1>ADOGCATME</h1>
-            <div class="logo"><img src="../asset/logo.png"></div>
+            <div class="logo"><img src="/asset/logo.png"></div>
         </header>
 
 
@@ -26,16 +26,18 @@
                 <button type="button" class="btn-edicion">
                     <nav>
                         <a href="registro-mascota.html">
-                            <img src="../asset/ajustes.png" alt="">
+                            <img src="/asset/ajustes.png" alt="">
                         </a>
                     </nav>
                 </button>
             </div>
 
             <div class="contenedor">
+
                 <div class="foto-masc">
-                    <img src="../asset/newgatito.jpeg" alt="">
+                    <p><img th:if="${mascota.imagen != null}" th:src="${'/img/mascota?id=' + mascota.id}" width="120"/></p>
                 </div>
+
                 <div class="contenido">
 
                     <div class="titulo">
@@ -54,7 +56,11 @@
                                     <option value="gato">Gato</option>
                                     <option value="otro">Otro</option>
                                 </select>   
-                            </div>                            
+                            </div>    
+                            <div>
+                                <label for="imagen">Actualice la imagen de su mascota</label>
+                                <input type="file" name="archivo" id="archivo">
+                            </div>
                             <div>
                                 <label for="nombre">Ingrese nombre</label>
                                 <input type="text" name="nombre" th:field="*{nombre}">
@@ -101,9 +107,13 @@
                                     <label for="descripcion">Ingrese una breve descripcion de su mascota:</label>
                                 </div>
                                 <div>
+                                    <label for="imagen">Cargue una imagen de su mascota</label>
+                                    <input type="file" name="archivo" id="archivo">
+                                </div>
+                                <div>
                                     <textarea name="descripcion" id="description" cols="40" rows="2" th:field="*{descripcion}"></textarea>
                                 </div>
-                            </div>
+                            </div>               
                             <div class="enviar">
                                 <input type="submit" value="Enviar" class="btn boton-enviar">
                             </div>

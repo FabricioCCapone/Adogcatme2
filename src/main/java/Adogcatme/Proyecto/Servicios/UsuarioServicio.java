@@ -62,7 +62,7 @@ public class UsuarioServicio implements UserDetailsService {
         Dueno dueno = duenoServicio.findByEmail(email);
         Dueno duenoUsuario = duenoServicio.findByUsuario(usuario);
 
-        if (dueno == null) {
+        if (dueno == null && duenoUsuario == null) {
             dueno = new Dueno();
             dueno.setUsuario(usuario);
             dueno.setContrasena(encoder.encode(contrasena2));
