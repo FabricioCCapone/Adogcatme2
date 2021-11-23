@@ -52,6 +52,7 @@
                                 <span th:unless="${solicitud.mascota.castrado}">No</span>
                             </p>
                             <p>Dueño:    <span th:utext="${solicitud.mascota}!=null? ${solicitud.dueno.nombre}:''"></span></p>
+                            <p>Teléfono de contacto:    <span th:utext="${solicitud.dueno.telefono}"></span></p>
                             <h3>Estado de solicitud:  
                                 <span th:if="${solicitud.estado}">Aceptada</span>
                                 <span th:unless="${solicitud.estado}">Pendiente</span></h3>

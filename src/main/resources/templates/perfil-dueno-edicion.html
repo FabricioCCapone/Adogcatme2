@@ -58,8 +58,19 @@
                         </div>
                         
                         <div class="ubicacion">
-                            <label for="location">Distrito:</label>
-                            <input type="text" name="barrio" placeholder="Barrio" th:field="*{barrio}" th:value="*{barrio}">
+                            <label for="ubicacion">Distrito:</label>
+                            <select id="ubicacion" name="barrio">
+                                <option th:field="*{barrio}" value="distrito norte">Distrito Norte</option>
+                                <option th:field="*{barrio}" value="distrito sur">Distrito Sur</option>
+                                <option th:field="*{barrio}" value="distrito centro">Distrito Centro</option>
+                                <option th:field="*{barrio}" value="distrito este">Distrito Este</option>
+                                <option th:field="*{barrio}" value="distrito oeste">Distrito Oeste</option>
+                            </select>
+                        </div>
+
+                        <div class="usuario">
+                            <label for="direccion">Direccion:</label>
+                            <input type="text" id="direccion"  th:field="*{direccion}" th:value="*{direccion}">
                         </div>
                         
                         <div class="mail">
@@ -72,6 +83,14 @@
                             <input type="submit" value="Enviar" class="btn boton2">
                         </div>
 
+                        <div class="button-container">
+                            <button type="button" class="btn-cancelar">
+                                <nav>
+                                    <a th:href="@{/dueno/home}">Cancelar</a>
+                                </nav>
+                            </button>
+                        </div>
+
                     </form>
                 </div>    
 
@@ -79,13 +98,7 @@
             </div>    
         </div>
 
-        <div class="button-container">
-            <button type="button" class="btn-cancelar">
-                <nav>
-                    <a th:href="@{/dueno/home}">Cancelar</a>
-                </nav>
-            </button>
-        </div>
+        
     </main>
 </body>
 </html>
