@@ -49,22 +49,39 @@ p{
 
 
 
+.navegador{
+    margin-top: 1%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navegar{
+    border-radius: 20px;
+    padding: 0.5%;
+    width: 10%;
+    border: 1px white solid;
+}
+
+.navegar:hover{
+    border: 1px rgb(73, 48, 48) solid;
+}
+
 .contenedor{
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: 10%;
     margin-right: 10%;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 .perfil-izq{
     margin-right: 5%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 400px;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 400px;
 }
 
 .contenido{
@@ -80,11 +97,9 @@ p{
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    padding-right: 75px;
-    padding-left: 75px;
     background-color: #4a5568;
     height: 250px;
-    width: 260px;
+    width: 100%;
 }
 
 .foto-masc img{
@@ -126,12 +141,8 @@ nav a{
 .texto {
     background-color: #5f6d86;
     display: grid;
-    grid-template-columns: repeat(4, 25%);
-    /*grid-template-rows: repeat(4, 25%);*/
-    grid-template-areas: 
-    "col-1 col-2 col-3 col-4"
-    "col-1 col-2 col-3 col-4"
-    "col-1 col-2 col-3 col-4"
+    grid-template-columns: 10% 40% 15% 35%;
+    grid-template-areas:
     "col-1 col-2 col-3 col-4";
     padding-top: 15px;
     padding-bottom: 15px;
@@ -147,6 +158,19 @@ nav a{
 
 .col-2, .col-4{
     font-size: medium;
+}
+
+.col-1{
+    grid-area: col-1;
+}
+.col-2{
+    grid-area: col-2;
+}
+.col-3{
+    grid-area: col-3;
+}
+.col-4{
+    grid-area: col-4;
 }
 
 .descripcion{

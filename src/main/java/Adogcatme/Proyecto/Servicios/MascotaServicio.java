@@ -70,6 +70,7 @@ public class MascotaServicio {
     public void editarMascotaEnDueño(Mascota m, Dueno dueno, MultipartFile archivo) throws WebExeption, Exception {
         if (mr.existsById(m.getId())) {
             Imagen imagen = is.guardarImagen(archivo);
+            System.out.println("llego hasta la 73");
             verificarRegistro(m, imagen);
             m.setImagen(imagen);
             m.setDueno(dueno);

@@ -89,44 +89,73 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
+                            <!--
                             <th>Raza</th>
                             <th>Tipo</th>
                             <th>Edad</th>
                             <th>Sexo</th>
+                            -->
                             <th>Descripcion</th>
+                            <!--
                             <th>Peso</th>
+                            -->
                             <th>Imagen</th>
+                            <!--
                             <th>Tamaño</th>
                             <th>Castrado</th>
                             <th>Opciones</th>
+                            -->
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="mascota:${mascotas}">
                             <td th:text="${mascota.nombre}"></td>
-                            <td th:text="${mascota.raza}"></td>
-                            <td th:text="${mascota.tipo}"></td>
-                            <td th:text="${mascota.edad}"></td>
-                            <td th:text="${mascota.sexo}"></td>
+                            <!--
+                                <td th:text="${mascota.raza}"></td>
+                                <td th:text="${mascota.tipo}"></td>
+                                <td th:text="${mascota.edad}"></td>
+                                <td th:text="${mascota.sexo}"></td>
+                            -->
                             <td th:text="${mascota.descripcion}"></td>
-                            <td th:text="${mascota.peso}"></td>
+                            <!--
+                                <td th:text="${mascota.peso}"></td>
+                            -->
                             <td><img th:if="${mascota.imagen != null}" th:src="${'/img/mascota?id=' + mascota.id}" width="120"/></td>
-                            <td th:text="${mascota.tamano}"></td>
-                            <td th:if="${mascota.castrado}">Si</td>
-                            <td th:unless="${mascota.castrado}">No</td>
+                            <!--
+                                <td th:text="${mascota.tamano}"></td>
+                                <td th:if="${mascota.castrado}">Si</td>
+                                <td th:unless="${mascota.castrado}">No</td>
+                            -->     
                             <td>
-                                <div class="dropdown">
+
+                                <!--Boton agregado para ver el perfil de la mascota (falta la clase)-->
+                                <button class="" type="button">
+                                    <nav>
+                                        <li><a class="dropdown-item" th:href="@{/mascota/perfilMascota/__${mascota.id}__}">Ver mascota</a></li>
+                                    </nav>
+                                </button>
+
+                                <!-- Dropdown que reemplazamos por el boton de arriba
+                                    
+                                    <div class="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                         Opciones de Mascota
                                     </button>
 
-                                    <!--Opciones dentro de cada mascota-->
+                                    Opciones dentro de cada mascota
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 
+                                        <li><a class="dropdown-item" th:href="@{/mascota/perfil/__${mascota.id}__}">Ver mascota</a></li>
+
+                                         Dropdown cambiado por ver perfil
                                         <li><a class="dropdown-item" th:href="@{/mascota/editar/__${mascota.id}__}">Editar</a></li>
                                         <li><a class="dropdown-item" th:href="@{/mascota/eliminar/__${mascota.id}__}">Eliminar</a></li>
+                                        
                                     </ul>
-                                </div>
+                                    </div>
+
+                                -->
+                                
                             </td>
                         </tr>
                     </tbody>

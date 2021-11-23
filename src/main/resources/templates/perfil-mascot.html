@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,6 +22,23 @@
 
 
         <main>
+            <div class="navegador">
+                <button class="navegar">
+                    <nav>
+                        <a sec:authorize="isAuthenticated()" th:href="@{/adoptante/perfil}">Mi Perfil</a>
+                    </nav>
+                </button>
+                <button class="navegar">
+                    <nav>
+                        <a th:href="@{/adoptante/home}">Ir al Home</a>  </a>
+                    </nav>
+                </button>
+                <button class="navegar">
+                    <nav>
+                        <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar Sesión</a>
+                    </nav>
+                </button>
+            </div>
             <div class="contenedor">
                 <div class="perfil-izq">
                     <div class="foto-masc">
@@ -31,12 +48,6 @@
                     <button type="button" class="btn">
                         <nav>
                             <a th:href="@{/solicitud/guardar/__${mascota.id}__}">¿Quieres adoptarme?</a>
-                        </nav>
-                    </button>
-
-                    <button type="button" class="btn">
-                        <nav>
-                            <a th:href="@{/adoptante/home}">Volver al inicio</a>
                         </nav>
                     </button>
                     <button type="button" class="btn">
@@ -51,34 +62,36 @@
                     </div>
                     <div class="texto">
                         <div class="col-1">
-                            Tipo: 
-                            Raza:
-                            Edad:
-                            Peso:    
+                            <h5>Tipo: </h5>
+                            <h5>Raza: </h5>
+                            <h5>Edad: </h5>
+                            <h5>Peso: </h5>
                         </div>
-                        <div>
-                            <p class="col-2"></p>
+                        <div class="col-2">
+                            <h5><span th:text="${mascota.tipo}"></span></h5>
+                            <h5><span th:text="${mascota.raza}"></span></h5>
+                            <h5><span <span th:text="${mascota.edad}"></span></h5>
+                            <h5><span th:text="${mascota.peso}"></span>&nbspKg</h5>
+
                         </div>
                         <div class="col-3">
-                            Sexo:
-                            Peso:
-                            Castrado:
+                            <h5>Sexo: </h5>
+                            <h5>Tamaño: </h5>
+                            <h5>¿Esta&nbspcastrado?&nbsp<span th:text="${mascota.castrado} ? 'Si' : 'No'"></span></h5>
                         </div>
-                        <div>
-                            <p class="col-4"></p>
+                        <div class="col-4">
+                            <h5><span th:text="${mascota.sexo}"></span></h5>
+                            <h5><span th:text="${mascota.tamano}"></span></h5>
+                            
                         </div>
-                    </div>    
+                    </div>
                     <div class="titulo">
                         <h3>Comentarios</h3>
                     </div>
                     <div class="descripcion">
-                        <p></p>
+                        <center><p><h5><span th:text="${mascota.descripcion}"></h5></span></p></center>
                     </div>
-
-                </div>    
-            </div>
-
-
+                </div>
         </main>
     </body>
 </html>
