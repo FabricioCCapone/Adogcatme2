@@ -20,6 +20,7 @@ public class FiltroRepositorio {
     public List<Mascota> filtro(String raza, String tipo, Integer edad, String sexo, String tamano, Boolean castrado) {
         javax.persistence.Query consulta = em.createQuery(consulta(raza, tipo, edad, sexo, tamano, castrado));
 
+        String estado = "estado";
         if (filtrar(raza)) {
             raza = "%" + raza + "%";
             consulta.setParameter(RAZA, raza);
@@ -39,6 +40,7 @@ public class FiltroRepositorio {
         if (filtrar(castrado)) {
             consulta.setParameter("castrado", castrado);
         } 
+//        consulta.setParameter("estado", estado);
         return consulta.getResultList();
     }
 
@@ -57,7 +59,7 @@ public class FiltroRepositorio {
     private String consulta(String raza, String tipo, Integer edad, String sexo, String tamano, Boolean castrado) {
         StringBuilder consulta = new StringBuilder();
 
-        consulta.append("SELECT m FROM Mascota m WHERE char_length(nombre) > 0");
+        consulta.append("SELECT m FROM Mascota m WHERE estado is 1");
 
         if (filtrar(raza)) {
             consulta.append(" AND raza LIKE :raza");
