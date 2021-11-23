@@ -13,20 +13,28 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
               integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 
-        <link rel="stylesheet" href="../css/solicitudes-dueno.css" />
+        <link rel="stylesheet" href="/css/solicitudes-dueno.css" />
     </head>
 
     <body>
         <header>
             <h1 class="titulo-dueno">ADOGCATME</h1>
-            <div class="logo-dueno"><img src="../asset/logo.png" alt="" /></div>
+            <div class="logo-dueno"><img src="/assets/logo.png" alt="" /></div>
         </header>
 
-        <main th:each="solicitud : ${solicitudes}">  
-            <div class="soli" >
+        <main> 
+            <div class="navegador">
+                <nav class="menu">
+                    <a th:href="@{/dueno/home}">Volver al home</a>
+                    <a th:href="@{/mascota/registro}" class="regMasc"}>Registrar Mascota</a>
+                    <a sec:authorize="isAuthenticated()" th:href="@{/logout}">Cerrar Sesion</a>
+                </nav>
+            </div>
 
+
+ 
+            <div th:each="solicitud : ${solicitudes}" class="soli" >
                 <div class="mascota">
-
                     <div class="header">
                         <h2 th:text="${solicitud.mascota}!=null? ${solicitud.mascota.nombre}:''"></h2>
                         <label class="pregunta">
@@ -51,13 +59,9 @@
                             </a>
 
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     </main>
 </body>
