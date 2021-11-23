@@ -14,7 +14,6 @@ import Adogcatme.Proyecto.entidades.Solicitud;
 import exepciones.WebExeption;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.transaction.Transactional;
@@ -34,8 +33,6 @@ public class SolicitudServicio {
     @Autowired
     private DuenoServicio duenoServicio;
 
-    @Autowired
-    private MascotaRepositorio mascotaRepositorio;
 
     public List<Solicitud> listAll() {
 
@@ -74,11 +71,13 @@ public class SolicitudServicio {
                 solicitud.setEstado(true);
             }
         } else if (accion == false) {
-                solicitud.setEstado(false);
+            solicitud.setEstado(false);
         } else {
             solicitud.setEstado(null);
         }
     }
+    
+    
     
 
     @Transactional

@@ -38,6 +38,11 @@ main{
     justify-content: center;
 }
 
+h2{
+    text-align: center;
+    font-size: 150%;
+}
+
 h3{
     text-align: center;
     font-size: 250%;
@@ -50,7 +55,7 @@ p{
 
 .buton{
     display: flex;
-    justify-content: end;
+    justify-content: space-evenly;
     margin-right: 10%;
     margin-top: 2%;
 }

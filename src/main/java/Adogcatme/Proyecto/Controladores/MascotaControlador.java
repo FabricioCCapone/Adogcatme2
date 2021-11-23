@@ -72,7 +72,7 @@ public class MascotaControlador {
         try {
             Dueno dueno = (Dueno) session.getAttribute("usuario");
             ms.editarMascotaEnDueño(m, dueno, archivo);
-            return "/mascota/perfilMascota";
+            return "redirect:/mascota/perfilMascota/"+m.getId();
         } catch (WebExeption e) {
             redirectAtributtes.addFlashAttribute("error",e.getMessage());
             e.printStackTrace();

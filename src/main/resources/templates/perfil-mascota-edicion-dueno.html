@@ -27,15 +27,15 @@
                 </div>
 
                 <div class="datos-a-editar">
-                    <form th:action="@{/mascota/save}" method="POST" th:object="${mascota}">
+                    <form th:action="@{/mascota/save}" method="POST" th:object="${mascota}" enctype="multipart/form-data">
                         <input hidden  name="id" th:field="*{id}">
                         <div class="foto-masc">
                             <img th:if="${mascota.imagen != null}" th:src="${'/img/mascota?id=' + mascota.id}"  class="img-form">
                             <div>
-                                <label for="image" id="image-mascota">Cambiar la foto de perfil</label>
+                                <label for="archivo" id="image-mascota">Cambiar la foto de perfil</label>
                             </div>
                             <div>
-                                <input type="file" id="image">
+                                <input type="file" name= "archivo" id="archivo">
                             </div>
                             
                         </div>
