@@ -74,7 +74,7 @@ public class SolicitudServicio {
                 solicitud.setEstado(true);
             }
         } else if (accion == false) {
-            solicitudRepositorio.deleteById(id_solicitud);
+                solicitud.setEstado(false);
         } else {
             solicitud.setEstado(null);
         }
@@ -88,5 +88,9 @@ public class SolicitudServicio {
 
     public List<Solicitud> solicitudesDisp(String id) {
         return solicitudRepositorio.findSolicitudesDispDueno(id);
+    }
+
+    public List<Solicitud> solicitudesDispAdop(String id) {
+        return solicitudRepositorio.findSolicitudesDispAdop(id);
     }
 }

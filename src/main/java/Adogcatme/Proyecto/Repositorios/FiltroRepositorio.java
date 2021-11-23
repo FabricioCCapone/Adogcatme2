@@ -20,7 +20,6 @@ public class FiltroRepositorio {
     public List<Mascota> filtro(String raza, String tipo, Integer edad, String sexo, String tamano, Boolean castrado) {
         javax.persistence.Query consulta = em.createQuery(consulta(raza, tipo, edad, sexo, tamano, castrado));
 
-        String estado = "estado";
         if (filtrar(raza)) {
             raza = "%" + raza + "%";
             consulta.setParameter(RAZA, raza);
@@ -40,7 +39,6 @@ public class FiltroRepositorio {
         if (filtrar(castrado)) {
             consulta.setParameter("castrado", castrado);
         } 
-//        consulta.setParameter("estado", estado);
         return consulta.getResultList();
     }
 
