@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/mascota")
@@ -28,15 +29,14 @@ public class MascotaControlador {
 
     @Autowired
     SolicitudServicio ss;
-    
+
     @Autowired
     DuenoServicio ds;
 
-    @GetMapping("/perfilMascota")
-    public String perfilMascota(Model model, Mascota m) {
-        model.addAttribute("mascota", ms.findById(m.getId()));
-        model.addAttribute("solicitudes", ss.listAll());
-        return "perfil-mascot";
+  @GetMapping("/perfilMascota/{id}")
+    public String perfilMascota(@PathVariable(name = "id") String id, Model model) {
+        model.addAttribute("mascota" , ms.findById(id));
+        return "perfil-mascot-admin";
     }
 
     @GetMapping("/registro")
@@ -68,18 +68,17 @@ public class MascotaControlador {
     }
 
     @PostMapping("/save")
-    public String editarMascota(@ModelAttribute Mascota m,Principal principal,HttpSession session,MultipartFile archivo) {
+    public String editarMascota(@ModelAttribute Mascota m, Principal principal, HttpSession session, MultipartFile archivo, RedirectAttributes redirectAtributtes) throws Exception {
         try {
-            m = new Mascota();
             Dueno dueno = (Dueno) session.getAttribute("usuario");
-            ms.editarMascotaEnDueño(m,dueno,archivo);
-        } catch (Exception e) {
+            ms.editarMascotaEnDueño(m, dueno, archivo);
+            return "redirect:/mascota/perfilMascota/"+m.getId();
+        } catch (WebExeption e) {
+            redirectAtributtes.addFlashAttribute("error",e.getMessage());
             e.printStackTrace();
-        } finally {
-            return "redirect:/";
         }
+        return "redirect:/mascota/editar/"+m.getId();
     }
-
 
     @GetMapping("/eliminar/{id}")
     public String eliminarMascota(@PathVariable(name = "id") String id) {

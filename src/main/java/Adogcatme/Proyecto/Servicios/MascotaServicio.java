@@ -41,7 +41,7 @@ public class MascotaServicio {
     }
 
     public List<Mascota> listAll() {
-        return mr.findAll();
+        return mr.findDisponibles();
     }
 
     public List<Mascota> mascotasDisponibles() {

@@ -38,18 +38,24 @@ main{
     justify-content: center;
 }
 
+h2{
+    text-align: center;
+    font-size: 150%;
+}
+
 h3{
     text-align: center;
     font-size: 250%;
 }
 
 p{
-    font-size: 400%;
+    font-size: 100%;
+    display: table;
 }
 
 .buton{
     display: flex;
-    justify-content: end;
+    justify-content: space-evenly;
     margin-right: 10%;
     margin-top: 2%;
 }
@@ -150,26 +156,43 @@ nav a{
 
 .texto {
     background-color: #5f6d86;
-    display: grid;
-    grid-template-columns: repeat(4, 25%);
-    padding-block: 15px;
     margin-bottom: 2%;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(3, 33,3%);
+    grid-template-areas: 
+    "c1 c2"
+    "c1 c2"
+    "c1 c2";
+  
 }
 
-.col-1{
+.c1{
     font-size: x-large;
+    grid-area: c1;
+    align-content: right;
 }
 
-.col-2{
-    font-size: medium; /*Para ir preparando, luego cambios*/
-    /*Info de la mascota - a completar*/
+.c2{
+    font-size: x-large;
+    grid-area: c2;
+}
+
+.descp{
+    margin: 30px;
+    width: 95%;
+    height: 200px;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 10px;
+
 }
 
 .descripcion{
     padding-block: 50px; /*Para hacer "figurar" el espacio, ver el agregado. Además, ver si se sigue usando*/
-    text-align: justify; /*Para un futuro*/
     background-color: #5f6d86;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;

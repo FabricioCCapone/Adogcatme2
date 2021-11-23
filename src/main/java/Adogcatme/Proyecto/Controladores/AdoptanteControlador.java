@@ -10,8 +10,6 @@ import Adogcatme.Proyecto.Servicios.MascotaServicio;
 import Adogcatme.Proyecto.Servicios.SolicitudServicio;
 import Adogcatme.Proyecto.entidades.Adoptante;
 import Adogcatme.Proyecto.entidades.Mascota;
-import Adogcatme.Proyecto.entidades.Solicitud;
-import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,6 +49,7 @@ public class AdoptanteControlador {
             if ((raza != null) || (tipo != null) || (edad != null) || (sexo != null) || (tamano != null) || (castrado != null)) {
                 model.addAttribute("mascotas", ms.findByFiltro(raza, tipo, edad, sexo, tamano, castrado));
             } else {
+                //aca falta poner que traiga solo las que estan disponibles
                 model.addAttribute("mascotas", ms.listAll());
             }
             return "home-adop";
@@ -94,7 +93,7 @@ public class AdoptanteControlador {
         try {
             Adoptante adoptante = (Adoptante) session.getAttribute("usuario");
             Adoptante usuario = as.findByIde(adoptante.getId());
-            model.addAttribute("solicitudes", ss.solicitudesDisp(usuario.getId()));
+            model.addAttribute("solicitudes", ss.solicitudesDispAdop(usuario.getId()));
             return "solicitudes-adop";
         } catch (Exception e) {
             e.printStackTrace();

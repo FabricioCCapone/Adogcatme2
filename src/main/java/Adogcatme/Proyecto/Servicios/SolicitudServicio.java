@@ -14,7 +14,6 @@ import Adogcatme.Proyecto.entidades.Solicitud;
 import exepciones.WebExeption;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.transaction.Transactional;
@@ -80,6 +79,8 @@ public class SolicitudServicio {
         }
     }
     
+    
+    
 
     @Transactional
     public void delete(Solicitud solicitud) {
@@ -87,6 +88,10 @@ public class SolicitudServicio {
     }
 
     public List<Solicitud> solicitudesDisp(String id) {
-        return solicitudRepositorio.findSolicitudesDisp(id, null);
+        return solicitudRepositorio.findSolicitudesDispDueno(id);
+    }
+    
+    public List<Solicitud> solicitudesDispAdop(String id) {
+        return solicitudRepositorio.findSolicitudesDispAdop(id);
     }
 }
