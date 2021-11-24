@@ -17,14 +17,14 @@
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous"
             />
-        <link rel="stylesheet" href="../css/solicitudes-adop.css" />
+        <link rel="stylesheet" href="/css/solicitudes-adop.css" />
         <title>Solicitudes Adoptante</title>
     </head>
 
     <body>
         <header>
             <h1>ADOGCATME</h1>
-            <div class="img-perfilAdop"><img src="../asset/logo.png" alt="" /></div>
+            <div class="img-perfilAdop"><img src="/asset/logo.png" alt="" /></div>
         </header>
         <main>
             <div class="navegador">
@@ -36,7 +36,7 @@
             </div>
             <h2>Estado de solicitudes</h2>
             <div class="contenedor">
-                <div class="contenedor-hijo" th:each="solicitud : ${solicitudes}">
+                <div class="contenedor-hijo" th:each="solicitud : ${solicitudes}">                    
                     <div class="datos-masc">
                         <div class="masc-datos">
                             <hr size="2px" color="black" />

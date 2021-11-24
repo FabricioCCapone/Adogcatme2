@@ -101,7 +101,15 @@ label{
 }
 .nombre{
     grid-area: nombre;
+
 }
+
+.usuario > label { text-align: left}
+.nombre > label { text-align: left}
+.mail > label { text-align: left}
+.ubicacion > label { text-align: left}
+.telefono > label { text-align: left}
+
 
 .mail{
     grid-area: mail;
