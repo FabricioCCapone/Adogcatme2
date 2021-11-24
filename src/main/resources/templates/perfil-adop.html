@@ -13,7 +13,26 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../css/perfil-adop.css">
+    <link rel="stylesheet" href="../Static/css/perfil-adop.css">
+    <title>Perfil</title>
+</head>
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec"http://www.thymeleaf.org/extras/spring-security">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/perfil-adop.css">
     <title>Perfil</title>
 </head>
 
@@ -58,11 +77,11 @@
                 </div>
 
                 <div class="info">
-                    <h2 th:text="${usuario.nombre}"></h2>
-                    <h2 th:text="${usuario.usuario}"></h2>
-                    <h2 th:text="${usuario.barrio}"></h2>
-                    <h2 th:text="${usuario.telefono}"></h2>
-                    <h2 th:text="${usuario.email}"></h2>
+                    <h2 th:text="${usuario.nombre}"> nombre</h2>
+                    <h2 th:text="${usuario.usuario}"> usuario</h2>
+                    <h2 th:text="${usuario.barrio}"> barrio</h2>
+                    <h2 th:text="${usuario.telefono}"> telefono</h2>
+                    <h2 th:text="${usuario.email}"> mail</h2>
                 </div>
 
                 <div class="buton">
