@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Adogcatme.Proyecto.Controladores;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- *
- * @author Extre
- */
+
 @Controller
 public class ErrorsControlador implements  ErrorController {
       @RequestMapping(value = "/error", method = {RequestMethod.GET, RequestMethod.POST})

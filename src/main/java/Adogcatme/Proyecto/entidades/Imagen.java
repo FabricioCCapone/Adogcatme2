@@ -9,10 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import org.hibernate.annotations.GenericGenerator;
 
-/**
- *
- * @author Capoun
- */
+
 @Entity
 public class Imagen implements Serializable {
     
